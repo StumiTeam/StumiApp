@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		425262ED289B4FC400F7F35A /* StumiAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EC289B4FC400F7F35A /* StumiAppApp.swift */; };
+		425262EF289B4FC400F7F35A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EE289B4FC400F7F35A /* ContentView.swift */; };
+		425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F0289B4FC500F7F35A /* Assets.xcassets */; };
+		425262F4289B4FC500F7F35A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F3289B4FC500F7F35A /* Preview Assets.xcassets */; };
+		425262FE289B4FC500F7F35A /* StumiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262FD289B4FC500F7F35A /* StumiAppTests.swift */; };
+		42526308289B4FC500F7F35A /* StumiAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42526307289B4FC500F7F35A /* StumiAppUITests.swift */; };
+		4252630A289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42526309289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		425262FA289B4FC500F7F35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 425262E1289B4FC400F7F35A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 425262E8289B4FC400F7F35A;
+			remoteInfo = StumiApp;
+		};
+		42526304289B4FC500F7F35A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 425262E1289B4FC400F7F35A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 425262E8289B4FC400F7F35A;
+			remoteInfo = StumiApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		425262E9289B4FC400F7F35A /* StumiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StumiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		425262EC289B4FC400F7F35A /* StumiAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppApp.swift; sourceTree = "<group>"; };
+		425262EE289B4FC400F7F35A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		425262F0289B4FC500F7F35A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		425262F3289B4FC500F7F35A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		425262F9289B4FC500F7F35A /* StumiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StumiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		425262FD289B4FC500F7F35A /* StumiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppTests.swift; sourceTree = "<group>"; };
+		42526303289B4FC500F7F35A /* StumiAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StumiAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42526307289B4FC500F7F35A /* StumiAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppUITests.swift; sourceTree = "<group>"; };
+		42526309289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		425262E6289B4FC400F7F35A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		425262F6289B4FC500F7F35A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42526300289B4FC500F7F35A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		425262E0289B4FC400F7F35A = {
+			isa = PBXGroup;
+			children = (
+				425262EB289B4FC400F7F35A /* StumiApp */,
+				425262FC289B4FC500F7F35A /* StumiAppTests */,
+				42526306289B4FC500F7F35A /* StumiAppUITests */,
+				425262EA289B4FC400F7F35A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		425262EA289B4FC400F7F35A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				425262E9289B4FC400F7F35A /* StumiApp.app */,
+				425262F9289B4FC500F7F35A /* StumiAppTests.xctest */,
+				42526303289B4FC500F7F35A /* StumiAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		425262EB289B4FC400F7F35A /* StumiApp */ = {
+			isa = PBXGroup;
+			children = (
+				425262EC289B4FC400F7F35A /* StumiAppApp.swift */,
+				425262EE289B4FC400F7F35A /* ContentView.swift */,
+				425262F0289B4FC500F7F35A /* Assets.xcassets */,
+				425262F2289B4FC500F7F35A /* Preview Content */,
+			);
+			path = StumiApp;
+			sourceTree = "<group>";
+		};
+		425262F2289B4FC500F7F35A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				425262F3289B4FC500F7F35A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		425262FC289B4FC500F7F35A /* StumiAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				425262FD289B4FC500F7F35A /* StumiAppTests.swift */,
+			);
+			path = StumiAppTests;
+			sourceTree = "<group>";
+		};
+		42526306289B4FC500F7F35A /* StumiAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				42526307289B4FC500F7F35A /* StumiAppUITests.swift */,
+				42526309289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift */,
+			);
+			path = StumiAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		425262E8289B4FC400F7F35A /* StumiApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4252630D289B4FC500F7F35A /* Build configuration list for PBXNativeTarget "StumiApp" */;
+			buildPhases = (
+				425262E5289B4FC400F7F35A /* Sources */,
+				425262E6289B4FC400F7F35A /* Frameworks */,
+				425262E7289B4FC400F7F35A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StumiApp;
+			productName = StumiApp;
+			productReference = 425262E9289B4FC400F7F35A /* StumiApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		425262F8289B4FC500F7F35A /* StumiAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42526310289B4FC500F7F35A /* Build configuration list for PBXNativeTarget "StumiAppTests" */;
+			buildPhases = (
+				425262F5289B4FC500F7F35A /* Sources */,
+				425262F6289B4FC500F7F35A /* Frameworks */,
+				425262F7289B4FC500F7F35A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				425262FB289B4FC500F7F35A /* PBXTargetDependency */,
+			);
+			name = StumiAppTests;
+			productName = StumiAppTests;
+			productReference = 425262F9289B4FC500F7F35A /* StumiAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		42526302289B4FC500F7F35A /* StumiAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42526313289B4FC500F7F35A /* Build configuration list for PBXNativeTarget "StumiAppUITests" */;
+			buildPhases = (
+				425262FF289B4FC500F7F35A /* Sources */,
+				42526300289B4FC500F7F35A /* Frameworks */,
+				42526301289B4FC500F7F35A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42526305289B4FC500F7F35A /* PBXTargetDependency */,
+			);
+			name = StumiAppUITests;
+			productName = StumiAppUITests;
+			productReference = 42526303289B4FC500F7F35A /* StumiAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		425262E1289B4FC400F7F35A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					425262E8289B4FC400F7F35A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					425262F8289B4FC500F7F35A = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 425262E8289B4FC400F7F35A;
+					};
+					42526302289B4FC500F7F35A = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 425262E8289B4FC400F7F35A;
+					};
+				};
+			};
+			buildConfigurationList = 425262E4289B4FC400F7F35A /* Build configuration list for PBXProject "StumiApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 425262E0289B4FC400F7F35A;
+			productRefGroup = 425262EA289B4FC400F7F35A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				425262E8289B4FC400F7F35A /* StumiApp */,
+				425262F8289B4FC500F7F35A /* StumiAppTests */,
+				42526302289B4FC500F7F35A /* StumiAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		425262E7289B4FC400F7F35A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				425262F4289B4FC500F7F35A /* Preview Assets.xcassets in Resources */,
+				425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		425262F7289B4FC500F7F35A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42526301289B4FC500F7F35A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		425262E5289B4FC400F7F35A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				425262EF289B4FC400F7F35A /* ContentView.swift in Sources */,
+				425262ED289B4FC400F7F35A /* StumiAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		425262F5289B4FC500F7F35A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				425262FE289B4FC500F7F35A /* StumiAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		425262FF289B4FC500F7F35A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4252630A289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift in Sources */,
+				42526308289B4FC500F7F35A /* StumiAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		425262FB289B4FC500F7F35A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 425262E8289B4FC400F7F35A /* StumiApp */;
+			targetProxy = 425262FA289B4FC500F7F35A /* PBXContainerItemProxy */;
+		};
+		42526305289B4FC500F7F35A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 425262E8289B4FC400F7F35A /* StumiApp */;
+			targetProxy = 42526304289B4FC500F7F35A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4252630B289B4FC500F7F35A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4252630C289B4FC500F7F35A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4252630E289B4FC500F7F35A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StumiApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = StumiTeam.StumiApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4252630F289B4FC500F7F35A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StumiApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = StumiTeam.StumiApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		42526311289B4FC500F7F35A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = StumiTeam.StumiAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StumiApp.app/StumiApp";
+			};
+			name = Debug;
+		};
+		42526312289B4FC500F7F35A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = StumiTeam.StumiAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StumiApp.app/StumiApp";
+			};
+			name = Release;
+		};
+		42526314289B4FC500F7F35A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = StumiTeam.StumiAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StumiApp;
+			};
+			name = Debug;
+		};
+		42526315289B4FC500F7F35A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = StumiTeam.StumiAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StumiApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		425262E4289B4FC400F7F35A /* Build configuration list for PBXProject "StumiApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4252630B289B4FC500F7F35A /* Debug */,
+				4252630C289B4FC500F7F35A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4252630D289B4FC500F7F35A /* Build configuration list for PBXNativeTarget "StumiApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4252630E289B4FC500F7F35A /* Debug */,
+				4252630F289B4FC500F7F35A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42526310289B4FC500F7F35A /* Build configuration list for PBXNativeTarget "StumiAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42526311289B4FC500F7F35A /* Debug */,
+				42526312289B4FC500F7F35A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42526313289B4FC500F7F35A /* Build configuration list for PBXNativeTarget "StumiAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42526314289B4FC500F7F35A /* Debug */,
+				42526315289B4FC500F7F35A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 425262E1289B4FC400F7F35A /* Project object */;
+}
