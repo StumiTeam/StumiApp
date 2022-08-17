@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42375BC328AD1D6D005DA686 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC228AD1D6D005DA686 /* MenuView.swift */; };
+		42375BC528AD1D92005DA686 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC428AD1D92005DA686 /* TimerView.swift */; };
+		42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC628AD1D9A005DA686 /* AchievementsView.swift */; };
+		42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC828AD1DA2005DA686 /* FriendsView.swift */; };
+		42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCA28AD1DA9005DA686 /* ProfileView.swift */; };
+		42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCE28AD1DC2005DA686 /* SettingsView.swift */; };
 		425262ED289B4FC400F7F35A /* StumiAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EC289B4FC400F7F35A /* StumiAppApp.swift */; };
 		425262EF289B4FC400F7F35A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EE289B4FC400F7F35A /* ContentView.swift */; };
 		425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F0289B4FC500F7F35A /* Assets.xcassets */; };
@@ -34,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42375BC228AD1D6D005DA686 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		42375BC428AD1D92005DA686 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		42375BC628AD1D9A005DA686 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
+		42375BC828AD1DA2005DA686 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		42375BCA28AD1DA9005DA686 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		42375BCE28AD1DC2005DA686 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		425262E9289B4FC400F7F35A /* StumiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StumiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425262EC289B4FC400F7F35A /* StumiAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppApp.swift; sourceTree = "<group>"; };
 		425262EE289B4FC400F7F35A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +108,12 @@
 			children = (
 				425262EC289B4FC400F7F35A /* StumiAppApp.swift */,
 				425262EE289B4FC400F7F35A /* ContentView.swift */,
+				42375BC228AD1D6D005DA686 /* MenuView.swift */,
+				42375BC428AD1D92005DA686 /* TimerView.swift */,
+				42375BC628AD1D9A005DA686 /* AchievementsView.swift */,
+				42375BC828AD1DA2005DA686 /* FriendsView.swift */,
+				42375BCA28AD1DA9005DA686 /* ProfileView.swift */,
+				42375BCE28AD1DC2005DA686 /* SettingsView.swift */,
 				425262F0289B4FC500F7F35A /* Assets.xcassets */,
 				425262F2289B4FC500F7F35A /* Preview Content */,
 			);
@@ -257,7 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */,
+				42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */,
 				425262EF289B4FC400F7F35A /* ContentView.swift in Sources */,
+				42375BC328AD1D6D005DA686 /* MenuView.swift in Sources */,
+				42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */,
+				42375BC528AD1D92005DA686 /* TimerView.swift in Sources */,
+				42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */,
 				425262ED289B4FC400F7F35A /* StumiAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
