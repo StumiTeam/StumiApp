@@ -1,6 +1,6 @@
 //
 //  FriendsView.swift
-//  Stumi Test
+//  Stumi App
 //
 //  Created by Jeremy Kwok on 8/15/22.
 //

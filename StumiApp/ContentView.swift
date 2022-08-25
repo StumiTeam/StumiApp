@@ -1,14 +1,12 @@
-//ContentView.swift
-//Created by BLCKBIRDS on 26.10.19.
-//Visit www.BLCKBIRDS.com for more.
+//
+//  ContentView.swift
+//  Stumi App
+//
+//  Created by Jeremy Kwok on 8/10/22.
+//
+
 import SwiftUI
 
-////Variables
-//struct Variables {
-//    static var showOne = false
-//    static var showTimer = false
-//    static var showAchievements = false
-//}
 
 struct ContentView: View {
     
@@ -24,10 +22,8 @@ struct ContentView: View {
     //User Modes
     @State var showProfileView : Bool = false
     @State var showSettingsView : Bool = false
-//    @Binding var showAchievementsView : Bool
-//    @Binding var showFriendsView : Bool
-//    @Binding var showProfileView : Bool
     
+    //body
     var body: some View {
         
         let drag = DragGesture()

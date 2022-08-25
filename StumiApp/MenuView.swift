@@ -1,6 +1,10 @@
-//MenuView.swift
-//Created by BLCKBIRDS on 26.10.19.
-//Visit www.BLCKBIRDS.com for more.
+//
+//  MenuView.swift
+//  Stumi App
+//
+//  Created by Jeremy Kwok on 8/10/22.
+//
+
 import SwiftUI
 
 struct MenuView: View {
@@ -18,6 +22,7 @@ struct MenuView: View {
         @Binding var showProfile : Bool
         @Binding var showSettings : Bool
     
+    //body
     var body: some View {
         VStack(alignment: .leading) {
             
