@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42375BC328AD1D6D005DA686 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC228AD1D6D005DA686 /* MenuView.swift */; };
+		42375BC328AD1D6D005DA686 /* TimerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC228AD1D6D005DA686 /* TimerMenuView.swift */; };
 		42375BC528AD1D92005DA686 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC428AD1D92005DA686 /* TimerView.swift */; };
 		42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC628AD1D9A005DA686 /* AchievementsView.swift */; };
 		42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC828AD1DA2005DA686 /* FriendsView.swift */; };
 		42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCA28AD1DA9005DA686 /* ProfileView.swift */; };
 		42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCE28AD1DC2005DA686 /* SettingsView.swift */; };
-		425262ED289B4FC400F7F35A /* StumiAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EC289B4FC400F7F35A /* StumiAppApp.swift */; };
+		425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EC289B4FC400F7F35A /* StumiApp.swift */; };
 		425262EF289B4FC400F7F35A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EE289B4FC400F7F35A /* ContentView.swift */; };
 		425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F0289B4FC500F7F35A /* Assets.xcassets */; };
 		425262F4289B4FC500F7F35A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F3289B4FC500F7F35A /* Preview Assets.xcassets */; };
 		425262FE289B4FC500F7F35A /* StumiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262FD289B4FC500F7F35A /* StumiAppTests.swift */; };
 		42526308289B4FC500F7F35A /* StumiAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42526307289B4FC500F7F35A /* StumiAppUITests.swift */; };
 		4252630A289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42526309289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift */; };
+		425D3B1628BB1E0900F394C5 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425D3B1528BB1E0900F394C5 /* MusicPlayer.swift */; };
+		425D3B1A28BB1EF900F394C5 /* bad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 425D3B1928BB1EF900F394C5 /* bad.mp3 */; };
+		42CCE0B728BC01B400A9A7CA /* LibraryMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0B628BC01B400A9A7CA /* LibraryMenuView.swift */; };
+		42CCE0B928BC06D900A9A7CA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0B828BC06D900A9A7CA /* LibraryView.swift */; };
+		42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0BA28BC06E600A9A7CA /* SearchView.swift */; };
+		42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0BC28BC06F300A9A7CA /* StoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,14 +46,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		42375BC228AD1D6D005DA686 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		42375BC228AD1D6D005DA686 /* TimerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerMenuView.swift; sourceTree = "<group>"; };
 		42375BC428AD1D92005DA686 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		42375BC628AD1D9A005DA686 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		42375BC828AD1DA2005DA686 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		42375BCA28AD1DA9005DA686 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		42375BCE28AD1DC2005DA686 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		425262E9289B4FC400F7F35A /* StumiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StumiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		425262EC289B4FC400F7F35A /* StumiAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppApp.swift; sourceTree = "<group>"; };
+		425262EC289B4FC400F7F35A /* StumiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiApp.swift; sourceTree = "<group>"; };
 		425262EE289B4FC400F7F35A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		425262F0289B4FC500F7F35A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		425262F3289B4FC500F7F35A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -56,6 +62,12 @@
 		42526303289B4FC500F7F35A /* StumiAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StumiAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42526307289B4FC500F7F35A /* StumiAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppUITests.swift; sourceTree = "<group>"; };
 		42526309289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		425D3B1528BB1E0900F394C5 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		425D3B1928BB1EF900F394C5 /* bad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bad.mp3; sourceTree = "<group>"; };
+		42CCE0B628BC01B400A9A7CA /* LibraryMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryMenuView.swift; sourceTree = "<group>"; };
+		42CCE0B828BC06D900A9A7CA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		42CCE0BA28BC06E600A9A7CA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		42CCE0BC28BC06F300A9A7CA /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,14 +118,12 @@
 		425262EB289B4FC400F7F35A /* StumiApp */ = {
 			isa = PBXGroup;
 			children = (
-				425262EC289B4FC400F7F35A /* StumiAppApp.swift */,
+				425262EC289B4FC400F7F35A /* StumiApp.swift */,
 				425262EE289B4FC400F7F35A /* ContentView.swift */,
-				42375BC228AD1D6D005DA686 /* MenuView.swift */,
-				42375BC428AD1D92005DA686 /* TimerView.swift */,
-				42375BC628AD1D9A005DA686 /* AchievementsView.swift */,
-				42375BC828AD1DA2005DA686 /* FriendsView.swift */,
-				42375BCA28AD1DA9005DA686 /* ProfileView.swift */,
-				42375BCE28AD1DC2005DA686 /* SettingsView.swift */,
+				42CCE0B428BBFA1300A9A7CA /* TimerMode */,
+				42CCE0B528BBFFF400A9A7CA /* LibraryMode */,
+				425D3B1728BB1E1F00F394C5 /* Settings */,
+				425D3B1828BB1EEE00F394C5 /* Music */,
 				425262F0289B4FC500F7F35A /* Assets.xcassets */,
 				425262F2289B4FC500F7F35A /* Preview Content */,
 			);
@@ -143,6 +153,46 @@
 				42526309289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift */,
 			);
 			path = StumiAppUITests;
+			sourceTree = "<group>";
+		};
+		425D3B1728BB1E1F00F394C5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				42375BCA28AD1DA9005DA686 /* ProfileView.swift */,
+				42375BCE28AD1DC2005DA686 /* SettingsView.swift */,
+				425D3B1528BB1E0900F394C5 /* MusicPlayer.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		425D3B1828BB1EEE00F394C5 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				425D3B1928BB1EF900F394C5 /* bad.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		42CCE0B428BBFA1300A9A7CA /* TimerMode */ = {
+			isa = PBXGroup;
+			children = (
+				42375BC228AD1D6D005DA686 /* TimerMenuView.swift */,
+				42375BC428AD1D92005DA686 /* TimerView.swift */,
+				42375BC628AD1D9A005DA686 /* AchievementsView.swift */,
+				42375BC828AD1DA2005DA686 /* FriendsView.swift */,
+			);
+			path = TimerMode;
+			sourceTree = "<group>";
+		};
+		42CCE0B528BBFFF400A9A7CA /* LibraryMode */ = {
+			isa = PBXGroup;
+			children = (
+				42CCE0B628BC01B400A9A7CA /* LibraryMenuView.swift */,
+				42CCE0B828BC06D900A9A7CA /* LibraryView.swift */,
+				42CCE0BA28BC06E600A9A7CA /* SearchView.swift */,
+				42CCE0BC28BC06F300A9A7CA /* StoreView.swift */,
+			);
+			path = LibraryMode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +301,7 @@
 			files = (
 				425262F4289B4FC500F7F35A /* Preview Assets.xcassets in Resources */,
 				425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */,
+				425D3B1A28BB1EF900F394C5 /* bad.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,12 +328,17 @@
 			files = (
 				42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */,
 				42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */,
+				425D3B1628BB1E0900F394C5 /* MusicPlayer.swift in Sources */,
 				425262EF289B4FC400F7F35A /* ContentView.swift in Sources */,
-				42375BC328AD1D6D005DA686 /* MenuView.swift in Sources */,
+				42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */,
+				42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */,
+				42375BC328AD1D6D005DA686 /* TimerMenuView.swift in Sources */,
 				42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */,
 				42375BC528AD1D92005DA686 /* TimerView.swift in Sources */,
+				42CCE0B928BC06D900A9A7CA /* LibraryView.swift in Sources */,
+				42CCE0B728BC01B400A9A7CA /* LibraryMenuView.swift in Sources */,
 				42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */,
-				425262ED289B4FC400F7F35A /* StumiAppApp.swift in Sources */,
+				425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
