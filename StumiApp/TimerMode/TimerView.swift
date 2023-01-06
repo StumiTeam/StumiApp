@@ -24,7 +24,7 @@ struct TimerView: View {
     @State var minutesRemaining = 0
     @State var secondsRemaining = 1
     
-    //USED TO TRACK USER PROGRESS
+    //STOPWATCH USED TO TRACK USER PROGRESS
     @State var secondsOngoing = 0
     @State var showTimer = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -54,45 +54,45 @@ struct TimerView: View {
             VStack(alignment: .center){
                 
                 Spacer()
-                VStack {
-                    Text("Selected Subject:")
-                    Menu(selectedSubject) {
-                        
-                        //English Choice
-                        Button{
-                            selectedSubject = "English"
-                        } label: {Text("English")}
-                        
-                        //Math Choice
-                        Button{
-                            selectedSubject = "Math"
-                        } label: {Text("Math")}
-                        
-                        //Social Studies Choice
-                        Button{
-                            selectedSubject = "Social Studies"
-                        } label: {Text("Social Studies")}
-                        
-                        //Science Choice
-                        Button{
-                            selectedSubject = "Science"
-                        } label: {Text("Science")}
+                //HStack {
+                    VStack {
+                        Text("Selected Subject:")
+                        Menu(selectedSubject) {
+                            
+                            //English Choice
+                            Button{
+                                selectedSubject = "English"
+                            } label: {Text("English")}
+                            
+                            //Math Choice
+                            Button{
+                                selectedSubject = "Math"
+                            } label: {Text("Math")}
+                            
+                            //Social Studies Choice
+                            Button{
+                                selectedSubject = "Social Studies"
+                            } label: {Text("Social Studies")}
+                            
+                            //Science Choice
+                            Button{
+                                selectedSubject = "Science"
+                            } label: {Text("Science")}
+                        }
                     }
-                }
-                .font(.headline)
-                .padding(10)
-                .background(.red)
+                    .font(.headline)
+                    .padding(10)
+                    .background(.red)
                 
-                /*
-                Button("hi", action: {
-                })
-                    .frame(width: 50.0, height: 50.0)
-                    .foregroundColor(.clear)
-                    .background(.clear)
-                    //.opacity(0)
-                */
+                    /*
+                    Button{
+                        
+                    } label: {Image("Cat")}
+                     */
+                //}
                 
-                //Spacer()
+                Spacer()
+                
                 HStack(alignment: .top){
                     Spacer()
                     
@@ -265,7 +265,6 @@ struct TimerView: View {
                 //.border(.green)
                 
                 Spacer()
-                    .border(.red)
                 
                 Button("Start", action: {
                     hoursRemaining = Hours
@@ -273,13 +272,15 @@ struct TimerView: View {
                     secondsRemaining = Seconds
                     showTimer = true
                 })
-                    .frame(width: 50.0, height: 50.0)
+                    .font(.title)
+                    .frame(width: 100.0, height: 100.0)
                     .foregroundColor(Color(red: 0, green: 128, blue: 0))
                     .background(.green)
                     .overlay(Circle().stroke(Color.black, lineWidth: 1))
                     .clipShape(Circle())
+                    .padding(.bottom, 100)
                 
-                Spacer()
+                //Spacer()
                 
                 //insert library button here somewhere
                 //keep track of what subject the user is studying
@@ -333,6 +334,7 @@ struct TimerView: View {
                 
             }
             .onReceive(timer) {
+                
                 time in
                 
                 //hidden stopwatch
@@ -345,8 +347,16 @@ struct TimerView: View {
                     if minutesRemaining == 0 {
                         if hoursRemaining == 0 { //if there is no time left
                             
-                            print(secondsOngoing)
+                            print("DONE! Time: \(secondsOngoing) seconds in \(selectedSubject)")
+                            
+                            //stop displaying timer
+                            showTimer = false
+                            
+                            //reset the hidden stopwatch for next run
+                            secondsOngoing = 0
+                            
                             //record total time alongside start time and date
+                            
                             
                             //give rewards (coins) on popup screen
                             

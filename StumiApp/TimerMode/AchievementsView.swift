@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AchievementsView: View {
     @AppStorage("Total Study Time") var totalStudyTime = 0
-    @AppStorage("Total Sessoins") var totalSessions = 0
+    @AppStorage("Total Sessions") var totalSessions = 0
     
     var body: some View {
         Text("Achievements")

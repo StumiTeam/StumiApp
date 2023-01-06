@@ -7,13 +7,18 @@
 
 import SwiftUI
 
-struct LibraryMenuView: View {
+struct MenuView: View {
     
     //Variables
       //Hamburger Button Variables
-        @Binding var showLibraryHamburgerMenu : Bool
+        @Binding var showHamburgerMenu : Bool
     
       //Study Menu Variables
+        @Binding var showTimer : Bool
+        @Binding var showAchievements : Bool
+        @Binding var showFriends : Bool
+    
+      //Library Menu Variables
         @Binding var showLibrary : Bool
         @Binding var showSearch : Bool
         @Binding var showStore : Bool
@@ -26,9 +31,81 @@ struct LibraryMenuView: View {
     var body: some View {
         VStack(alignment: .leading) {
             
+            //Timer Button
+            Button(action: {
+                showHamburgerMenu = false;
+                showAchievements = false;
+                showFriends = false;
+                showLibrary = false;
+                showSearch = false;
+                showStore = false;
+                showProfile = false;
+                showSettings = false;
+                showTimer = true
+            }){
+                HStack {
+                    Image(systemName: "gear")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Timer")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+            }
+                .padding(.top, 120)
+            
+            //Achievements Button
+            Button(action: {
+                showHamburgerMenu = false;
+                showTimer = false;
+                showFriends = false;
+                showLibrary = false;
+                showSearch = false;
+                showStore = false;
+                showProfile = false;
+                showSettings = false;
+                showAchievements = true
+            }){
+                HStack {
+                    Image(systemName: "gear")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Achievements")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+            }
+                .padding(.top, 30)
+            
+            //Friends Button
+            Button(action: {
+                showHamburgerMenu = false;
+                showTimer = false;
+                showAchievements = false;
+                showLibrary = false;
+                showSearch = false;
+                showStore = false;
+                showProfile = false;
+                showSettings = false;
+                showFriends = true;
+            }){
+                HStack {
+                    Image(systemName: "gear")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Friends")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+            }
+                .padding(.top, 30)
+            
             //Library Button
             Button(action: {
-                showLibraryHamburgerMenu = false;
+                showHamburgerMenu = false;
+                showTimer = false;
+                showAchievements = false;
+                showFriends = false;
                 showSearch = false;
                 showStore = false;
                 showProfile = false;
@@ -44,12 +121,14 @@ struct LibraryMenuView: View {
                         .font(.headline)
                 }
             }
-                .padding(.top, 120)
+                .padding(.top, 30)
             
             //Search Button
             Button(action: {
-                showLibraryHamburgerMenu = false;
+                showHamburgerMenu = false;
+                showTimer = false
                 showLibrary = false;
+                showFriends = false;
                 showStore = false;
                 showProfile = false;
                 showSettings = false;
@@ -68,7 +147,10 @@ struct LibraryMenuView: View {
             
             //Store Button
             Button(action: {
-                showLibraryHamburgerMenu = false;
+                showHamburgerMenu = false;
+                showTimer = false;
+                showAchievements = false;
+                showFriends = false;
                 showLibrary = false;
                 showSearch = false;
                 showProfile = false;
@@ -90,7 +172,10 @@ struct LibraryMenuView: View {
             
             //Profile Button
             Button(action: {
-                showLibraryHamburgerMenu = false;
+                showHamburgerMenu = false;
+                showTimer = false;
+                showAchievements = false;
+                showFriends = false;
                 showLibrary = false;
                 showSearch = false;
                 showStore = false;
@@ -111,7 +196,10 @@ struct LibraryMenuView: View {
             
             //Settings Button
             Button(action: {
-                showLibraryHamburgerMenu = false;
+                showHamburgerMenu = false;
+                showTimer = false;
+                showAchievements = false;
+                showFriends = false;
                 showLibrary = false;
                 showSearch = false;
                 showStore = false;
@@ -128,6 +216,7 @@ struct LibraryMenuView: View {
                 }
             }
                 .padding(.bottom, 30)
+            
         }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -136,8 +225,8 @@ struct LibraryMenuView: View {
     }
 }
 
-//struct LibraryMenuView_Previews: PreviewProvider {
+//struct MenuView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        LibraryMenuView()
+//        MenuView()
 //    }
 //}

@@ -11,8 +11,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showMenu : Bool = false
-    @State var timerMode : Bool = true
-    @State var libraryMode : Bool = false
+//    @State var timerMode : Bool = true
+//    @State var libraryMode : Bool = false
     
     //Timer Menu
     @State var showTimerView : Bool = true
@@ -20,7 +20,7 @@ struct ContentView: View {
     @State var showFriendsView : Bool = false
     
     //Library Menu
-    @State var showLibraryView : Bool = true
+    @State var showLibraryView : Bool = false
     @State var showSearchView : Bool = false
     @State var showStoreView : Bool = false
     
@@ -35,6 +35,7 @@ struct ContentView: View {
     //body
     var body: some View {
         
+        //drag function of Hamburger Menu
         let drag = DragGesture()
             .onEnded {
                 if $0.translation.width < -100 {
@@ -56,101 +57,73 @@ struct ContentView: View {
                         }
                     }
                     
-                    
-                    if timerMode {
-                        
-                        if showTimerView {
-                            TimerView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-                        
-                        if showAchievementsView {
-                            AchievementsView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-                        
-                        if showFriendsView {
-                            FriendsView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-                        
-                        if showProfileView {
-                            ProfileView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-
-                        if showSettingsView {
-                            SettingsView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-                    
-                        HStack{
-                            if showMenu {
-                                TimerMenuView(showTimerHamburgerMenu: $showMenu, showTimer: $showTimerView, showAchievements: $showAchievementsView, showFriends: $showFriendsView, showProfile: $showProfileView, showSettings: $showSettingsView)
-                                    .frame(width: geometry.size.width/2, alignment: .leading)
-                                    .transition(.move(edge: .leading))
-                                    .gesture(drag)
-                                    .opacity(0.9)
-                                Spacer()
-                            }
-                        }
+                    //Views
+                    if showTimerView {
+                        TimerView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if libraryMode {
-                        
-                        if showLibraryView {
-                            LibraryView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-                        
-                        if showSearchView {
-                            SearchView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-                        
-                        if showStoreView {
-                            StoreView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-                        
-                        if showProfileView {
-                            ProfileView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
-
-                        if showSettingsView {
-                            SettingsView()
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                        }
+                    if showAchievementsView {
+                        AchievementsView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
                     
-                        HStack{
-                            if showMenu {
-                                LibraryMenuView(showLibraryHamburgerMenu: $showMenu, showLibrary: $showLibraryView, showSearch: $showSearchView, showStore: $showStoreView, showProfile: $showProfileView, showSettings: $showSettingsView)
-                                    .frame(width: geometry.size.width/2, alignment: .leading)
-                                    .transition(.move(edge: .leading))
-                                    .gesture(drag)
-                                    .opacity(0.9)
-                                Spacer()
-                            }
+                    if showFriendsView {
+                        FriendsView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
+                    
+                    if showLibraryView {
+                        LibraryView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
+                    
+                    if showSearchView {
+                        SearchView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
+                    
+                    if showStoreView {
+                        StoreView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
+                    
+                    if showProfileView {
+                        ProfileView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
+                    
+                    if showSettingsView {
+                        SettingsView()
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
+                    
+                    //Hamburger Menu
+                    HStack{
+                        if showMenu {
+                            MenuView(showHamburgerMenu: $showMenu, showTimer: $showTimerView, showAchievements: $showAchievementsView, showFriends: $showFriendsView, showLibrary: $showLibraryView, showSearch: $showSearchView, showStore: $showStoreView, showProfile: $showProfileView, showSettings: $showSettingsView)
+                                .frame(width: geometry.size.width/2, alignment: .leading)
+                                .transition(.move(edge: .leading))
+                                .gesture(drag)
+                                .opacity(0.9)
+                            Spacer()
                         }
-                        
                     }
 
-                    
-                }
+                } //end ZStack
                 
-
-            }
-                .navigationBarItems(leading: (
-                    Button(action: {
-                        withAnimation {
-                            self.showMenu.toggle()
+            } //end GeometryReader
+                .navigationBarItems(
+                    leading:
+                        Button(action: {
+                            withAnimation {
+                                self.showMenu.toggle()
+                            }
+                        }) {
+                            Image(systemName: "line.horizontal.3")
+                                .imageScale(.large)
                         }
-                    }) {
-                        Image(systemName: "line.horizontal.3")
-                            .imageScale(.large)
-                    }
-                ))
+                )
         }
     }
 }

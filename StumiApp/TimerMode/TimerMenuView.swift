@@ -86,6 +86,66 @@ struct TimerMenuView: View {
             }
                 .padding(.top, 30)
             
+            //Timer Button
+            Button(action: {
+                showTimerHamburgerMenu = false;
+                showAchievements = false;
+                showFriends = false;
+                showProfile = false;
+                showSettings = false;
+                showTimer = true
+            }){
+                HStack {
+                    Image(systemName: "person")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Library")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+            }
+                .padding(.top, 30)
+            
+            //Achievements Button
+            Button(action: {
+                showTimerHamburgerMenu = false;
+                showTimer = false;
+                showFriends = false;
+                showProfile = false;
+                showSettings = false;
+                showAchievements = true
+            }){
+                HStack {
+                    Image(systemName: "envelope")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Search")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+            }
+                .padding(.top, 30)
+            
+            //Friends Button
+            Button(action: {
+                showTimerHamburgerMenu = false;
+                showTimer = false;
+                showAchievements = false;
+                showProfile = false;
+                showSettings = false;
+                showFriends = true
+            }){
+                HStack {
+                    Image(systemName: "gear")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Store")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+            }
+                .padding(.top, 30)
+            
             Spacer()
             
             //Profile Button
