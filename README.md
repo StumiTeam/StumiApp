@@ -1,6 +1,8 @@
 # StumiApp
 Main Page of Stumi App
 
+NOTE: Anything with an (M) means TBD
+
 ## Description of App:
 
 Stumi (Study with Me) is an app designed to help students stay productive when they study. By integrating studying and an asethetically pleasing game, we hope that Stumi makes studying more rewarding.
@@ -70,4 +72,5 @@ Stumi-Land is a world like Earth, except it doesn't have any highly intelligent 
 
 ## Potential Plans for Future:
     - Create website or desktop application
-    
+    - Expand the world map (add more regions)
+    - In-app purchases/ads
