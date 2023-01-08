@@ -11,22 +11,17 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showMenu : Bool = false
-//    @State var timerMode : Bool = true
-//    @State var libraryMode : Bool = false
-    
-    //Timer Menu
-    @State var showTimerView : Bool = true
-    @State var showAchievementsView : Bool = false
-    @State var showFriendsView : Bool = false
-    
-    //Library Menu
-    @State var showLibraryView : Bool = false
-    @State var showSearchView : Bool = false
-    @State var showStoreView : Bool = false
-    
-    //User Menu
-    @State var showProfileView : Bool = false
-    @State var showSettingsView : Bool = false
+    @State var showPage : Int = 0
+    /*
+     0 for TimerView
+     1 for AchievementView
+     2 for FriendsView
+     3 for LibraryView
+     4 for SearchView
+     5 for StoreView
+     6 for ProfileView
+     7 for SettingsView
+    */
     
     //Music Settings
     @AppStorage("Music") var Music = true
@@ -58,42 +53,51 @@ struct ContentView: View {
                     }
                     
                     //Views
-                    if showTimerView {
+
+                    //TimerView
+                    if showPage == 0 {
                         TimerView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if showAchievementsView {
+                    //AchievementsView
+                    if showPage == 1 {
                         AchievementsView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if showFriendsView {
+                    //FriendsView
+                    if showPage == 2 {
                         FriendsView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if showLibraryView {
+                    //LibraryView
+                    if showPage == 3 {
                         LibraryView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if showSearchView {
+                    //SearchView
+                    if showPage == 4 {
                         SearchView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if showStoreView {
+                    //StoreView
+                    if showPage == 5 {
                         StoreView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if showProfileView {
+                    //ProfileView
+                    if showPage == 6 {
                         ProfileView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
-                    if showSettingsView {
+                    //SettingsView
+                    if showPage == 7 {
                         SettingsView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
@@ -101,7 +105,11 @@ struct ContentView: View {
                     //Hamburger Menu
                     HStack{
                         if showMenu {
-                            MenuView(showHamburgerMenu: $showMenu, showTimer: $showTimerView, showAchievements: $showAchievementsView, showFriends: $showFriendsView, showLibrary: $showLibraryView, showSearch: $showSearchView, showStore: $showStoreView, showProfile: $showProfileView, showSettings: $showSettingsView)
+                            
+                            MenuView(
+                                showHamburgerMenu: $showMenu,
+                                currentPage: $showPage
+                            )
                                 .frame(width: geometry.size.width/2, alignment: .leading)
                                 .transition(.move(edge: .leading))
                                 .gesture(drag)

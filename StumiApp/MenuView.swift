@@ -10,23 +10,10 @@ import SwiftUI
 struct MenuView: View {
     
     //Variables
-      //Hamburger Button Variables
-        @Binding var showHamburgerMenu : Bool
     
-      //Study Menu Variables
-        @Binding var showTimer : Bool
-        @Binding var showAchievements : Bool
-        @Binding var showFriends : Bool
-    
-      //Library Menu Variables
-        @Binding var showLibrary : Bool
-        @Binding var showSearch : Bool
-        @Binding var showStore : Bool
-    
-      //User Variables
-        @Binding var showProfile : Bool
-        @Binding var showSettings : Bool
-    
+    @Binding var showHamburgerMenu : Bool
+    @Binding var currentPage : Int
+     
     //body
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,14 +21,7 @@ struct MenuView: View {
             //Timer Button
             Button(action: {
                 showHamburgerMenu = false;
-                showAchievements = false;
-                showFriends = false;
-                showLibrary = false;
-                showSearch = false;
-                showStore = false;
-                showProfile = false;
-                showSettings = false;
-                showTimer = true
+                currentPage = 0
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -57,14 +37,7 @@ struct MenuView: View {
             //Achievements Button
             Button(action: {
                 showHamburgerMenu = false;
-                showTimer = false;
-                showFriends = false;
-                showLibrary = false;
-                showSearch = false;
-                showStore = false;
-                showProfile = false;
-                showSettings = false;
-                showAchievements = true
+                currentPage = 1
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -80,14 +53,7 @@ struct MenuView: View {
             //Friends Button
             Button(action: {
                 showHamburgerMenu = false;
-                showTimer = false;
-                showAchievements = false;
-                showLibrary = false;
-                showSearch = false;
-                showStore = false;
-                showProfile = false;
-                showSettings = false;
-                showFriends = true;
+                currentPage = 2
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -103,14 +69,7 @@ struct MenuView: View {
             //Library Button
             Button(action: {
                 showHamburgerMenu = false;
-                showTimer = false;
-                showAchievements = false;
-                showFriends = false;
-                showSearch = false;
-                showStore = false;
-                showProfile = false;
-                showSettings = false;
-                showLibrary = true
+                currentPage = 3
             }){
                 HStack {
                     Image(systemName: "person")
@@ -126,13 +85,7 @@ struct MenuView: View {
             //Search Button
             Button(action: {
                 showHamburgerMenu = false;
-                showTimer = false
-                showLibrary = false;
-                showFriends = false;
-                showStore = false;
-                showProfile = false;
-                showSettings = false;
-                showSearch = true
+                currentPage = 4
             }){
                 HStack {
                     Image(systemName: "envelope")
@@ -148,14 +101,7 @@ struct MenuView: View {
             //Store Button
             Button(action: {
                 showHamburgerMenu = false;
-                showTimer = false;
-                showAchievements = false;
-                showFriends = false;
-                showLibrary = false;
-                showSearch = false;
-                showProfile = false;
-                showSettings = false;
-                showStore = true
+                currentPage = 5
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -173,14 +119,7 @@ struct MenuView: View {
             //Profile Button
             Button(action: {
                 showHamburgerMenu = false;
-                showTimer = false;
-                showAchievements = false;
-                showFriends = false;
-                showLibrary = false;
-                showSearch = false;
-                showStore = false;
-                showSettings = false;
-                showProfile = true
+                currentPage = 6
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -197,14 +136,7 @@ struct MenuView: View {
             //Settings Button
             Button(action: {
                 showHamburgerMenu = false;
-                showTimer = false;
-                showAchievements = false;
-                showFriends = false;
-                showLibrary = false;
-                showSearch = false;
-                showStore = false;
-                showProfile = false;
-                showSettings = true
+                currentPage = 7
             }){
                 HStack {
                     Image(systemName: "gear")
