@@ -10,6 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     
+    //User Auth
+    @State private var email = ""
+    @State private var password = ""
+    @State private var userIsLoggedIn = false
+    
+    //Menu
     @State var showMenu : Bool = false
     @State var showPage : Int = 0
     /*
@@ -29,6 +35,15 @@ struct ContentView: View {
     
     //body
     var body: some View {
+        if userIsLoggedIn {
+            content
+        } else {
+            LoginView()
+        }
+    }
+    
+    //content
+    var content: some View {
         
         //drag function of Hamburger Menu
         let drag = DragGesture()
@@ -134,6 +149,19 @@ struct ContentView: View {
                 )
         }
     }
+}
+
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content) -> some View {
+            
+            ZStack(alignment: alignment) {
+                placeholder().opacity(shouldShow ? 1:0)
+                self
+            }
+        }
 }
 
 struct ContentView_Previews: PreviewProvider {
