@@ -5,7 +5,7 @@ NOTE: Anything with an (M) means TBD
 
 ## Description of App:
 
-Stumi (Study with Me) is an app designed to help students stay productive when they study. By integrating studying and an asethetically pleasing game, we hope that Stumi makes studying more rewarding.
+Stumi (Study You and Me) is an app designed to help students stay productive when they study. By integrating studying and an asethetically pleasing game, we hope that Stumi makes studying more rewarding.
 
 ### Story
 Stumi-Land is a world like Earth, except it doesn't have any highly intelligent lifeforms like humans. The various species of animals there know how to walk on two legs, but they don't seem to possess understanding of the environment around them. In an effort to teach these animals and hopefully build an intergalactical alliance with them, you build a library and fill it with books of various types, encouraging the animals to learn more.
