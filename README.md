@@ -5,7 +5,7 @@ NOTE: Anything with an (M) means TBD
 
 ## Description of App:
 
-Stumi (Study with Me) is an app designed to help students stay productive when they study. By integrating studying and an asethetically pleasing game, we hope that Stumi makes studying more rewarding.
+Stumi (Study You and Me) is an app designed to help students stay productive when they study. By integrating studying and an asethetically pleasing game, we hope that Stumi makes studying more rewarding.
 
 ### Our Goal as Developers:
 As teenagers who go to school every day, we know how hard it can be for everyone to avoid social media and other sources of distractions as they work. Helping others was the main reason we decided to develop Stumi. We're aware of apps that "lock" other apps on your devices, but Apple doesn't allow iOS apps to do that. More importantly, we want to use positive reinforcement (instead of negative reinforcement) to help everyone attain their goals and get some off-screen time. Stumi was created for studying, but you can do so much more with it. Want to read a book for 20 minutes? Use Stumi! Do you find yourself on your phone while your teacher is giving a lecture? Use Stumi! Are your parents nagging you to get off your phone and study more? Show them your Stumi Study History! If you have ANY goal that you want to dedicate time to, Stumi can help!
