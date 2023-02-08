@@ -113,7 +113,6 @@
 		425262E0289B4FC400F7F35A = {
 			isa = PBXGroup;
 			children = (
-				42B7A38929908474002A81A6 /* FirestoreManager.swift */,
 				42B1937A2968528100890CA8 /* README.md */,
 				425262EB289B4FC400F7F35A /* StumiApp */,
 				42B7A380298F642C002A81A6 /* GoogleService-Info.plist */,
@@ -206,6 +205,7 @@
 		42B7A388299082C1002A81A6 /* Maintenance Settings */ = {
 			isa = PBXGroup;
 			children = (
+				42B7A38929908474002A81A6 /* FirestoreManager.swift */,
 				425D3B1528BB1E0900F394C5 /* MusicPlayer.swift */,
 				42B7A38629904FA1002A81A6 /* BannerModifier.swift */,
 			);

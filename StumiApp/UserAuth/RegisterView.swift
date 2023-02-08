@@ -150,7 +150,6 @@ struct RegisterView: View {
     func register() {
         
         //if username is already taken -> ask user to use another username
-        
         if username == "" {
             self.bannerData.title = "No Username"
             self.bannerData.detail = "Please enter your username"
@@ -178,22 +177,32 @@ struct RegisterView: View {
                     self.bannerData.detail = error!.localizedDescription
                     print(error!.localizedDescription)
                     
-                    if self.bannerData.detail == "An email address must be provided." {
+                    switch self.bannerData.detail {
+                    
+                    case "An email address must be provided.":
                         self.bannerData.title = "Missing Email"
-                    }
-                    else if self.bannerData.detail == "The email address is badly formatted." {
+                        
+                    case "The email address is badly formatted.":
                         self.bannerData.title = "Bad Email"
-                    }
-                    else if self.bannerData.detail == "The email address is already in use by another account." {
-                        self.bannerData.title = "Email In Use"
-                    }
-                    else if self.bannerData.detail == "The password must be 6 characters long or more." {
+                        
+                    case "The email address is already in use by another account.":
+                        self.bannerData.title = "Email in Use"
+                        
+                    case "The password must be 6 characters long or more.":
                         self.bannerData.title = "Short Password"
+                    
+                    default:
+                        self.bannerData.title = "Error"
                     }
+                    
                     self.bannerData.type = .Error
                     
                 } else {
                     //successful register
+                    
+                    //create new document
+                    
+                    //show success banner
                     self.bannerData.title = "Success!"
                     self.bannerData.detail = "You're all set, " + username + "! Please log in!"
                     self.bannerData.type = .Success
