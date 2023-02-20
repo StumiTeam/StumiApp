@@ -11,6 +11,7 @@ import Firebase
 @main
 struct StumiApp: App {
     //@StateObject var dataManager = DataManager()
+    @StateObject var firestoreManager = FirestoreManager()
     
     init() {
         FirebaseApp.configure()
@@ -19,6 +20,7 @@ struct StumiApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(firestoreManager)
         }
     }
 }

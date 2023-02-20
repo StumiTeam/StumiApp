@@ -33,12 +33,16 @@ struct ContentView: View {
     @AppStorage("Music") var Music = true
     @AppStorage("Sound Effects") var soundEffects = true
     
+    @EnvironmentObject var firestoreManager: FirestoreManager
+    
     //body
     var body: some View {
-        if userIsLoggedIn {
+         if userIsLoggedIn {
+            //test
             content
         } else {
-            LoginView()
+            //test
+            LoginView(userLoggedIn: $userIsLoggedIn)
         }
     }
     
@@ -113,7 +117,7 @@ struct ContentView: View {
                     
                     //SettingsView
                     if showPage == 7 {
-                        SettingsView()
+                        SettingsView(UserLoggedIn: $userIsLoggedIn)
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
@@ -167,5 +171,6 @@ extension View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(FirestoreManager())
     }
 }

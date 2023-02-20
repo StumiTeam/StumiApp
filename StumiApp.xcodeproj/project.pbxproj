@@ -12,6 +12,7 @@
 		42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC828AD1DA2005DA686 /* FriendsView.swift */; };
 		42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCA28AD1DA9005DA686 /* ProfileView.swift */; };
 		42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCE28AD1DC2005DA686 /* SettingsView.swift */; };
+		424BCB39299FC971003CECC5 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424BCB38299FC971003CECC5 /* UserViewModel.swift */; };
 		425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EC289B4FC400F7F35A /* StumiApp.swift */; };
 		425262EF289B4FC400F7F35A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EE289B4FC400F7F35A /* ContentView.swift */; };
 		425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F0289B4FC500F7F35A /* Assets.xcassets */; };
@@ -29,6 +30,8 @@
 		42B7A383298FF82F002A81A6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A382298FF82F002A81A6 /* RegisterView.swift */; };
 		42B7A38729904FA1002A81A6 /* BannerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A38629904FA1002A81A6 /* BannerModifier.swift */; };
 		42B7A38A29908474002A81A6 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A38929908474002A81A6 /* FirestoreManager.swift */; };
+		42B7A38C2996571F002A81A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A38B2996571F002A81A6 /* User.swift */; };
+		42B7A39029966B7D002A81A6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7A38F29966B7D002A81A6 /* FirebaseFirestoreSwift */; };
 		42CCE0B728BC01B400A9A7CA /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0B628BC01B400A9A7CA /* MenuView.swift */; };
 		42CCE0B928BC06D900A9A7CA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0B828BC06D900A9A7CA /* LibraryView.swift */; };
 		42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0BA28BC06E600A9A7CA /* SearchView.swift */; };
@@ -58,6 +61,7 @@
 		42375BC828AD1DA2005DA686 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		42375BCA28AD1DA9005DA686 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		42375BCE28AD1DC2005DA686 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		424BCB38299FC971003CECC5 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		425262E9289B4FC400F7F35A /* StumiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StumiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425262EC289B4FC400F7F35A /* StumiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiApp.swift; sourceTree = "<group>"; };
 		425262EE289B4FC400F7F35A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		42B7A38529900A53002A81A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		42B7A38629904FA1002A81A6 /* BannerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModifier.swift; sourceTree = "<group>"; };
 		42B7A38929908474002A81A6 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		42B7A38B2996571F002A81A6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		42CCE0B628BC01B400A9A7CA /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		42CCE0B828BC06D900A9A7CA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		42CCE0BA28BC06E600A9A7CA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 			files = (
 				42B7A37B298F5C1A002A81A6 /* FirebaseAuth in Frameworks */,
 				42B7A37D298F5C1A002A81A6 /* FirebaseFirestore in Frameworks */,
+				42B7A39029966B7D002A81A6 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		424BCB3A299FC979003CECC5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				424BCB38299FC971003CECC5 /* UserViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		425262E0289B4FC400F7F35A = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +133,7 @@
 				425262FC289B4FC500F7F35A /* StumiAppTests */,
 				42526306289B4FC500F7F35A /* StumiAppUITests */,
 				425262EA289B4FC400F7F35A /* Products */,
+				42B7A38E29966B7D002A81A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +159,8 @@
 				42CCE0B528BBFFF400A9A7CA /* LibraryMode */,
 				425D3B1728BB1E1F00F394C5 /* Player Settings */,
 				42B7A388299082C1002A81A6 /* Maintenance Settings */,
+				42B7A38D29965724002A81A6 /* Model */,
+				424BCB3A299FC979003CECC5 /* ViewModels */,
 				425D3B1828BB1EEE00F394C5 /* Music */,
 				425262F0289B4FC500F7F35A /* Assets.xcassets */,
 				425262F2289B4FC500F7F35A /* Preview Content */,
@@ -212,6 +229,21 @@
 			path = "Maintenance Settings";
 			sourceTree = "<group>";
 		};
+		42B7A38D29965724002A81A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42B7A38B2996571F002A81A6 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42B7A38E29966B7D002A81A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		42CCE0B428BBFA1300A9A7CA /* TimerMode */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +283,7 @@
 			packageProductDependencies = (
 				42B7A37A298F5C1A002A81A6 /* FirebaseAuth */,
 				42B7A37C298F5C1A002A81A6 /* FirebaseFirestore */,
+				42B7A38F29966B7D002A81A6 /* FirebaseFirestoreSwift */,
 			);
 			productName = StumiApp;
 			productReference = 425262E9289B4FC400F7F35A /* StumiApp.app */;
@@ -379,6 +412,8 @@
 				425262EF289B4FC400F7F35A /* ContentView.swift in Sources */,
 				42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */,
 				42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */,
+				424BCB39299FC971003CECC5 /* UserViewModel.swift in Sources */,
+				42B7A38C2996571F002A81A6 /* User.swift in Sources */,
 				42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */,
 				42375BC528AD1D92005DA686 /* TimerView.swift in Sources */,
 				42CCE0B928BC06D900A9A7CA /* LibraryView.swift in Sources */,
@@ -732,6 +767,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42B7A379298F5C1A002A81A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		42B7A38F29966B7D002A81A6 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42B7A379298F5C1A002A81A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -12,7 +12,7 @@ struct LoginView: View {
     
     @State private var email = ""
     @State private var password = ""
-    @State private var userIsLoggedIn = false
+    @Binding var userLoggedIn : Bool
     @State public var showBanner: Bool = false
     @State public var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Warning)
     
@@ -71,7 +71,7 @@ struct LoginView: View {
                     .offset(y: 100)
                     
                     //Redirect to Register Button
-                    NavigationLink(destination: RegisterView().navigationBarBackButtonHidden(true)){
+                    NavigationLink(destination: RegisterView(userRegistered: $userLoggedIn).navigationBarBackButtonHidden(true)){
                             Text("First time user? Register!")
                                 .bold()
                                 .foregroundColor(.white)
@@ -80,16 +80,9 @@ struct LoginView: View {
                     .offset(y:110)
                 }
                 .frame(width: 350)
-                .onAppear {
-                    Auth.auth().addStateDidChangeListener { auth, user in
-                        if user != nil {
-                            userIsLoggedIn.toggle()
-                        }
-                    }
-                }
+                .navigationBarHidden(true)
             }
             .ignoresSafeArea()
-            .navigationBarHidden(true)
         }
         .banner(data: $bannerData, show: $showBanner)
     }
@@ -115,10 +108,11 @@ struct LoginView: View {
             } else {
                 
                 //successful login
+                print("Logged In!")
                 self.bannerData.title = "Success!"
                 self.bannerData.detail = "Welcome back!"
                 self.bannerData.type = .Success
-                //userIsLoggedIn = true
+                userLoggedIn = true
                 
             }
             
@@ -130,9 +124,10 @@ struct LoginView: View {
 }
 
 
-
+/*
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
 }
+*/

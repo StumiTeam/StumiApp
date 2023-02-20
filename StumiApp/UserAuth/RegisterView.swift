@@ -14,7 +14,7 @@ struct RegisterView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
-    @State private var userIsLoggedIn = false
+    @Binding var userRegistered: Bool
     @State var showBanner: Bool = false
     @State var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Error)
     
@@ -121,7 +121,7 @@ struct RegisterView: View {
                     .offset(y: 100)
                     
                     //Redirect to Login Button
-                    NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)){
+                    NavigationLink(destination: LoginView(userLoggedIn: $userRegistered).navigationBarBackButtonHidden(true)){
                             Text("Already have an account? Login!")
                                 .bold()
                                 .foregroundColor(.white)
@@ -132,15 +132,7 @@ struct RegisterView: View {
                 }
                 .frame(width: 350)
                 .navigationBarHidden(true)
-                .onAppear {
-                    Auth.auth().addStateDidChangeListener { auth, user in
-                        if user != nil {
-                            userIsLoggedIn.toggle()
-                        }
-                    }
-                }
             }
-            .navigationBarHidden(true)
             
         }
         .ignoresSafeArea()
@@ -162,13 +154,6 @@ struct RegisterView: View {
             self.bannerData.detail = "Your passwords don't match!"
             self.showBanner = true
             
-            /*
-            print(self.bannerData.title)
-            print(self.bannerData.detail)
-            print(self.bannerData.type)
-            print(self.showBanner)
-            print("Passwords don't match")
-            */
         } else {
             
             //Add to Firebase Authentication
@@ -177,6 +162,7 @@ struct RegisterView: View {
                     self.bannerData.detail = error!.localizedDescription
                     print(error!.localizedDescription)
                     
+                    //find error and show corresponding banner
                     switch self.bannerData.detail {
                     
                     case "An email address must be provided.":
@@ -200,11 +186,14 @@ struct RegisterView: View {
                 } else {
                     //successful register
                     
-                    //create new document
+                    print("User Registered!")
+                    
+                    //create new firebase document in "Users" Collection
+                    //CODE
                     
                     //show success banner
                     self.bannerData.title = "Success!"
-                    self.bannerData.detail = "You're all set, " + username + "! Please log in!"
+                    self.bannerData.detail = "You're all set, \(username)! Please log in!"
                     self.bannerData.type = .Success
                 }
                 self.showBanner = true
@@ -215,8 +204,10 @@ struct RegisterView: View {
     
 }
 
+/*
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
     }
 }
+*/
