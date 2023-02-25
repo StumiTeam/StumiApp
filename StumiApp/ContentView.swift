@@ -13,7 +13,7 @@ struct ContentView: View {
     //User Auth
     @State private var email = ""
     @State private var password = ""
-    @State private var userIsLoggedIn = false
+    @AppStorage("userIsLoggedIn") private var userIsLoggedIn : Bool = false
     
     //Menu
     @State var showMenu : Bool = false
@@ -33,7 +33,12 @@ struct ContentView: View {
     @AppStorage("Music") var Music = true
     @AppStorage("Sound Effects") var soundEffects = true
     
+    //Firestore Manager
     @EnvironmentObject var firestoreManager: FirestoreManager
+    
+    //Banner Settings
+    @State public var showBanner: Bool = false
+    @State public var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Warning)
     
     //body
     var body: some View {
@@ -42,7 +47,11 @@ struct ContentView: View {
             content
         } else {
             //test
-            LoginView(userLoggedIn: $userIsLoggedIn)
+            LoginView(
+                userLoggedIn: $userIsLoggedIn,
+                showBanner: $showBanner,
+                bannerData: $bannerData
+            )
         }
     }
     

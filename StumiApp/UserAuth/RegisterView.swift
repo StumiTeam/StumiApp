@@ -15,8 +15,8 @@ struct RegisterView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     @Binding var userRegistered: Bool
-    @State var showBanner: Bool = false
-    @State var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Error)
+    @Binding var showBanner: Bool
+    @Binding var bannerData: BannerModifier.BannerData
     
     var body: some View {
         NavigationView {
@@ -121,7 +121,11 @@ struct RegisterView: View {
                     .offset(y: 100)
                     
                     //Redirect to Login Button
-                    NavigationLink(destination: LoginView(userLoggedIn: $userRegistered).navigationBarBackButtonHidden(true)){
+                    NavigationLink(destination: LoginView(
+                        userLoggedIn: $userRegistered,
+                        showBanner: $showBanner,
+                        bannerData: $bannerData
+                    ).navigationBarBackButtonHidden(true)){
                             Text("Already have an account? Login!")
                                 .bold()
                                 .foregroundColor(.white)
@@ -143,45 +147,45 @@ struct RegisterView: View {
         
         //if username is already taken -> ask user to use another username
         if username == "" {
-            self.bannerData.title = "No Username"
-            self.bannerData.detail = "Please enter your username"
-            self.showBanner = true
+            bannerData.title = "No Username"
+            bannerData.detail = "Please enter your username"
+            showBanner = true
         }
         
         //if password doesn't match confirmPassword
         else if password != confirmPassword {
-            self.bannerData.title = "Password Mismatch"
-            self.bannerData.detail = "Your passwords don't match!"
-            self.showBanner = true
-            
+            bannerData.title = "Password Mismatch"
+            bannerData.detail = "Your passwords don't match!"
+            showBanner = true
+
         } else {
             
             //Add to Firebase Authentication
             Auth.auth().createUser(withEmail: email, password: password) { result, error in
                 if error != nil {
-                    self.bannerData.detail = error!.localizedDescription
+                    bannerData.detail = error!.localizedDescription
                     print(error!.localizedDescription)
                     
                     //find error and show corresponding banner
-                    switch self.bannerData.detail {
+                    switch bannerData.detail {
                     
                     case "An email address must be provided.":
-                        self.bannerData.title = "Missing Email"
+                        bannerData.title = "Missing Email"
                         
                     case "The email address is badly formatted.":
-                        self.bannerData.title = "Bad Email"
+                        bannerData.title = "Bad Email"
                         
                     case "The email address is already in use by another account.":
-                        self.bannerData.title = "Email in Use"
+                        bannerData.title = "Email in Use"
                         
                     case "The password must be 6 characters long or more.":
-                        self.bannerData.title = "Short Password"
+                        bannerData.title = "Short Password"
                     
                     default:
-                        self.bannerData.title = "Error"
+                        bannerData.title = "Error"
                     }
                     
-                    self.bannerData.type = .Error
+                    bannerData.type = .Warning
                     
                 } else {
                     //successful register
@@ -192,11 +196,11 @@ struct RegisterView: View {
                     //CODE
                     
                     //show success banner
-                    self.bannerData.title = "Success!"
-                    self.bannerData.detail = "You're all set, \(username)! Please log in!"
-                    self.bannerData.type = .Success
+                    bannerData.title = "Success!"
+                    bannerData.detail = "You're all set, \(username)! Please log in!"
+                    bannerData.type = .Success
                 }
-                self.showBanner = true
+                showBanner = true
             }
             
         }

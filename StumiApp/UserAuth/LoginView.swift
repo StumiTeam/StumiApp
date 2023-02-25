@@ -13,8 +13,8 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @Binding var userLoggedIn : Bool
-    @State public var showBanner: Bool = false
-    @State public var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Warning)
+    @Binding public var showBanner: Bool
+    @Binding public var bannerData: BannerModifier.BannerData
     
     var body: some View {
         
@@ -71,7 +71,11 @@ struct LoginView: View {
                     .offset(y: 100)
                     
                     //Redirect to Register Button
-                    NavigationLink(destination: RegisterView(userRegistered: $userLoggedIn).navigationBarBackButtonHidden(true)){
+                    NavigationLink(destination: RegisterView(
+                        userRegistered: $userLoggedIn,
+                        showBanner: $showBanner,
+                        bannerData: $bannerData
+                    ).navigationBarBackButtonHidden(true)){
                             Text("First time user? Register!")
                                 .bold()
                                 .foregroundColor(.white)
@@ -90,33 +94,33 @@ struct LoginView: View {
     func login() {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if error != nil {
-                self.bannerData.detail = error!.localizedDescription
+                bannerData.detail = error!.localizedDescription
                 print(error!.localizedDescription)
                 
-                if self.bannerData.detail == "The email address is badly formatted." {
-                    self.bannerData.title = "Bad Email"
+                if bannerData.detail == "The email address is badly formatted." {
+                    bannerData.title = "Bad Email"
                 }
-                else if self.bannerData.detail == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                    self.bannerData.title = "User Not Found"
+                else if bannerData.detail == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                    bannerData.title = "User Not Found"
                 }
-                else if self.bannerData.detail == "The password is invalid or the user does not have a password." {
-                    self.bannerData.title = "Invalid Password"
-                    self.bannerData.detail = "Please re-enter your password."
+                else if bannerData.detail == "The password is invalid or the user does not have a password." {
+                    bannerData.title = "Invalid Password"
+                    bannerData.detail = "Please re-enter your password."
                 }
-                self.bannerData.type = .Error
+                bannerData.type = .Error
                 
             } else {
                 
                 //successful login
                 print("Logged In!")
-                self.bannerData.title = "Success!"
-                self.bannerData.detail = "Welcome back!"
-                self.bannerData.type = .Success
+                bannerData.title = "Success!"
+                bannerData.detail = "Welcome back!"
+                bannerData.type = .Success
                 userLoggedIn = true
                 
             }
             
-            self.showBanner = true
+            showBanner = true
             
         }
     }
