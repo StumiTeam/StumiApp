@@ -6,6 +6,18 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+import SwiftUI
+
+struct User: Codable {
+    @DocumentID var uid: String? // @DocumentID to fetch the identifier from Firestore
+    var username: String
+    var subjects: [String]
+    var numCoins: Int
+    var animals: Animals?
+    //var friendslist: Friends?
+    var usernameForSearch: [String] { self.username.generateStringSequence() }
+}
 
 //Firestore map for animals
 struct Animals: Codable {
@@ -23,13 +35,6 @@ struct Friends: Codable {
 }
 */
 
-struct User: Codable {
-    var uuid: String
-    var username: String
-    var animals: Animals?
-    //var friendslist: Friends?
-    var usernameForSearch: [String] { self.username.generateStringSequence() }
-}
 
 extension String {
     func generateStringSequence() -> [String] {

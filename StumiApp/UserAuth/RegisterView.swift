@@ -17,6 +17,7 @@ struct RegisterView: View {
     @Binding var userRegistered: Bool
     @Binding var showBanner: Bool
     @Binding var bannerData: BannerModifier.BannerData
+    @ObservedObject private var viewModel = FirestoreManager()
     
     var body: some View {
         NavigationView {
@@ -193,7 +194,8 @@ struct RegisterView: View {
                     print("User Registered!")
                     
                     //create new firebase document in "Users" Collection
-                    //CODE
+                    guard let userID = Auth.auth().currentUser?.uid else { return }
+                    self.viewModel.createUser(userID: userID)
                     
                     //show success banner
                     bannerData.title = "Success!"

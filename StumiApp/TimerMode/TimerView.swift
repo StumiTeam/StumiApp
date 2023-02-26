@@ -15,6 +15,7 @@ struct TimerView: View {
     @State private var HoursOffset = CGFloat.zero
     @State private var MinutesOffset = CGFloat.zero
     @State private var SecondsOffset = CGFloat.zero
+    
     @State private var Hours : Int = 0
     @State private var Minutes : Int = 0
     @State private var Seconds : Int = 0
@@ -26,6 +27,7 @@ struct TimerView: View {
     
     //STOPWATCH USED TO TRACK USER PROGRESS
     @State var secondsOngoing = 0
+    @State var countdown : String = "Time Left: "
     @State var showTimer = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -36,6 +38,11 @@ struct TimerView: View {
     //Detector for when user stops scrolling the time selector
     let detector: CurrentValueSubject<CGFloat, Never>
     let publisher: AnyPublisher<CGFloat, Never>
+    
+    //Firebase Cloud Firestore
+    @EnvironmentObject var firestoreManager: FirestoreManager
+    
+    //Initialization
     init() {
         let detector = CurrentValueSubject<CGFloat, Never>(0)
         self.publisher = detector
@@ -54,42 +61,33 @@ struct TimerView: View {
             VStack(alignment: .center){
                 
                 Spacer()
-                //HStack {
-                    VStack {
-                        Text("Selected Subject:")
-                        Menu(selectedSubject) {
-                            
-                            //English Choice
-                            Button{
-                                selectedSubject = "English"
-                            } label: {Text("English")}
-                            
-                            //Math Choice
-                            Button{
-                                selectedSubject = "Math"
-                            } label: {Text("Math")}
-                            
-                            //Social Studies Choice
-                            Button{
-                                selectedSubject = "Social Studies"
-                            } label: {Text("Social Studies")}
-                            
-                            //Science Choice
-                            Button{
-                                selectedSubject = "Science"
-                            } label: {Text("Science")}
-                        }
-                    }
-                    .font(.headline)
-                    .padding(10)
-                    .background(.red)
-                
-                    /*
+
+                Text("Selected Subject:")
+                Menu(selectedSubject) {
+                    
+                    //English Choice
                     Button{
-                        
-                    } label: {Image("Cat")}
-                     */
-                //}
+                        selectedSubject = "English"
+                    } label: {Text("English")}
+                    
+                    //Math Choice
+                    Button{
+                        selectedSubject = "Math"
+                    } label: {Text("Math")}
+                    
+                    //Social Studies Choice
+                    Button{
+                        selectedSubject = "Social Studies"
+                    } label: {Text("Social Studies")}
+                    
+                    //Science Choice
+                    Button{
+                        selectedSubject = "Science"
+                    } label: {Text("Science")}
+                }
+                .font(.headline)
+                .padding(10)
+                .background(.red)
                 
                 Spacer()
                 
@@ -98,7 +96,6 @@ struct TimerView: View {
                     
                     //Hours HStack
                     HStack(alignment: .top){
-                        //hours
                         ScrollViewReader { proxy in
                             ScrollView (.vertical, showsIndicators: false){
                                 ForEach(0..<12) { i in
@@ -153,7 +150,6 @@ struct TimerView: View {
                     
                     //Minutes HStack
                     HStack(alignment: .top){
-                        //minutes
                         ScrollViewReader { proxy in
                             ScrollView (.vertical, showsIndicators: false){
                                 ForEach(0..<65) { i in
@@ -207,10 +203,8 @@ struct TimerView: View {
                     
                     //Seconds HStack
                     HStack(alignment: .top){
-                        //seconds
                         ScrollViewReader { proxy in
                             ScrollView (.vertical, showsIndicators: false){
-                                //VStack {
                                     ForEach(0..<65) { i in
                                         if(i<60){
                                             Text("\(i)")
@@ -231,7 +225,6 @@ struct TimerView: View {
                                                 .padding(.horizontal, 5)
                                                 .opacity(0)
                                         }
-                                    //}
                                 }.background(GeometryReader {
                                     Color.clear.preference(key: ViewOffsetKey.self,
                                         value: -$0.frame(in: .named("scroll")).origin.y)
@@ -295,7 +288,10 @@ struct TimerView: View {
             VStack {
                 Text("Seconds Ongoing: \(secondsOngoing)")
                 
+                //simplify using case
+                
                 if(minutesRemaining < 10 && secondsRemaining < 10){
+                    
                     Text("Time Left: 0\(hoursRemaining) : 0\(minutesRemaining) : 0\(secondsRemaining)")
                         .font(.largeTitle)
                         .foregroundColor(.white)
@@ -304,7 +300,7 @@ struct TimerView: View {
                         .background(.black.opacity(0.75))
                         .clipShape(Capsule())
                 }
-                else if(minutesRemaining<10){
+                else if(minutesRemaining < 10){
                     Text("Time Left: 0\(hoursRemaining) : 0\(minutesRemaining) : \(secondsRemaining)")
                         .font(.largeTitle)
                         .foregroundColor(.white)
@@ -313,7 +309,7 @@ struct TimerView: View {
                         .background(.black.opacity(0.75))
                         .clipShape(Capsule())
                 }
-                else if(secondsRemaining<10){
+                else if(secondsRemaining < 10){
                     Text("Time Left: 0\(hoursRemaining) : \(minutesRemaining) : 0\(secondsRemaining)")
                         .font(.largeTitle)
                         .foregroundColor(.white)

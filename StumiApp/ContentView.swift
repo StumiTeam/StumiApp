@@ -13,6 +13,7 @@ struct ContentView: View {
     //User Auth
     @State private var email = ""
     @State private var password = ""
+    //@State private var userID = Auth.auth().currentUser?.uid
     @AppStorage("userIsLoggedIn") private var userIsLoggedIn : Bool = false
     
     //Menu
@@ -35,6 +36,8 @@ struct ContentView: View {
     
     //Firestore Manager
     @EnvironmentObject var firestoreManager: FirestoreManager
+    //@StateObject var user = User()
+    @ObservedObject private var viewModel = FirestoreManager()
     
     //Banner Settings
     @State public var showBanner: Bool = false
@@ -43,10 +46,8 @@ struct ContentView: View {
     //body
     var body: some View {
          if userIsLoggedIn {
-            //test
             content
         } else {
-            //test
             LoginView(
                 userLoggedIn: $userIsLoggedIn,
                 showBanner: $showBanner,
@@ -160,9 +161,13 @@ struct ContentView: View {
                                 .imageScale(.large)
                         }
                 )
+        }.onAppear{
+            viewModel.fetchUser(userID: firestoreManager.uid!)
         }
     }
 }
+
+//pull function
 
 extension View {
     func placeholder<Content: View>(

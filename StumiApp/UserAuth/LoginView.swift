@@ -15,6 +15,7 @@ struct LoginView: View {
     @Binding var userLoggedIn : Bool
     @Binding public var showBanner: Bool
     @Binding public var bannerData: BannerModifier.BannerData
+    @ObservedObject private var viewModel = FirestoreManager()
     
     var body: some View {
         
@@ -118,6 +119,9 @@ struct LoginView: View {
                 bannerData.type = .Success
                 userLoggedIn = true
                 
+                //read document
+                //guard let userID = Auth.auth().currentUser?.uid else { return }
+                //self.viewModel.createUser(userID: userID)
             }
             
             showBanner = true
