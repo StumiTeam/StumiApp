@@ -35,12 +35,19 @@ struct TimerView: View {
     @State var selectedSubject = "English"
     let subjects = ["English", "Math", "Social Studies", "Science"]
     
+    //USED TO DETERMINE REWARDS
+    @State var gainedCoins = 0 //base number of coins user gained from their session
+    @State var gainedBooks = 0 //base number of books animals gained from session
+    @State var coinRate = 1 //1 coin per minute
+    @State var bookRate = 1 //1 book per minute
+    
     //Detector for when user stops scrolling the time selector
     let detector: CurrentValueSubject<CGFloat, Never>
     let publisher: AnyPublisher<CGFloat, Never>
     
     //Firebase Cloud Firestore
     @EnvironmentObject var firestoreManager: FirestoreManager
+    @ObservedObject private var viewModel = FirestoreManager()
     
     //Initialization
     init() {
@@ -345,17 +352,36 @@ struct TimerView: View {
                             
                             print("DONE! Time: \(secondsOngoing) seconds in \(selectedSubject)")
                             
+                            //calculate the rewards
+                            gainedCoins = secondsOngoing/60
+                            gainedBooks = secondsOngoing/60
+                            
                             //stop displaying timer
                             showTimer = false
+                            
+                            //record total time alongside start time and date
+                            
+                            //increment total time in Firestore
+                            viewModel.incrementUserData(
+                                userID: firestoreManager.uid!,
+                                propertyName: "totalTime",
+                                incrementValue: secondsOngoing
+                            )
+                            //print("totalTime increment: \(secondsOngoing)")
                             
                             //reset the hidden stopwatch for next run
                             secondsOngoing = 0
                             
                             //record total time alongside start time and date
-                            
+                            //viewModel.updateUserData(userID: firestoreManager.uid!, propertyName: "totalAnimals", newPropertyValue: "sheesh")
                             
                             //give rewards (coins) on popup screen
-                            
+                            viewModel.incrementUserData(
+                                userID: firestoreManager.uid!,
+                                propertyName: "numCoins",
+                                incrementValue: gainedCoins
+                            )
+                            //print("gainedCoins: \(gainedCoins)")
                             
                         } else { //if there are hours left
                             hoursRemaining -= 1

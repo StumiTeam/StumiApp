@@ -195,7 +195,17 @@ struct RegisterView: View {
                     
                     //create new firebase document in "Users" Collection
                     guard let userID = Auth.auth().currentUser?.uid else { return }
-                    self.viewModel.createUser(userID: userID)
+                    viewModel.createUser(userID: userID)
+                    viewModel.updateUserData(
+                        userID: userID,
+                        propertyName: "username",
+                        newPropertyValue: username
+                    )
+                    viewModel.updateUserData(
+                        userID: userID,
+                        propertyName: "email",
+                        newPropertyValue: email
+                    )
                     
                     //show success banner
                     bannerData.title = "Success!"

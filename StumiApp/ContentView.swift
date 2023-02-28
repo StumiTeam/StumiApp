@@ -81,6 +81,9 @@ struct ContentView: View {
                         }
                     }
                     
+                    //viewModel.fetchUser(userID: firestoreManager.uid!)
+                    //print("user: \(firestoreManager.uid!)")
+                    
                     //Views
 
                     //TimerView
@@ -163,6 +166,7 @@ struct ContentView: View {
                 )
         }.onAppear{
             viewModel.fetchUser(userID: firestoreManager.uid!)
+            print("user: \(firestoreManager.uid!)")
         }
     }
 }

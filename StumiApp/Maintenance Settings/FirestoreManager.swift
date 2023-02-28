@@ -17,16 +17,10 @@ class FirestoreManager: ObservableObject {
     @Published var user = Auth.auth().currentUser
     @Published var uid = Auth.auth().currentUser?.uid
     @Published var animals : [String]
-    @Published var Username : String = ""
+    @Published var username : String = ""
     @Published var users = [User]()
 
     let db = Firestore.firestore()
-    
-    /*
-    var username : String {
-        user?.username
-    }
-    */
     
     var email : String { (user?.email)! }
     var userIsAuthenticated: Bool { user != nil }
@@ -34,16 +28,15 @@ class FirestoreManager: ObservableObject {
 }
     
     let newUserData: [String: Any] = [
-        "username" : "user1",
+        "username" : "username",
         "numCoins" : 0,
         "level" : 1,
-        "prestige" : 0
+        "prestige" : 0,
+        "totalTime" : 0
     ]
     
     init() {
         animals = []
-        //fetchUser()
-        //fetchAllUsers()
     }
     
     
@@ -58,37 +51,11 @@ class FirestoreManager: ObservableObject {
     }
     */
     
-    func update() {
-        guard userIsAuthenticatedAndSynced else { return }
-        
-    }
-    
-    /*
-    func fetchUser() {
-        // Read a user doc at a specific path
-        guard userIsAuthenticated else { return }
-        print("Current user: " + self.uid!)
-        db.collection("Users").document(self.uid!).getDocument { (document, error) in
-            guard document != nil, error == nil else {
-                print("error", error ?? "")
-                return
-            }
-            
-            if let document = document, document.exists {
-                let data = document.data()
-                if let data = data {
-                    print("data", data)
-                    self.Username = data["name"] as? String ?? ""
-                }
-            }
-        }
-    }
-    */
-    
+    //pulls user data from Firestore everytime user data is updated
     func fetchUser(userID: String) {
-        let docRef = db.collection("Users").document(userID)
+        let userDocRef = db.collection("Users").document(userID)
         
-        docRef.addSnapshotListener { documentSnapshot, error in
+        userDocRef.addSnapshotListener { documentSnapshot, error in
             guard let document = documentSnapshot else {
                 print("Error fetching User Document: \(error!)")
                 return
@@ -103,7 +70,9 @@ class FirestoreManager: ObservableObject {
     }
     
     func fetchAllUsers() {
-        db.collection("Users").getDocuments() { (querySnapshot, error) in
+        let userColRef = db.collection("Users")
+        
+        userColRef.getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
@@ -115,9 +84,9 @@ class FirestoreManager: ObservableObject {
     }
     
     func createUser(userID: String) {
-        let docRef = db.collection("Users").document(userID)
+        let userDocRef = db.collection("Users").document(userID)
         
-        docRef.setData(newUserData) { error in
+        userDocRef.setData(newUserData) { error in
             if let error = error {
                 print("Error writing document: \(error)")
             } else {
@@ -126,17 +95,32 @@ class FirestoreManager: ObservableObject {
         }
     }
     
-    func updateUser(userID: String, userLevel: Int) {
-        let docRef = db.collection("Users").document(userID)
+    //if the field doesn't exist this function will create it
+    func updateUserData(userID: String, propertyName: String, newPropertyValue: String) {
+        let userDocRef = db.collection("Users").document(userID)
         
-        docRef.setData(["level": userLevel], merge: true) { error in
+        userDocRef.updateData([propertyName: newPropertyValue]) { error in
             if let error = error {
                 print("Error updating document: \(error)")
             } else {
-                print("Document successfully updated!")
+                print("Document successfully updated")
             }
         }
     }
+    
+    //increments the numeric value of a certain stat in FireStore
+    func incrementUserData(userID: String, propertyName: String, incrementValue: Int) {
+        let userDocRef = db.collection("Users").document(userID)
+        
+        userDocRef.updateData([propertyName: FieldValue.increment(Int64(incrementValue))]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("\(propertyName) successfully incremented by \(incrementValue)!")
+            }
+        }
+    }
+    
     
     /*
     //Find the User's friends in CloudFirestore
