@@ -10,13 +10,13 @@ import Firebase
 
 struct LoginView: View {
     
+    @EnvironmentObject var firestoreManager: FirestoreManager
     @State private var email = ""
     @State private var password = ""
     @Binding var userLoggedIn : Bool
     @Binding public var showBanner: Bool
     @Binding public var bannerData: BannerModifier.BannerData
-    @EnvironmentObject var firestoreManager: FirestoreManager
-    @ObservedObject private var viewModel = FirestoreManager()
+    //@ObservedObject var viewModel = FirestoreManager() //new instance of FirestoreManager()
     
     var body: some View {
         
@@ -114,16 +114,18 @@ struct LoginView: View {
             } else {
                 
                 //successful login
+                userLoggedIn = true
+                
                 print("Logged In!")
                 bannerData.title = "Success!"
                 bannerData.detail = "Welcome back!"
                 bannerData.type = .Success
                 
-                //switch Firestore user document
+                //switch Firestore user document (something here is causing Stumi to pull increasingly more times of the same data). New instances of class?
+                //everytime the user signs in it creates a new instance of the Firestore class
                 firestoreManager.user = Auth.auth().currentUser
                 firestoreManager.uid = Auth.auth().currentUser?.uid
                 
-                userLoggedIn = true
             }
             
             showBanner = true

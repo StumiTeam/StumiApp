@@ -12,28 +12,15 @@ import SwiftUI
 struct User: Codable {
     @DocumentID var uid: String? // @DocumentID to fetch the identifier from Firestore
     var username: String
+    var email: String
     var subjects: [String]
     var numCoins: Int
-    var animals: Animals?
+    
+    //var animals: Animals?
     //var friendslist: Friends?
+    
     var usernameForSearch: [String] { self.username.generateStringSequence() }
 }
-
-//Firestore map for animals
-struct Animals: Codable {
-    //animalName
-    //animalLevel
-    //animalDescription
-    //animalEXP
-}
-
-/*
-//Map for each Friend
-struct Friends: Codable {
-    var username: String
-    var documentID: 
-}
-*/
 
 
 extension String {

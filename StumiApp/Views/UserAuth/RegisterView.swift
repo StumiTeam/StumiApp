@@ -17,7 +17,8 @@ struct RegisterView: View {
     @Binding var userRegistered: Bool
     @Binding var showBanner: Bool
     @Binding var bannerData: BannerModifier.BannerData
-    @ObservedObject private var viewModel = FirestoreManager()
+    @EnvironmentObject var firestoreManager: FirestoreManager
+    //@ObservedObject var viewModel = FirestoreManager()
     
     var body: some View {
         NavigationView {
@@ -195,13 +196,19 @@ struct RegisterView: View {
                     
                     //create new firebase document in "Users" Collection
                     guard let userID = Auth.auth().currentUser?.uid else { return }
-                    viewModel.createUser(userID: userID)
-                    viewModel.updateUserData(
+                    
+                    //create user
+                    firestoreManager.createUser(userID: userID)
+                    
+                    //update username
+                    firestoreManager.updateUserData(
                         userID: userID,
                         propertyName: "username",
                         newPropertyValue: username
                     )
-                    viewModel.updateUserData(
+                    
+                    //update email
+                    firestoreManager.updateUserData(
                         userID: userID,
                         propertyName: "email",
                         newPropertyValue: email

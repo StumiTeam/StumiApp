@@ -152,17 +152,12 @@
 			children = (
 				42B7A38529900A53002A81A6 /* Info.plist */,
 				425262EC289B4FC400F7F35A /* StumiApp.swift */,
-				425262EE289B4FC400F7F35A /* ContentView.swift */,
-				42CCE0B628BC01B400A9A7CA /* MenuView.swift */,
-				42B7A384298FFBB8002A81A6 /* UserAuth */,
-				42CCE0B428BBFA1300A9A7CA /* TimerMode */,
-				42CCE0B528BBFFF400A9A7CA /* LibraryMode */,
-				425D3B1728BB1E1F00F394C5 /* Player Settings */,
-				42B7A388299082C1002A81A6 /* Maintenance Settings */,
-				42B7A38D29965724002A81A6 /* Model */,
+				42E071C629B66E82007F2D66 /* Views */,
 				424BCB3A299FC979003CECC5 /* ViewModels */,
+				42B7A38D29965724002A81A6 /* Model */,
+				42B7A388299082C1002A81A6 /* Maintenance Settings */,
 				425D3B1828BB1EEE00F394C5 /* Music */,
-				425262F0289B4FC500F7F35A /* Assets.xcassets */,
+				4276660929B8E30B00F069D4 /* Assets */,
 				425262F2289B4FC500F7F35A /* Preview Content */,
 			);
 			path = StumiApp;
@@ -208,6 +203,14 @@
 				425D3B1928BB1EF900F394C5 /* bad.mp3 */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		4276660929B8E30B00F069D4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				425262F0289B4FC500F7F35A /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		42B7A384298FFBB8002A81A6 /* UserAuth */ = {
@@ -262,6 +265,19 @@
 				42CCE0BC28BC06F300A9A7CA /* StoreView.swift */,
 			);
 			path = LibraryMode;
+			sourceTree = "<group>";
+		};
+		42E071C629B66E82007F2D66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				425262EE289B4FC400F7F35A /* ContentView.swift */,
+				42CCE0B628BC01B400A9A7CA /* MenuView.swift */,
+				42B7A384298FFBB8002A81A6 /* UserAuth */,
+				42CCE0B428BBFA1300A9A7CA /* TimerMode */,
+				42CCE0B528BBFFF400A9A7CA /* LibraryMode */,
+				425D3B1728BB1E1F00F394C5 /* Player Settings */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

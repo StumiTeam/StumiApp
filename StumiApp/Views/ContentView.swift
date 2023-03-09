@@ -37,7 +37,7 @@ struct ContentView: View {
     //Firestore Manager
     @EnvironmentObject var firestoreManager: FirestoreManager
     //@StateObject var user = User()
-    @ObservedObject private var viewModel = FirestoreManager()
+    //@StateObject var viewModel = FirestoreManager()
     
     //Banner Settings
     @State public var showBanner: Bool = false
@@ -164,10 +164,18 @@ struct ContentView: View {
                                 .imageScale(.large)
                         }
                 )
-        }.onAppear{
-            viewModel.fetchUser(userID: firestoreManager.uid!)
-            print("user: \(firestoreManager.uid!)")
         }
+        .onAppear{
+            firestoreManager.fetchUser()
+            print("user: \(firestoreManager.uid!)")
+            
+            /*
+            if bannerData.title == "Success!" && bannerData.detail == "Welcome back!" && bannerData.type == .Success {
+                bannerData.detail = "Welcome back,  \(firestoreManager.username!)!"
+            }
+            */
+        }
+        .banner(data: $bannerData, show: $showBanner)
     }
 }
 

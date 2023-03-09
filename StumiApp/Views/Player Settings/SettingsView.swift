@@ -21,6 +21,19 @@ struct SettingsView: View {
             
             VStack{
                 
+                //User Credentials (username, level, email, password reset, etc.)
+                //NavigationLink()
+                
+                //Gray Space
+                Spacer()
+                
+                //Notification Settings
+                //NavigationLink()
+                
+                //Gray Space
+                Spacer()
+                
+                //Music & Sound Effect Toggle Switches
                 Form{
                     Section(header: Text("Sound"),
                             footer: Text("This is system settings")) {
@@ -42,13 +55,22 @@ struct SettingsView: View {
                     }
                 }
                 
+                //Gray Space
+                Spacer()
+                
+                //Stumi Info
+                //NavigationLink(AboutStumi)
+                //NavigationLink(Help&Support)
+                //NavigationLink(PrivacyPolicy)
+                
+                //Logout Button
                 Button(action: {
                     logout()
                 }){
                     Text("Logout")
                 }
                 
-            }
+            } //End VStack
 //                }
                 
 //                Section {

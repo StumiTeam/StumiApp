@@ -36,8 +36,8 @@ struct TimerView: View {
     let subjects = ["English", "Math", "Social Studies", "Science"]
     
     //USED TO DETERMINE REWARDS
-    @State var gainedCoins = 0 //base number of coins user gained from their session
-    @State var gainedBooks = 0 //base number of books animals gained from session
+    @State var baseGainedCoins = 0 //base number of coins user gained from their session
+    @State var baseGainedBooks = 0 //base number of books animals gained from session
     @State var coinRate = 1 //1 coin per minute
     @State var bookRate = 1 //1 book per minute
     
@@ -66,6 +66,8 @@ struct TimerView: View {
 //                .ignoresSafeArea()
             
             VStack(alignment: .center){
+                
+                //Text(firestoreManager.auth.numCoins)
                 
                 Spacer()
 
@@ -353,8 +355,8 @@ struct TimerView: View {
                             print("DONE! Time: \(secondsOngoing) seconds in \(selectedSubject)")
                             
                             //calculate the rewards
-                            gainedCoins = secondsOngoing/60
-                            gainedBooks = secondsOngoing/60
+                            baseGainedCoins = secondsOngoing/60
+                            baseGainedBooks = secondsOngoing/60
                             
                             //stop displaying timer
                             showTimer = false
@@ -362,26 +364,27 @@ struct TimerView: View {
                             //record total time alongside start time and date
                             
                             //increment total time in Firestore
-                            viewModel.incrementUserData(
-                                userID: firestoreManager.uid!,
+                            firestoreManager.incrementUserData(
+                                //userID: firestoreManager.uid!,
                                 propertyName: "totalTime",
                                 incrementValue: secondsOngoing
                             )
-                            //print("totalTime increment: \(secondsOngoing)")
                             
-                            //reset the hidden stopwatch for next run
-                            secondsOngoing = 0
+                            secondsOngoing = 0 //reset stopwatch for next run
+                            baseGainedCoins = 0 //reset gainedCoins
+                            baseGainedBooks = 0 //reset gainedBooks
                             
                             //record total time alongside start time and date
                             //viewModel.updateUserData(userID: firestoreManager.uid!, propertyName: "totalAnimals", newPropertyValue: "sheesh")
                             
                             //give rewards (coins) on popup screen
-                            viewModel.incrementUserData(
-                                userID: firestoreManager.uid!,
+                            firestoreManager.incrementUserData(
+                                //userID: firestoreManager.uid!,
                                 propertyName: "numCoins",
-                                incrementValue: gainedCoins
+                                incrementValue: baseGainedCoins
                             )
-                            //print("gainedCoins: \(gainedCoins)")
+                            
+                            //firestoreManager.createAnimal(animalName: "pp")
                             
                         } else { //if there are hours left
                             hoursRemaining -= 1
