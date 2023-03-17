@@ -10,6 +10,11 @@ import Combine
 
 struct TimerView: View {
     
+    
+    @EnvironmentObject var userViewModel: UserViewModel
+    
+    //Move to TimerView - ViewModel
+     
     //USED TO SET TIME FOR TIMER
     @State private var offset = CGFloat.zero
     @State private var HoursOffset = CGFloat.zero
@@ -21,13 +26,12 @@ struct TimerView: View {
     @State private var Seconds : Int = 0
     
     //USED TO COUNTDOWN TIMER
-    @State var hoursRemaining = 1
+    @State var hoursRemaining = 0
     @State var minutesRemaining = 0
-    @State var secondsRemaining = 1
+    @State var secondsRemaining = 0
     
     //STOPWATCH USED TO TRACK USER PROGRESS
     @State var secondsOngoing = 0
-    @State var countdown : String = "Time Left: "
     @State var showTimer = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -41,13 +45,13 @@ struct TimerView: View {
     @State var coinRate = 1 //1 coin per minute
     @State var bookRate = 1 //1 book per minute
     
+    
     //Detector for when user stops scrolling the time selector
     let detector: CurrentValueSubject<CGFloat, Never>
     let publisher: AnyPublisher<CGFloat, Never>
     
     //Firebase Cloud Firestore
     @EnvironmentObject var firestoreManager: FirestoreManager
-    @ObservedObject private var viewModel = FirestoreManager()
     
     //Initialization
     init() {
@@ -74,6 +78,8 @@ struct TimerView: View {
                 Text("Selected Subject:")
                 Menu(selectedSubject) {
                     
+                    //Loop through subject list
+
                     //English Choice
                     Button{
                         selectedSubject = "English"
@@ -299,44 +305,17 @@ struct TimerView: View {
                 
                 //simplify using case
                 
-                if(minutesRemaining < 10 && secondsRemaining < 10){
-                    
-                    Text("Time Left: 0\(hoursRemaining) : 0\(minutesRemaining) : 0\(secondsRemaining)")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 5)
-                        .background(.black.opacity(0.75))
-                        .clipShape(Capsule())
+                HStack{
+                    Text("Time Left: 0\(hoursRemaining) : ")
+                    if(minutesRemaining < 10) { Text("0\(minutesRemaining) : ") } else { Text("\(minutesRemaining)") }
+                    if(secondsRemaining < 10) { Text("0\(secondsRemaining)") } else { Text("\(secondsRemaining)") }
                 }
-                else if(minutesRemaining < 10){
-                    Text("Time Left: 0\(hoursRemaining) : 0\(minutesRemaining) : \(secondsRemaining)")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 5)
-                        .background(.black.opacity(0.75))
-                        .clipShape(Capsule())
-                }
-                else if(secondsRemaining < 10){
-                    Text("Time Left: 0\(hoursRemaining) : \(minutesRemaining) : 0\(secondsRemaining)")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 5)
-                        .background(.black.opacity(0.75))
-                        .clipShape(Capsule())
-                }
-                else {
-                    Text("Time Left: 0\(hoursRemaining) : \(minutesRemaining) : \(secondsRemaining)")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 5)
-                        .background(.black.opacity(0.75))
-                        .clipShape(Capsule())
-                }
-                
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 5)
+                .background(.black.opacity(0.75))
+                .clipShape(Capsule())
             }
             .onReceive(timer) {
                 
@@ -364,7 +343,7 @@ struct TimerView: View {
                             //record total time alongside start time and date
                             
                             //increment total time in Firestore
-                            firestoreManager.incrementUserData(
+                            userViewModel.incrementUserData(
                                 //userID: firestoreManager.uid!,
                                 propertyName: "totalTime",
                                 incrementValue: secondsOngoing
@@ -378,13 +357,13 @@ struct TimerView: View {
                             //viewModel.updateUserData(userID: firestoreManager.uid!, propertyName: "totalAnimals", newPropertyValue: "sheesh")
                             
                             //give rewards (coins) on popup screen
-                            firestoreManager.incrementUserData(
+                            userViewModel.incrementUserData(
                                 //userID: firestoreManager.uid!,
                                 propertyName: "numCoins",
                                 incrementValue: baseGainedCoins
                             )
                             
-                            //firestoreManager.createAnimal(animalName: "pp")
+                            //userViewModel.createAnimal(animalName: "pp")
                             
                         } else { //if there are hours left
                             hoursRemaining -= 1

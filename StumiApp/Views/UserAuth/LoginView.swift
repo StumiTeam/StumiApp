@@ -11,9 +11,10 @@ import Firebase
 struct LoginView: View {
     
     @EnvironmentObject var firestoreManager: FirestoreManager
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var email = ""
     @State private var password = ""
-    @Binding var userLoggedIn : Bool
+    @Binding var mainUserLoggedIn : Bool
     @Binding public var showBanner: Bool
     @Binding public var bannerData: BannerModifier.BannerData
     //@ObservedObject var viewModel = FirestoreManager() //new instance of FirestoreManager()
@@ -58,7 +59,7 @@ struct LoginView: View {
                     
                     //Login Button
                     Button {
-                        login()
+                        userViewModel.login(email: email, password: password)
                     } label: {
                         Text("Sign in")
                             .bold()
@@ -74,7 +75,7 @@ struct LoginView: View {
                     
                     //Redirect to Register Button
                     NavigationLink(destination: RegisterView(
-                        userRegistered: $userLoggedIn,
+                        mainUserRegistered: $mainUserLoggedIn,
                         showBanner: $showBanner,
                         bannerData: $bannerData
                     ).navigationBarBackButtonHidden(true)){
@@ -90,9 +91,13 @@ struct LoginView: View {
             }
             .ignoresSafeArea()
         }
-        .banner(data: $bannerData, show: $showBanner)
+        .banner(
+            data: $userViewModel.bannerData,
+            show: $userViewModel.showBanner
+        )
     }
 
+    /*
     func login() {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if error != nil {
@@ -114,7 +119,7 @@ struct LoginView: View {
             } else {
                 
                 //successful login
-                userLoggedIn = true
+                mainUserLoggedIn = true
                 
                 print("Logged In!")
                 bannerData.title = "Success!"
@@ -127,12 +132,10 @@ struct LoginView: View {
                 firestoreManager.uid = Auth.auth().currentUser?.uid
                 
             }
-            
             showBanner = true
-            
         }
     }
-
+     */
 }
 
 

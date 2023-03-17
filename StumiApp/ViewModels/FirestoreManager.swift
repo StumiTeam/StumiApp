@@ -4,6 +4,8 @@
 //
 //  Created by Jeremy Kwok on 2/5/23.
 //
+//
+// This file acts as a ViewModel, holding all the functions we use from Cloud FireStore
 
 import Foundation
 import Firebase
@@ -22,6 +24,7 @@ class FirestoreManager: ObservableObject {
     //@Published var username : String = ""
     
     @Published var users = [User]()
+    @Published var queryResultUsers: [User] = []
 
     let db = Firestore.firestore()
     
@@ -50,6 +53,7 @@ class FirestoreManager: ObservableObject {
     
     init() {
         //animals = []
+        uid = Auth.auth().currentUser?.uid
     }
     
     
@@ -90,6 +94,23 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    //search for a list of users based on keywords
+    func searchForUsers(from keyword: String) {
+        
+        db.collection("Users").whereField("keywordsForLookup", arrayContains: keyword).getDocuments { querySnapshot, error in
+            
+            guard let documents = querySnapshot?.documents, error == nil else {
+                print("No documents")
+                return
+            }
+            //Convert each result to a user struct
+            self.queryResultUsers = documents.compactMap{ queryDocumentSnapshot in
+                try? queryDocumentSnapshot.data(as: User.self)
+            }
+        }
+    }
+    
+    /*
     func fetchAllUsers() {
         let userColRef = db.collection("Users")
         
@@ -103,6 +124,8 @@ class FirestoreManager: ObservableObject {
             }
         }
     }
+     */
+     
     
     func createUser(userID: String) {
         let userDocRef = db.collection("Users").document(userID)
@@ -121,6 +144,7 @@ class FirestoreManager: ObservableObject {
         
     }
     
+    /*
     //if the field doesn't exist this function will create it
     func updateUserData(userID: String, propertyName: String, newPropertyValue: String) {
         let userDocRef = db.collection("Users").document(userID)
@@ -133,6 +157,7 @@ class FirestoreManager: ObservableObject {
             }
         }
     }
+    */
     
     func createAnimal(animalName: String, animalType: String){
         let userDocRef = db.collection("Users").document(uid!)
@@ -164,6 +189,8 @@ class FirestoreManager: ObservableObject {
     
     //increments the numeric value of a certain stat in FireStore
     func incrementUserData(propertyName: String, incrementValue: Int) {
+        
+        //NIL FOUND HERE
         let userDocRef = db.collection("Users").document(uid!)
         
         userDocRef.updateData([propertyName: FieldValue.increment(Int64(incrementValue))]) { error in
@@ -188,5 +215,4 @@ class FirestoreManager: ObservableObject {
     func fetchAnimals() {
         db.collection("Users").document(uid!)
     }
-    
 }

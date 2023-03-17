@@ -10,14 +10,16 @@ import Firebase
 
 struct RegisterView: View {
     
+    @EnvironmentObject var firestoreManager: FirestoreManager
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
-    @Binding var userRegistered: Bool
+    @Binding var mainUserRegistered: Bool
     @Binding var showBanner: Bool
     @Binding var bannerData: BannerModifier.BannerData
-    @EnvironmentObject var firestoreManager: FirestoreManager
     //@ObservedObject var viewModel = FirestoreManager()
     
     var body: some View {
@@ -108,7 +110,13 @@ struct RegisterView: View {
                     
                     //Register Button
                     Button {
-                        register()
+                        userViewModel.register(
+                            username: username,
+                            email: email,
+                            password: password,
+                            confirmPassword: confirmPassword
+                        )
+                        //redirect to loginView after clicking SignUp buttonj
                     } label: {
                         Text("Sign up")
                             .bold()
@@ -124,7 +132,7 @@ struct RegisterView: View {
                     
                     //Redirect to Login Button
                     NavigationLink(destination: LoginView(
-                        userLoggedIn: $userRegistered,
+                        mainUserLoggedIn: $mainUserRegistered,
                         showBanner: $showBanner,
                         bannerData: $bannerData
                     ).navigationBarBackButtonHidden(true)){
@@ -142,9 +150,10 @@ struct RegisterView: View {
             
         }
         .ignoresSafeArea()
-        .banner(data: $bannerData, show: $showBanner)
+        .banner(data: $userViewModel.bannerData, show: $userViewModel.showBanner)
     }
     
+    /*
     func register() {
         
         //if username is already taken -> ask user to use another username
@@ -224,6 +233,7 @@ struct RegisterView: View {
             
         }
     }
+    */
     
 }
 

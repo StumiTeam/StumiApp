@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import SwiftUI
 
+//User
 struct User: Codable {
     @DocumentID var uid: String? // @DocumentID to fetch the identifier from Firestore
     var username: String
@@ -19,7 +20,7 @@ struct User: Codable {
     //var animals: Animals?
     //var friendslist: Friends?
     
-    var usernameForSearch: [String] { self.username.generateStringSequence() }
+    var usernamesForSearch: [String] { self.username.generateStringSequence() }
 }
 
 

@@ -10,10 +10,12 @@ import Firebase
 
 struct SettingsView: View {
     
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     @AppStorage("Music") private var Music : Bool = true
     @AppStorage("Library Music") private var libraryMusic : Bool = true
     @AppStorage("Sound Effects") private var soundEffects : Bool = true
-    @Binding var UserLoggedIn : Bool
+    @Binding var mainUserLoggedIn : Bool
     
     //body
     var body: some View {
@@ -65,7 +67,7 @@ struct SettingsView: View {
                 
                 //Logout Button
                 Button(action: {
-                    logout()
+                    userViewModel.logout()
                 }){
                     Text("Logout")
                 }
@@ -83,15 +85,17 @@ struct SettingsView: View {
         //.ignoresSafeArea()
     }
     
+    /*
     func logout() {
         do {
             try Auth.auth().signOut()
-            UserLoggedIn = false;
+            mainUserLoggedIn = false;
             print("User Logged Out!")
         } catch let signOutError as NSError {
           print("Error signing out: %@", signOutError)
         }
     }
+     */
     
 }
 

@@ -10,8 +10,8 @@ import SwiftUI
 struct BannerModifier: ViewModifier {
     
     struct BannerData {
-        var title:String
-        var detail:String
+        var title: String
+        var detail: String
         var type: BannerType
     }
     
@@ -80,7 +80,7 @@ struct BannerModifier: ViewModifier {
 
 }
 
-extension View {
+extension View { //Can be used by any View
     func banner(data: Binding<BannerModifier.BannerData>, show: Binding<Bool>) -> some View {
         self.modifier(BannerModifier(data: data, show: show))
     }

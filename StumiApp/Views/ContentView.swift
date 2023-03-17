@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var email = ""
     @State private var password = ""
     //@State private var userID = Auth.auth().currentUser?.uid
-    @AppStorage("userIsLoggedIn") private var userIsLoggedIn : Bool = false
+    @AppStorage("mainUserIsLoggedIn") private var mainUserIsLoggedIn : Bool = false
     
     //Menu
     @State var showMenu : Bool = false
@@ -36,6 +36,7 @@ struct ContentView: View {
     
     //Firestore Manager
     @EnvironmentObject var firestoreManager: FirestoreManager
+    @EnvironmentObject var userViewModel: UserViewModel
     //@StateObject var user = User()
     //@StateObject var viewModel = FirestoreManager()
     
@@ -45,11 +46,11 @@ struct ContentView: View {
     
     //body
     var body: some View {
-         if userIsLoggedIn {
+        if userViewModel.userLoggedIn {
             content
         } else {
             LoginView(
-                userLoggedIn: $userIsLoggedIn,
+                mainUserLoggedIn: $mainUserIsLoggedIn,
                 showBanner: $showBanner,
                 bannerData: $bannerData
             )
@@ -130,7 +131,7 @@ struct ContentView: View {
                     
                     //SettingsView
                     if showPage == 7 {
-                        SettingsView(UserLoggedIn: $userIsLoggedIn)
+                        SettingsView(mainUserLoggedIn: $mainUserIsLoggedIn)
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
@@ -166,8 +167,8 @@ struct ContentView: View {
                 )
         }
         .onAppear{
-            firestoreManager.fetchUser()
-            print("user: \(firestoreManager.uid!)")
+            userViewModel.syncUser()
+            print("user: \(userViewModel.uid!)")
             
             /*
             if bannerData.title == "Success!" && bannerData.detail == "Welcome back!" && bannerData.type == .Success {

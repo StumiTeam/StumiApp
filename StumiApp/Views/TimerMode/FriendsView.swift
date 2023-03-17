@@ -13,6 +13,18 @@ struct FriendsView: View {
     }
 }
 
+struct addFriendsView: View {
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundColor(Color.brown)
+                
+        }
+    }
+    
+}
+
 struct FriendsView_Previews: PreviewProvider {
     static var previews: some View {
         FriendsView()
