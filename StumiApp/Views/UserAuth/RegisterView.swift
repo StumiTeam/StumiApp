@@ -10,16 +10,13 @@ import Firebase
 
 struct RegisterView: View {
     
-    @EnvironmentObject var firestoreManager: FirestoreManager
+    //@EnvironmentObject var firestoreManager: FirestoreManager
     @EnvironmentObject var userViewModel: UserViewModel
     
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
-    @Binding var mainUserRegistered: Bool
-    @Binding var showBanner: Bool
-    @Binding var bannerData: BannerModifier.BannerData
     //@ObservedObject var viewModel = FirestoreManager()
     
     var body: some View {
@@ -131,11 +128,8 @@ struct RegisterView: View {
                     .offset(y: 100)
                     
                     //Redirect to Login Button
-                    NavigationLink(destination: LoginView(
-                        mainUserLoggedIn: $mainUserRegistered,
-                        showBanner: $showBanner,
-                        bannerData: $bannerData
-                    ).navigationBarBackButtonHidden(true)){
+                    NavigationLink(destination: LoginView()
+                        .navigationBarBackButtonHidden(true)){
                             Text("Already have an account? Login!")
                                 .bold()
                                 .foregroundColor(.white)

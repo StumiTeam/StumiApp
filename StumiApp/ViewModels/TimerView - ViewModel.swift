@@ -1,5 +1,5 @@
 //
-//  TimerView - ViewModel.swift
+//  TimerViewViewModel - ViewModel.swift
 //  StumiApp
 //
 //  Created by Jeremy Kwok on 3/16/23.
@@ -8,7 +8,8 @@
 import Foundation
 
 extension TimerView {
-    @MainActor class ViewModel: ObservableObject {
+    @MainActor class TimerViewModel: ObservableObject {
+        
         //USED TO SET TIME FOR TIMER
         @Published var offset = CGFloat.zero
         @Published var HoursOffset = CGFloat.zero
@@ -30,8 +31,8 @@ extension TimerView {
         let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
         //USED TO PICK SUBJECTS
-        @Published var selectedSubject = "English"
-        let subjects = ["English", "Math", "Social Studies", "Science"]
+        var selectedSubject : String
+        var subjects : [String] = ["English", "Math", "Social Studies", "Science"]
         
         //USED TO DETERMINE REWARDS
         @Published var baseGainedCoins = 0 //base number of coins user gained from their session

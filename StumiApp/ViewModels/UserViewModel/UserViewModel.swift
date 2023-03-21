@@ -12,39 +12,40 @@ import FirebaseFirestoreSwift
 
 class UserViewModel: ObservableObject {
 
+    @Published var user: User?
+    var mainPlayer: User = User(username: "Username", email: "email", subjects: [], numCoins: 0, prestige: 0, totalTime: 0)
+    
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
     
-    @Published var user: User?
-    
-    var uid: String? { auth.currentUser?.uid }
+    var userID: String? { auth.currentUser?.uid }
     var userLoggedIn: Bool { auth.currentUser != nil } //ensures user is logged in
-    var userLoggedInAndSynced: Bool { userLoggedIn && user != nil}
+    var userLoggedInAndSynced: Bool { user != nil && userLoggedIn }
     
     //For banners
     @Published var showBanner: Bool = false
     @Published var bannerData = BannerModifier.BannerData(title: "", detail: "", type: .Warning)
     
     func login(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+        auth.signIn(withEmail: email, password: password) { [weak self] result, error in
             if error != nil {
-                self.bannerData.detail = error!.localizedDescription
+                self?.bannerData.detail = error!.localizedDescription
                 print(error!.localizedDescription)
                 
-                if self.bannerData.detail == "The email address is badly formatted." {
-                    self.bannerData.title = "Bad Email"
+                if self?.bannerData.detail == "The email address is badly formatted." {
+                    self?.bannerData.title = "Bad Email"
                 }
-                else if self.bannerData.detail == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                    self.bannerData.title = "User Not Found"
+                else if self?.bannerData.detail == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                    self?.bannerData.title = "User Not Found"
                 }
-                else if self.bannerData.detail == "The password is invalid or the user does not have a password." {
-                    self.bannerData.title = "Invalid Password"
-                    self.bannerData.detail = "Please re-enter your password."
+                else if self?.bannerData.detail == "The password is invalid or the user does not have a password." {
+                    self?.bannerData.title = "Invalid Password"
+                    self?.bannerData.detail = "Please re-enter your password."
                 }
-                else if self.bannerData.detail == "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later." {
-                    self.bannerData.title = "Account Temporarily Locked"
+                else if self?.bannerData.detail == "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later." {
+                    self?.bannerData.title = "Account Temporarily Locked"
                 }
-                self.bannerData.type = .Error
+                self?.bannerData.type = .Error
                 
             } else {
                 
@@ -54,20 +55,20 @@ class UserViewModel: ObservableObject {
                 
                 //fetch user
                 DispatchQueue.main.async {
-                    
-                    self.syncUser()
+                    self?.syncUser()
                 }
                 
-                self.bannerData.title = "Success!"
-                self.bannerData.detail = "Welcome back!"
-                self.bannerData.type = .Success
+                self?.bannerData.title = "Success!"
+                self?.bannerData.detail = "Welcome back!"
+                self?.bannerData.type = .Success
                 
                 //switch Firestore user document (something here is causing Stumi to pull increasingly more times of the same data). New instances of class?
                 
                 //sync
+                self?.syncUser()
                 
             }
-            self.showBanner = true
+            self?.showBanner = true
         }
     } //end login
     
@@ -90,31 +91,31 @@ class UserViewModel: ObservableObject {
         } else {
             
             //Add to Firebase Authentication
-            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            auth.createUser(withEmail: email, password: password) { [weak self] result, error in
                 if error != nil {
-                    self.bannerData.detail = error!.localizedDescription
+                    self?.bannerData.detail = error!.localizedDescription
                     print(error!.localizedDescription)
                     
                     //find error and show corresponding banner
-                    switch self.bannerData.detail {
+                    switch self?.bannerData.detail {
                     
                     case "An email address must be provided.":
-                        self.bannerData.title = "Missing Email"
+                        self?.bannerData.title = "Missing Email"
                         
                     case "The email address is badly formatted.":
-                        self.bannerData.title = "Bad Email"
+                        self?.bannerData.title = "Bad Email"
                         
                     case "The email address is already in use by another account.":
-                        self.bannerData.title = "Email in Use"
+                        self?.bannerData.title = "Email in Use"
                         
                     case "The password must be 6 characters long or more.":
-                        self.bannerData.title = "Short Password"
+                        self?.bannerData.title = "Short Password"
                     
                     default:
-                        self.bannerData.title = "Error"
+                        self?.bannerData.title = "Error"
                     }
                     
-                    self.bannerData.type = .Warning
+                    self?.bannerData.type = .Warning
                     
                 } else {
                     guard result != nil, error == nil else { return }
@@ -127,8 +128,8 @@ class UserViewModel: ObservableObject {
                     
                     //create user
                     DispatchQueue.main.async {
-                        self.createUser(username: username, email: email)
-                        self.syncUser()
+                        self?.createUser(username: username, email: email)
+                        self?.syncUser()
                     }
                     /*
                     //update username
@@ -147,11 +148,11 @@ class UserViewModel: ObservableObject {
                     */
                     
                     //show success banner
-                    self.bannerData.title = "Success!"
-                    self.bannerData.detail = "You're all set, \(username)! Please log in!"
-                    self.bannerData.type = .Success
+                    self?.bannerData.title = "Success!"
+                    self?.bannerData.detail = "You're all set, \(username)! Please log in!"
+                    self?.bannerData.type = .Success
                 }
-                self.showBanner = true
+                self?.showBanner = true
             }
             
         }
@@ -159,7 +160,8 @@ class UserViewModel: ObservableObject {
     
     func logout() {
         do {
-            try Auth.auth().signOut()
+            try auth.signOut()
+            self.user = nil
             //mainUserLoggedIn = false;
             print("User Logged Out!")
         } catch let signOutError as NSError {
@@ -172,25 +174,34 @@ class UserViewModel: ObservableObject {
     //sync user data
     func syncUser() {
         guard userLoggedIn else { return }
-        let userDocRef = db.collection("Users").document(uid!)
+        let userDocRef = db.collection("Users").document(self.userID!)
         
-        userDocRef.addSnapshotListener { documentSnapshot, error in
+        userDocRef.addSnapshotListener { (documentSnapshot, error) in
             guard let document = documentSnapshot else {
                 print("Error fetching User Document: \(error!)")
                 return
             }
-            guard let data = document.data() else {
+            /*
+            guard let dataa = document.data() else {
                 print("Document data was empty.")
                 return
             }
+            */
             
+            //non-optionals like DocumentSnapshot never equal nil
+            //print(document==nil) //document is not nil
+            //guard document != nil, error == nil else { return }
             do {
-                self.user = try document.data(as: User.self)
+                print("trying to sync user")
+                try print(document.data(as:User.self))
+                try self.user = document.data(as: User.self) //no need to use document! bc DocumentSnapshot is non-optional (i.e. it can't return nil)
+                print("userSynced!")
+                var mainPlayer = self.user!
             } catch { //in case call throws
                 print("Sync error: \(error)")
             }
             //print("user: \(self.user)")
-            print("data: \(data)")
+            //print("data: \(dataa)")
             print("User FETCHED LESGO")
         }
     }
@@ -198,7 +209,7 @@ class UserViewModel: ObservableObject {
     //Update user data
     func updateUserData(propertyName: String, newPropertyValue: String) {
         guard userLoggedInAndSynced else { return }
-        let userDocRef = db.collection("Users").document(self.uid!)
+        let userDocRef = db.collection("Users").document(self.userID!)
         
         do {
             try userDocRef.setData(from: user)
@@ -213,7 +224,7 @@ class UserViewModel: ObservableObject {
     func incrementUserData(propertyName: String, incrementValue: Int) {
         guard userLoggedInAndSynced else { return }
         
-        let userDocRef = db.collection("Users").document(self.uid!)
+        let userDocRef = db.collection("Users").document(self.userID!)
         
         userDocRef.updateData([propertyName: FieldValue.increment(Int64(incrementValue))]) { error in
             if let error = error {
@@ -229,14 +240,15 @@ class UserViewModel: ObservableObject {
         let newUserData: [String: Any] = [
             "username" : username,
             "email" : email,
+            "subjects" : [],
             "numCoins" : 0,
             "level" : 1,
             "prestige" : 0,
             "totalTime" : 0,
-            "usernamesForSearch" : [""]
+            "usernamesForSearch" : []
         ]
         
-        let userDocRef = db.collection("Users").document(self.uid!)
+        let userDocRef = db.collection("Users").document(self.userID!)
         //let userAnimalDocRef = userDocRef.collection("Animals").document()
         
         //create new user doc and set data

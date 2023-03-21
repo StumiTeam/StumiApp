@@ -10,11 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //User Auth
-    @State private var email = ""
-    @State private var password = ""
-    //@State private var userID = Auth.auth().currentUser?.uid
-    @AppStorage("mainUserIsLoggedIn") private var mainUserIsLoggedIn : Bool = false
+    //View Models
+    @EnvironmentObject var userViewModel: UserViewModel
     
     //Menu
     @State var showMenu : Bool = false
@@ -34,26 +31,16 @@ struct ContentView: View {
     @AppStorage("Music") var Music = true
     @AppStorage("Sound Effects") var soundEffects = true
     
-    //Firestore Manager
-    @EnvironmentObject var firestoreManager: FirestoreManager
-    @EnvironmentObject var userViewModel: UserViewModel
-    //@StateObject var user = User()
-    //@StateObject var viewModel = FirestoreManager()
-    
     //Banner Settings
-    @State public var showBanner: Bool = false
-    @State public var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Warning)
+    //@State public var showBanner: Bool = false
+    //@State public var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Warning)
     
     //body
     var body: some View {
         if userViewModel.userLoggedIn {
             content
         } else {
-            LoginView(
-                mainUserLoggedIn: $mainUserIsLoggedIn,
-                showBanner: $showBanner,
-                bannerData: $bannerData
-            )
+            LoginView()
         }
     }
     
@@ -81,9 +68,6 @@ struct ContentView: View {
                             MusicPlayer.shared.startBackgroundMusic()
                         }
                     }
-                    
-                    //viewModel.fetchUser(userID: firestoreManager.uid!)
-                    //print("user: \(firestoreManager.uid!)")
                     
                     //Views
 
@@ -131,7 +115,7 @@ struct ContentView: View {
                     
                     //SettingsView
                     if showPage == 7 {
-                        SettingsView(mainUserLoggedIn: $mainUserIsLoggedIn)
+                        SettingsView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     
@@ -168,15 +152,9 @@ struct ContentView: View {
         }
         .onAppear{
             userViewModel.syncUser()
-            print("user: \(userViewModel.uid!)")
-            
-            /*
-            if bannerData.title == "Success!" && bannerData.detail == "Welcome back!" && bannerData.type == .Success {
-                bannerData.detail = "Welcome back,  \(firestoreManager.username!)!"
-            }
-            */
+            print("user: \(userViewModel.userID!)")
         }
-        .banner(data: $bannerData, show: $showBanner)
+        .banner(data: $userViewModel.bannerData, show: $userViewModel.showBanner)
     }
 }
 
@@ -198,6 +176,6 @@ extension View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(FirestoreManager())
+            .environmentObject(UserViewModel())
     }
 }

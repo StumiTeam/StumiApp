@@ -10,8 +10,9 @@ import Combine
 
 struct TimerView: View {
     
-    
+    //View Models
     @EnvironmentObject var userViewModel: UserViewModel
+    @StateObject var timerViewModel = TimerViewModel()
     
     //Move to TimerView - ViewModel
      
@@ -36,8 +37,9 @@ struct TimerView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     //USED TO PICK SUBJECTS
-    @State var selectedSubject = "English"
-    let subjects = ["English", "Math", "Social Studies", "Science"]
+    
+    @State var selectedSubject : String
+    //let subjects = ["English", "Math", "Social Studies", "Science"]
     
     //USED TO DETERMINE REWARDS
     @State var baseGainedCoins = 0 //base number of coins user gained from their session
@@ -50,8 +52,6 @@ struct TimerView: View {
     let detector: CurrentValueSubject<CGFloat, Never>
     let publisher: AnyPublisher<CGFloat, Never>
     
-    //Firebase Cloud Firestore
-    @EnvironmentObject var firestoreManager: FirestoreManager
     
     //Initialization
     init() {
@@ -61,6 +61,9 @@ struct TimerView: View {
             .dropFirst()
             .eraseToAnyPublisher()
         self.detector = detector
+        
+        //guard userViewModel.userLoggedInAndSynced else { return }
+        //selectedSubject = $userViewModel.subjects[0]
     }
     
     var body: some View {

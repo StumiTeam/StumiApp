@@ -15,7 +15,6 @@ struct SettingsView: View {
     @AppStorage("Music") private var Music : Bool = true
     @AppStorage("Library Music") private var libraryMusic : Bool = true
     @AppStorage("Sound Effects") private var soundEffects : Bool = true
-    @Binding var mainUserLoggedIn : Bool
     
     //body
     var body: some View {

@@ -11,16 +11,19 @@ import SwiftUI
 
 //User
 struct User: Codable {
-    @DocumentID var uid: String? // @DocumentID to fetch the identifier from Firestore
-    var username: String
-    var email: String
-    var subjects: [String]
-    var numCoins: Int
-    
+    //ALL DOC FIELDS FROM FIRESTORE SHOULD TO BE HERE
+    @DocumentID var userID: String? // @DocumentID to fetch the identifier from Firestore
+    //var userID: String
+    var username: String = "Username"
+    var email: String = "Email@email.com"
+    var subjects: [String] = []
+    var numCoins: Int = 0
+    var prestige: Int = 0
+    var totalTime: Int = 0
+    var usernamesForSearch: [String] { [self.username.generateStringSequence()].flatMap { $0 }
+    }
     //var animals: Animals?
     //var friendslist: Friends?
-    
-    var usernamesForSearch: [String] { self.username.generateStringSequence() }
 }
 
 

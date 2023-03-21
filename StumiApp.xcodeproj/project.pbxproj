@@ -33,7 +33,6 @@
 		42B7A381298F642C002A81A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42B7A380298F642C002A81A6 /* GoogleService-Info.plist */; };
 		42B7A383298FF82F002A81A6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A382298FF82F002A81A6 /* RegisterView.swift */; };
 		42B7A38729904FA1002A81A6 /* BannerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A38629904FA1002A81A6 /* BannerModifier.swift */; };
-		42B7A38A29908474002A81A6 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A38929908474002A81A6 /* FirestoreManager.swift */; };
 		42B7A38C2996571F002A81A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7A38B2996571F002A81A6 /* User.swift */; };
 		42B7A39029966B7D002A81A6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7A38F29966B7D002A81A6 /* FirebaseFirestoreSwift */; };
 		42CCE0B728BC01B400A9A7CA /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0B628BC01B400A9A7CA /* MenuView.swift */; };
@@ -88,7 +87,6 @@
 		42B7A382298FF82F002A81A6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		42B7A38529900A53002A81A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		42B7A38629904FA1002A81A6 /* BannerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModifier.swift; sourceTree = "<group>"; };
-		42B7A38929908474002A81A6 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		42B7A38B2996571F002A81A6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		42CCE0B628BC01B400A9A7CA /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		42CCE0B828BC06D900A9A7CA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -127,8 +125,7 @@
 		424BCB3A299FC979003CECC5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4261459629C35CFC0067CC5D /* UserAuth */,
-				42B7A38929908474002A81A6 /* FirestoreManager.swift */,
+				4261459629C35CFC0067CC5D /* UserViewModel */,
 				424BCB38299FC971003CECC5 /* OLD -UserViewModel.swift */,
 				4261459429C340FB0067CC5D /* TimerView - ViewModel.swift */,
 			);
@@ -216,12 +213,12 @@
 			path = Music;
 			sourceTree = "<group>";
 		};
-		4261459629C35CFC0067CC5D /* UserAuth */ = {
+		4261459629C35CFC0067CC5D /* UserViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				4261459729C35D250067CC5D /* UserViewModel.swift */,
 			);
-			path = UserAuth;
+			path = UserViewModel;
 			sourceTree = "<group>";
 		};
 		4276660929B8E30B00F069D4 /* Assets */ = {
@@ -462,7 +459,6 @@
 				4261455829C0F4A80067CC5D /* Animal.swift in Sources */,
 				42B7A38729904FA1002A81A6 /* BannerModifier.swift in Sources */,
 				425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */,
-				42B7A38A29908474002A81A6 /* FirestoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,14 +10,10 @@ import Firebase
 
 struct LoginView: View {
     
-    @EnvironmentObject var firestoreManager: FirestoreManager
+    //@EnvironmentObject var firestoreManager: FirestoreManager
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var email = ""
     @State private var password = ""
-    @Binding var mainUserLoggedIn : Bool
-    @Binding public var showBanner: Bool
-    @Binding public var bannerData: BannerModifier.BannerData
-    //@ObservedObject var viewModel = FirestoreManager() //new instance of FirestoreManager()
     
     var body: some View {
         
@@ -74,11 +70,7 @@ struct LoginView: View {
                     .offset(y: 100)
                     
                     //Redirect to Register Button
-                    NavigationLink(destination: RegisterView(
-                        mainUserRegistered: $mainUserLoggedIn,
-                        showBanner: $showBanner,
-                        bannerData: $bannerData
-                    ).navigationBarBackButtonHidden(true)){
+                    NavigationLink(destination: RegisterView().navigationBarBackButtonHidden(true)){
                             Text("First time user? Register!")
                                 .bold()
                                 .foregroundColor(.white)

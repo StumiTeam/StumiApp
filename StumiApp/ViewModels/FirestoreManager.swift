@@ -187,6 +187,7 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
     //increments the numeric value of a certain stat in FireStore
     func incrementUserData(propertyName: String, incrementValue: Int) {
         
@@ -201,6 +202,7 @@ class FirestoreManager: ObservableObject {
             }
         }
     }
+    */
     
     
     /*
