@@ -38,7 +38,8 @@ struct TimerView: View {
     
     //USED TO PICK SUBJECTS
     
-    @State var selectedSubject : String
+    @State var selectedSubject : String = ""
+    @State var subjects: [String] = [""]
     //let subjects = ["English", "Math", "Social Studies", "Science"]
     
     //USED TO DETERMINE REWARDS
@@ -64,6 +65,8 @@ struct TimerView: View {
         
         //guard userViewModel.userLoggedInAndSynced else { return }
         //selectedSubject = $userViewModel.subjects[0]
+        subjects = userViewModel.mainPlayer.subjects
+        selectedSubject = subjects[0]
     }
     
     var body: some View {
@@ -82,30 +85,51 @@ struct TimerView: View {
                 Menu(selectedSubject) {
                     
                     //Loop through subject list
-
+                    
+                    /*
+                    ForEach(userViewModel.mainPlayer.subjects, id: \.id) {
+                        
+                    }
+                    */
+                }
+                    /*
+                    for subject in userViewModel.mainPlayer.subjects {
+                        Button {
+                            selectedSubject = subject
+                        } label: {
+                            Text(subject)
+                        }
+                        .font(.headline)
+                        .padding(10)
+                        .background(.red)
+                    }
+                    */
+                    
+                    /*
                     //English Choice
                     Button{
                         selectedSubject = "English"
-                    } label: {Text("English")}
+                    } label: {Text(selectedSubject)}
                     
                     //Math Choice
                     Button{
                         selectedSubject = "Math"
-                    } label: {Text("Math")}
+                    } label: {Text(selectedSubject)}
                     
                     //Social Studies Choice
                     Button{
                         selectedSubject = "Social Studies"
-                    } label: {Text("Social Studies")}
+                    } label: {Text(selectedSubject)}
                     
                     //Science Choice
                     Button{
                         selectedSubject = "Science"
-                    } label: {Text("Science")}
+                    } label: {Text(selectedSubject)}
                 }
                 .font(.headline)
                 .padding(10)
                 .background(.red)
+                     */
                 
                 Spacer()
                 

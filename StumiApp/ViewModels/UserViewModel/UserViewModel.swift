@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 class UserViewModel: ObservableObject {
 
     @Published var user: User?
-    var mainPlayer: User = User(username: "Username", email: "email", subjects: [], numCoins: 0, prestige: 0, totalTime: 0)
+    @Published var mainPlayer: User = User()
     
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
@@ -197,6 +197,7 @@ class UserViewModel: ObservableObject {
                 try self.user = document.data(as: User.self) //no need to use document! bc DocumentSnapshot is non-optional (i.e. it can't return nil)
                 print("userSynced!")
                 var mainPlayer = self.user!
+                print(mainPlayer.email)
             } catch { //in case call throws
                 print("Sync error: \(error)")
             }

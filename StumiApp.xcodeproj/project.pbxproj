@@ -24,7 +24,7 @@
 		425D3B1A28BB1EF900F394C5 /* bad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 425D3B1928BB1EF900F394C5 /* bad.mp3 */; };
 		4261455829C0F4A80067CC5D /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261455729C0F4A80067CC5D /* Animal.swift */; };
 		4261455C29C10EF40067CC5D /* MainPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261455B29C10EF40067CC5D /* MainPlayer.swift */; };
-		4261459529C340FB0067CC5D /* TimerView - ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261459429C340FB0067CC5D /* TimerView - ViewModel.swift */; };
+		4261459529C340FB0067CC5D /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261459429C340FB0067CC5D /* TimerViewModel.swift */; };
 		4261459829C35D250067CC5D /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261459729C35D250067CC5D /* UserViewModel.swift */; };
 		42B1937B2968528100890CA8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 42B1937A2968528100890CA8 /* README.md */; };
 		42B7A37B298F5C1A002A81A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7A37A298F5C1A002A81A6 /* FirebaseAuth */; };
@@ -79,7 +79,7 @@
 		425D3B1928BB1EF900F394C5 /* bad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bad.mp3; sourceTree = "<group>"; };
 		4261455729C0F4A80067CC5D /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		4261455B29C10EF40067CC5D /* MainPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlayer.swift; sourceTree = "<group>"; };
-		4261459429C340FB0067CC5D /* TimerView - ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimerView - ViewModel.swift"; sourceTree = "<group>"; };
+		4261459429C340FB0067CC5D /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		4261459729C35D250067CC5D /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		42B1937A2968528100890CA8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42B7A37E298F5DE4002A81A6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -127,7 +127,7 @@
 			children = (
 				4261459629C35CFC0067CC5D /* UserViewModel */,
 				424BCB38299FC971003CECC5 /* OLD -UserViewModel.swift */,
-				4261459429C340FB0067CC5D /* TimerView - ViewModel.swift */,
+				4261459429C340FB0067CC5D /* TimerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -439,7 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */,
-				4261459529C340FB0067CC5D /* TimerView - ViewModel.swift in Sources */,
+				4261459529C340FB0067CC5D /* TimerViewModel.swift in Sources */,
 				4261459829C35D250067CC5D /* UserViewModel.swift in Sources */,
 				42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */,
 				425D3B1628BB1E0900F394C5 /* MusicPlayer.swift in Sources */,
