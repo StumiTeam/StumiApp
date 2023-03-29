@@ -12,7 +12,6 @@ struct ProfileView: View {
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
     //var user: User
-    //@State var username = userViewModel.mainPlayer.username
     
     var body: some View {
         Text("\(userViewModel.mainPlayer.username)")

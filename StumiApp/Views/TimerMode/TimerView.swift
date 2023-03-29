@@ -41,8 +41,7 @@ struct TimerView: View {
     //USED TO PICK SUBJECTS
     
     //@State var subjects: [String]
-    @State var selectedSubject : String = "Subject"
-    //let subjects = ["English", "Math", "Social Studies", "Science"]
+    @State var selectedSubject : String = "" //= userViewModel.mainPlayer.subjects[0]
     
     //USED TO DETERMINE REWARDS
     @State var baseGainedCoins = 0 //base number of coins user gained from their session
@@ -54,7 +53,6 @@ struct TimerView: View {
     //Detector for when user stops scrolling the time selector
     let detector: CurrentValueSubject<CGFloat, Never>
     let publisher: AnyPublisher<CGFloat, Never>
-    
     
     //Initialization
     init() {
@@ -71,12 +69,11 @@ struct TimerView: View {
         //Button
         if showTimer == false{
             //subjects = userViewModel.mainPlayer.subjects
-            //selectedSubject = subjects[0]
+            //selectedSubject = userViewModel.mainPlayer.subjects[0]
             
 //            Color.black
 //                .ignoresSafeArea()
-            
-            //subjects = userViewModel.test
+
             
             VStack(alignment: .center){
                 
@@ -101,6 +98,10 @@ struct TimerView: View {
                 .padding(10)
                 .foregroundColor(.white)
                 .background(.red)
+                .onAppear{
+                    selectedSubject = userViewModel.mainPlayer.subjects[0]
+                }
+                
                 
                 Spacer()
                 
@@ -307,8 +308,16 @@ struct TimerView: View {
                 
                 HStack{
                     Text("Time Left: 0\(hoursRemaining) : ")
-                    if(minutesRemaining < 10) { Text("0\(minutesRemaining) : ") } else { Text("\(minutesRemaining)") }
-                    if(secondsRemaining < 10) { Text("0\(secondsRemaining)") } else { Text("\(secondsRemaining)") }
+                    
+                    if(minutesRemaining < 10) { Text("0\(minutesRemaining) : ")
+                    } else {
+                        Text("\(minutesRemaining)")
+                    }
+                    
+                    if(secondsRemaining < 10) { Text("0\(secondsRemaining)")
+                    } else {
+                        Text("\(secondsRemaining)")
+                    }
                 }
                 .font(.largeTitle)
                 .foregroundColor(.white)
