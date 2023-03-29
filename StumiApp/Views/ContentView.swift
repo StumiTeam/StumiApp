@@ -38,6 +38,8 @@ struct ContentView: View {
     //body
     var body: some View {
         if userViewModel.userLoggedIn {
+            //AndSynced {
+            /* Don't need the sync part bc then it requires us to login every time*/
             content
         } else {
             LoginView()
@@ -73,7 +75,7 @@ struct ContentView: View {
 
                     //TimerView
                     if showPage == 0 {
-                        TimerView()
+                        TimerView().environmentObject(userViewModel)
                             .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     

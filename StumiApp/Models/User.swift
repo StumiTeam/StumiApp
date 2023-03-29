@@ -12,11 +12,13 @@ import SwiftUI
 //User
 struct User: Codable {
     //ALL DOC FIELDS FROM FIRESTORE SHOULD TO BE HERE
-    @DocumentID var userID: String? // @DocumentID to fetch the identifier from Firestore
-    //var userID: String
+    @DocumentID var userID: String? //@DocumentID to fetch the identifier from Firestore
+    
+    //var variableName: type = initial value
     var username: String = "Username"
     var email: String = "Email@email.com"
-    var subjects: [String] = []
+    var subjects: [String] = ["English", "Math", "Social Studies", "Science"]
+    var level: Int = 1
     var numCoins: Int = 0
     var prestige: Int = 0
     var totalTime: Int = 0
@@ -24,6 +26,12 @@ struct User: Codable {
     }
     //var animals: Animals?
     //var friendslist: Friends?
+    //func Subjects() -> [String] {
+    //    return subjects
+    //}
+    func getSubjects() -> [String] {
+        return subjects
+    }
 }
 
 

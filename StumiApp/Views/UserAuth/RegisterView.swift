@@ -10,14 +10,11 @@ import Firebase
 
 struct RegisterView: View {
     
-    //@EnvironmentObject var firestoreManager: FirestoreManager
     @EnvironmentObject var userViewModel: UserViewModel
-    
     @State private var username = ""
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
-    //@ObservedObject var viewModel = FirestoreManager()
     
     var body: some View {
         NavigationView {
@@ -146,89 +143,6 @@ struct RegisterView: View {
         .ignoresSafeArea()
         .banner(data: $userViewModel.bannerData, show: $userViewModel.showBanner)
     }
-    
-    /*
-    func register() {
-        
-        //if username is already taken -> ask user to use another username
-        if username == "" {
-            bannerData.title = "No Username"
-            bannerData.detail = "Please enter your username"
-            showBanner = true
-        }
-        
-        //if password doesn't match confirmPassword
-        else if password != confirmPassword {
-            bannerData.title = "Password Mismatch"
-            bannerData.detail = "Your passwords don't match!"
-            showBanner = true
-
-        } else {
-            
-            //Add to Firebase Authentication
-            Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                if error != nil {
-                    bannerData.detail = error!.localizedDescription
-                    print(error!.localizedDescription)
-                    
-                    //find error and show corresponding banner
-                    switch bannerData.detail {
-                    
-                    case "An email address must be provided.":
-                        bannerData.title = "Missing Email"
-                        
-                    case "The email address is badly formatted.":
-                        bannerData.title = "Bad Email"
-                        
-                    case "The email address is already in use by another account.":
-                        bannerData.title = "Email in Use"
-                        
-                    case "The password must be 6 characters long or more.":
-                        bannerData.title = "Short Password"
-                    
-                    default:
-                        bannerData.title = "Error"
-                    }
-                    
-                    bannerData.type = .Warning
-                    
-                } else {
-                    //successful register
-                    
-                    print("User Registered!")
-                    
-                    //create new firebase document in "Users" Collection
-                    guard let userID = Auth.auth().currentUser?.uid else { return }
-                    
-                    //create user
-                    firestoreManager.createUser(userID: userID)
-                    
-                    //update username
-                    firestoreManager.updateUserData(
-                        userID: userID,
-                        propertyName: "username",
-                        newPropertyValue: username
-                    )
-                    
-                    //update email
-                    firestoreManager.updateUserData(
-                        userID: userID,
-                        propertyName: "email",
-                        newPropertyValue: email
-                    )
-                    
-                    //show success banner
-                    bannerData.title = "Success!"
-                    bannerData.detail = "You're all set, \(username)! Please log in!"
-                    bannerData.type = .Success
-                }
-                showBanner = true
-            }
-            
-        }
-    }
-    */
-    
 }
 
 /*

@@ -12,6 +12,8 @@ struct TimerView: View {
     
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
+    
+    //New instance of TimerViewModel
     @StateObject var timerViewModel = TimerViewModel()
     
     //Move to TimerView - ViewModel
@@ -38,8 +40,8 @@ struct TimerView: View {
     
     //USED TO PICK SUBJECTS
     
-    @State var selectedSubject : String = ""
-    @State var subjects: [String] = [""]
+    //@State var subjects: [String]
+    @State var selectedSubject : String = "Subject"
     //let subjects = ["English", "Math", "Social Studies", "Science"]
     
     //USED TO DETERMINE REWARDS
@@ -62,18 +64,19 @@ struct TimerView: View {
             .dropFirst()
             .eraseToAnyPublisher()
         self.detector = detector
-        
-        //guard userViewModel.userLoggedInAndSynced else { return }
-        //selectedSubject = $userViewModel.subjects[0]
-        subjects = userViewModel.mainPlayer.subjects
-        selectedSubject = subjects[0]
     }
     
     var body: some View {
+        
         //Button
         if showTimer == false{
+            //subjects = userViewModel.mainPlayer.subjects
+            //selectedSubject = subjects[0]
+            
 //            Color.black
 //                .ignoresSafeArea()
+            
+            //subjects = userViewModel.test
             
             VStack(alignment: .center){
                 
@@ -83,56 +86,25 @@ struct TimerView: View {
 
                 Text("Selected Subject:")
                 Menu(selectedSubject) {
-                    
                     //Loop through subject list
-                    
-                    /*
-                    ForEach(userViewModel.mainPlayer.subjects, id: \.id) {
+                    ForEach(0..<userViewModel.mainPlayer.subjects.count, id: \.self ) { number in
                         
-                    }
-                    */
-                }
-                    /*
-                    for subject in userViewModel.mainPlayer.subjects {
-                        Button {
-                            selectedSubject = subject
+                        Button{selectedSubject = "\(userViewModel.mainPlayer.subjects[number])"
                         } label: {
-                            Text(subject)
+                            Text("\(userViewModel.mainPlayer.subjects[number])")
                         }
-                        .font(.headline)
-                        .padding(10)
-                        .background(.red)
                     }
-                    */
                     
-                    /*
-                    //English Choice
-                    Button{
-                        selectedSubject = "English"
-                    } label: {Text(selectedSubject)}
                     
-                    //Math Choice
-                    Button{
-                        selectedSubject = "Math"
-                    } label: {Text(selectedSubject)}
-                    
-                    //Social Studies Choice
-                    Button{
-                        selectedSubject = "Social Studies"
-                    } label: {Text(selectedSubject)}
-                    
-                    //Science Choice
-                    Button{
-                        selectedSubject = "Science"
-                    } label: {Text(selectedSubject)}
                 }
                 .font(.headline)
                 .padding(10)
+                .foregroundColor(.white)
                 .background(.red)
-                     */
                 
                 Spacer()
                 
+                //Time Selection
                 HStack(alignment: .top){
                     Spacer()
                     
@@ -302,6 +274,7 @@ struct TimerView: View {
                 Spacer()
                 
                 Button("Start", action: {
+                    //selectedSubject = selectedSubject
                     hoursRemaining = Hours
                     minutesRemaining = Minutes
                     secondsRemaining = Seconds
@@ -390,6 +363,8 @@ struct TimerView: View {
                                 incrementValue: baseGainedCoins
                             )
                             
+                            //sync after updating all items in Firestore
+                            userViewModel.syncUser()
                             //userViewModel.createAnimal(animalName: "pp")
                             
                         } else { //if there are hours left

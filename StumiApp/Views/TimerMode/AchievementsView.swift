@@ -10,6 +10,7 @@ import SwiftUI
 struct AchievementsView: View {
     @AppStorage("Total Study Time") var totalStudyTime = 0
     @AppStorage("Total Sessions") var totalSessions = 0
+    //var user: User
     
     var body: some View {
         Text("Achievements")

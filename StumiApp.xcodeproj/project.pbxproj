@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4213C56B29D4C32400B5296E /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */; };
 		42375BC528AD1D92005DA686 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC428AD1D92005DA686 /* TimerView.swift */; };
 		42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC628AD1D9A005DA686 /* AchievementsView.swift */; };
 		42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC828AD1DA2005DA686 /* FriendsView.swift */; };
 		42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCA28AD1DA9005DA686 /* ProfileView.swift */; };
 		42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCE28AD1DC2005DA686 /* SettingsView.swift */; };
-		424BCB39299FC971003CECC5 /* OLD -UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424BCB38299FC971003CECC5 /* OLD -UserViewModel.swift */; };
 		425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EC289B4FC400F7F35A /* StumiApp.swift */; };
 		425262EF289B4FC400F7F35A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EE289B4FC400F7F35A /* ContentView.swift */; };
 		425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F0289B4FC500F7F35A /* Assets.xcassets */; };
@@ -59,12 +59,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		42375BC428AD1D92005DA686 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		42375BC628AD1D9A005DA686 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		42375BC828AD1DA2005DA686 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		42375BCA28AD1DA9005DA686 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		42375BCE28AD1DC2005DA686 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		424BCB38299FC971003CECC5 /* OLD -UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OLD -UserViewModel.swift"; sourceTree = "<group>"; };
 		425262E9289B4FC400F7F35A /* StumiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StumiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425262EC289B4FC400F7F35A /* StumiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiApp.swift; sourceTree = "<group>"; };
 		425262EE289B4FC400F7F35A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 		424BCB3A299FC979003CECC5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4261459629C35CFC0067CC5D /* UserViewModel */,
-				424BCB38299FC971003CECC5 /* OLD -UserViewModel.swift */,
+				4261459729C35D250067CC5D /* UserViewModel.swift */,
+				4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */,
 				4261459429C340FB0067CC5D /* TimerViewModel.swift */,
 			);
 			path = ViewModels;
@@ -211,14 +211,6 @@
 				425D3B1928BB1EF900F394C5 /* bad.mp3 */,
 			);
 			path = Music;
-			sourceTree = "<group>";
-		};
-		4261459629C35CFC0067CC5D /* UserViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4261459729C35D250067CC5D /* UserViewModel.swift */,
-			);
-			path = UserViewModel;
 			sourceTree = "<group>";
 		};
 		4276660929B8E30B00F069D4 /* Assets */ = {
@@ -446,8 +438,8 @@
 				42B7A383298FF82F002A81A6 /* RegisterView.swift in Sources */,
 				425262EF289B4FC400F7F35A /* ContentView.swift in Sources */,
 				42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */,
+				4213C56B29D4C32400B5296E /* UserSearchViewModel.swift in Sources */,
 				42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */,
-				424BCB39299FC971003CECC5 /* OLD -UserViewModel.swift in Sources */,
 				42B7A38C2996571F002A81A6 /* User.swift in Sources */,
 				4261455C29C10EF40067CC5D /* MainPlayer.swift in Sources */,
 				42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */,

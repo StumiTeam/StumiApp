@@ -11,9 +11,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class UserViewModel: ObservableObject {
-
-    @Published var user: User?
-    @Published var mainPlayer: User = User()
+    @Published var user : User?
+    @Published var mainPlayer : User = User()
     
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
@@ -65,7 +64,7 @@ class UserViewModel: ObservableObject {
                 //switch Firestore user document (something here is causing Stumi to pull increasingly more times of the same data). New instances of class?
                 
                 //sync
-                self?.syncUser()
+                //self?.syncUser()
                 
             }
             self?.showBanner = true
@@ -128,7 +127,7 @@ class UserViewModel: ObservableObject {
                     
                     //create user
                     DispatchQueue.main.async {
-                        self?.createUser(username: username, email: email)
+                        self?.createUser(User(userID: (self?.userID)!, username: username, email: email))
                         self?.syncUser()
                     }
                     /*
@@ -149,7 +148,7 @@ class UserViewModel: ObservableObject {
                     
                     //show success banner
                     self?.bannerData.title = "Success!"
-                    self?.bannerData.detail = "You're all set, \(username)! Please log in!"
+                    self?.bannerData.detail = "Welcome, \(username)!"
                     self?.bannerData.type = .Success
                 }
                 self?.showBanner = true
@@ -167,7 +166,7 @@ class UserViewModel: ObservableObject {
         } catch let signOutError as NSError {
           print("Error signing out: %@", signOutError)
         }
-    }
+    } //end logout
     
     //User Data (Cloud Firestore) Functions
     
@@ -176,17 +175,25 @@ class UserViewModel: ObservableObject {
         guard userLoggedIn else { return }
         let userDocRef = db.collection("Users").document(self.userID!)
         
+        userDocRef.getDocument { [self] (document, error) in
+            guard document != nil, error == nil else { return }
+            do {
+                try self.user = document!.data(as: User.self)
+                //print(self.user!)
+                try mainPlayer = document!.data(as: User.self)
+                print(mainPlayer)
+                
+            } catch {
+                print("Sync error: \(error)")
+            }
+        }
+        /*
+        //everytime the document changes we pull from Firestore again
         userDocRef.addSnapshotListener { (documentSnapshot, error) in
             guard let document = documentSnapshot else {
                 print("Error fetching User Document: \(error!)")
                 return
             }
-            /*
-            guard let dataa = document.data() else {
-                print("Document data was empty.")
-                return
-            }
-            */
             
             //non-optionals like DocumentSnapshot never equal nil
             //print(document==nil) //document is not nil
@@ -205,26 +212,27 @@ class UserViewModel: ObservableObject {
             //print("data: \(dataa)")
             print("User FETCHED LESGO")
         }
+        */
     }
     
     //Update user data
     func updateUserData(propertyName: String, newPropertyValue: String) {
         guard userLoggedInAndSynced else { return }
+     
         let userDocRef = db.collection("Users").document(self.userID!)
         
         do {
             try userDocRef.setData(from: user)
             userDocRef.updateData([propertyName: newPropertyValue])
-            print("Document successfully updated: Property \(propertyName) value updated to \(newPropertyValue)!")
+            print("Successfully updated \(propertyName) to \(newPropertyValue)!")
         } catch {
-            print("Error updating usernamesForSearch: \(error)")
+            print("Error updating \(propertyName): \(error)")
         }
     }
     
     //Increment a user's numerical data
     func incrementUserData(propertyName: String, incrementValue: Int) {
         guard userLoggedInAndSynced else { return }
-        
         let userDocRef = db.collection("Users").document(self.userID!)
         
         userDocRef.updateData([propertyName: FieldValue.increment(Int64(incrementValue))]) { error in
@@ -237,31 +245,31 @@ class UserViewModel: ObservableObject {
     }
     
     //Create user
-    func createUser(username: String, email: String) {
-        let newUserData: [String: Any] = [
-            "username" : username,
-            "email" : email,
-            "subjects" : [],
-            "numCoins" : 0,
-            "level" : 1,
-            "prestige" : 0,
-            "totalTime" : 0,
-            "usernamesForSearch" : []
-        ]
+    private func createUser(_ user: User) {
+        guard userLoggedIn else { return }
         
         let userDocRef = db.collection("Users").document(self.userID!)
         //let userAnimalDocRef = userDocRef.collection("Animals").document()
         
         //create new user doc and set data
-        userDocRef.setData(newUserData) { error in
-            if let error = error {
-                print("Error writing user doc: \(error)")
-            } else {
-                print("User doc successfully written!")
-            }
+        do {
+            try userDocRef.setData(from: user) //takes username, email, and password
+            /*
+            let newUserData: [String: Any] = [
+                 "subjects" : ["English", "Mathematics", "Social Studies", "Science"],
+                 "numCoins" : 0,
+                 "level" : 1,
+                 "prestige" : 0,
+                 "totalTime" : 0,
+                 "usernamesForSearch" : []
+            ]
+            userDocRef.updateData(newUserData)
+            */
+            userDocRef.updateData(["usernamesForSearch": user.usernamesForSearch])
+            print("User Doc successfully written!")
+        } catch {
+            print("Error creating document: \(error)")
         }
-        
-        
     }
     
 }

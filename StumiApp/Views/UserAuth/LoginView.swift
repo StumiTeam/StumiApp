@@ -88,46 +88,6 @@ struct LoginView: View {
             show: $userViewModel.showBanner
         )
     }
-
-    /*
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                bannerData.detail = error!.localizedDescription
-                print(error!.localizedDescription)
-                
-                if bannerData.detail == "The email address is badly formatted." {
-                    bannerData.title = "Bad Email"
-                }
-                else if bannerData.detail == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                    bannerData.title = "User Not Found"
-                }
-                else if bannerData.detail == "The password is invalid or the user does not have a password." {
-                    bannerData.title = "Invalid Password"
-                    bannerData.detail = "Please re-enter your password."
-                }
-                bannerData.type = .Error
-                
-            } else {
-                
-                //successful login
-                mainUserLoggedIn = true
-                
-                print("Logged In!")
-                bannerData.title = "Success!"
-                bannerData.detail = "Welcome back!"
-                bannerData.type = .Success
-                
-                //switch Firestore user document (something here is causing Stumi to pull increasingly more times of the same data). New instances of class?
-                //everytime the user signs in it creates a new instance of the Firestore class
-                firestoreManager.user = Auth.auth().currentUser
-                firestoreManager.uid = Auth.auth().currentUser?.uid
-                
-            }
-            showBanner = true
-        }
-    }
-     */
 }
 
 

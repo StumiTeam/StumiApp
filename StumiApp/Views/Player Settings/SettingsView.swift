@@ -67,6 +67,7 @@ struct SettingsView: View {
                 //Logout Button
                 Button(action: {
                     userViewModel.logout()
+                    
                 }){
                     Text("Logout")
                 }
