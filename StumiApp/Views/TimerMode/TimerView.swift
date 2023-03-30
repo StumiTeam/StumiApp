@@ -38,10 +38,14 @@ struct TimerView: View {
     @State var showTimer = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    //USED TO PICK SUBJECTS
+    //USED TO RECORD STUDY SESSION
+    let dateFormatter = DateFormatter()
+    @State var timeNow = Date()
+    @State var dateTime : String = ""
     
-    //@State var subjects: [String]
-    @State var selectedSubject : String = "" //= userViewModel.mainPlayer.subjects[0]
+    //USED TO PICK SUBJECTS
+    @State var subjects : [String] = []
+    @State var selectedSubject : String = ""
     
     //USED TO DETERMINE REWARDS
     @State var baseGainedCoins = 0 //base number of coins user gained from their session
@@ -62,14 +66,15 @@ struct TimerView: View {
             .dropFirst()
             .eraseToAnyPublisher()
         self.detector = detector
+        dateFormatter.dateFormat = "MM-dd-yyyy, hh:mm:ss a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
     }
     
     var body: some View {
         
         //Button
         if showTimer == false{
-            //subjects = userViewModel.mainPlayer.subjects
-            //selectedSubject = userViewModel.mainPlayer.subjects[0]
             
 //            Color.black
 //                .ignoresSafeArea()
@@ -77,14 +82,12 @@ struct TimerView: View {
             
             VStack(alignment: .center){
                 
-                //Text(firestoreManager.auth.numCoins)
-                
                 Spacer()
 
                 Text("Selected Subject:")
                 Menu(selectedSubject) {
                     //Loop through subject list
-                    ForEach(0..<userViewModel.mainPlayer.subjects.count, id: \.self ) { number in
+                    ForEach(0..<subjects.count, id: \.self ) { number in
                         
                         Button{selectedSubject = "\(userViewModel.mainPlayer.subjects[number])"
                         } label: {
@@ -99,6 +102,7 @@ struct TimerView: View {
                 .foregroundColor(.white)
                 .background(.red)
                 .onAppear{
+                    subjects = userViewModel.mainPlayer.subjects
                     selectedSubject = userViewModel.mainPlayer.subjects[0]
                 }
                 
@@ -276,6 +280,13 @@ struct TimerView: View {
                 
                 Button("Start", action: {
                     //selectedSubject = selectedSubject
+                    timeNow = Date()
+                    dateTime = dateFormatter.string(from: timeNow)
+                    print(dateTime)
+                    
+                    //startTime = dateFormatter.string(from: timeNow)
+                    
+                    
                     hoursRemaining = Hours
                     minutesRemaining = Minutes
                     secondsRemaining = Seconds
@@ -335,7 +346,7 @@ struct TimerView: View {
                     secondsOngoing += 1
                 }
 
-                //countdown
+                //countdown (CONSIDER WHILE LOOP)
                 if secondsRemaining == 0 {
                     if minutesRemaining == 0 {
                         if hoursRemaining == 0 { //if there is no time left
@@ -350,6 +361,7 @@ struct TimerView: View {
                             showTimer = false
                             
                             //record total time alongside start time and date
+                            userViewModel.updateStudyHistory(dateTime: dateTime, subject: selectedSubject, timeStudied: secondsOngoing)
                             
                             //increment total time in Firestore
                             userViewModel.incrementUserData(
@@ -362,12 +374,8 @@ struct TimerView: View {
                             baseGainedCoins = 0 //reset gainedCoins
                             baseGainedBooks = 0 //reset gainedBooks
                             
-                            //record total time alongside start time and date
-                            //viewModel.updateUserData(userID: firestoreManager.uid!, propertyName: "totalAnimals", newPropertyValue: "sheesh")
-                            
                             //give rewards (coins) on popup screen
                             userViewModel.incrementUserData(
-                                //userID: firestoreManager.uid!,
                                 propertyName: "numCoins",
                                 incrementValue: baseGainedCoins
                             )

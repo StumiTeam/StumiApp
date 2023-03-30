@@ -215,7 +215,7 @@ class UserViewModel: ObservableObject {
         */
     }
     
-    //Update user data
+    //Update user data (Create document if it doesn't exist)
     func updateUserData(propertyName: String, newPropertyValue: String) {
         guard userLoggedInAndSynced else { return }
      
@@ -244,6 +244,29 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    //Record user history
+    func updateStudyHistory(dateTime: String, subject: String, timeStudied: Int) {
+        guard userLoggedInAndSynced else { return }
+        
+        let components = dateTime.components(separatedBy: ", ")
+        let date = components[0]
+        print(date)
+        let timeStart = components[1]
+        
+        let userDocRef = db.collection("Users").document(self.userID!)
+        
+        //Get into today's study doc
+        let userStudyHistoryRef = userDocRef.collection("Study History").document(date)
+        
+        userStudyHistoryRef.setData([ timeStart : [ subject, timeStudied ] ], merge: true) { error in
+            if let error = error {
+                print("Error recording Studying Session: \(error)")
+            } else {
+                print("New Study Session successfully recorded")
+            }
+        }
+    }
+    
     //Create user
     private func createUser(_ user: User) {
         guard userLoggedIn else { return }
@@ -254,17 +277,6 @@ class UserViewModel: ObservableObject {
         //create new user doc and set data
         do {
             try userDocRef.setData(from: user) //takes username, email, and password
-            /*
-            let newUserData: [String: Any] = [
-                 "subjects" : ["English", "Mathematics", "Social Studies", "Science"],
-                 "numCoins" : 0,
-                 "level" : 1,
-                 "prestige" : 0,
-                 "totalTime" : 0,
-                 "usernamesForSearch" : []
-            ]
-            userDocRef.updateData(newUserData)
-            */
             userDocRef.updateData(["usernamesForSearch": user.usernamesForSearch])
             print("User Doc successfully written!")
         } catch {

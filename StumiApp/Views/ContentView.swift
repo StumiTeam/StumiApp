@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    var date = Date()
+    
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
     
@@ -155,6 +157,7 @@ struct ContentView: View {
         .onAppear{
             userViewModel.syncUser()
             print("user: \(userViewModel.userID!)")
+            print("date: \(date)")
         }
         .banner(data: $userViewModel.bannerData, show: $userViewModel.showBanner)
     }

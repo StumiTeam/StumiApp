@@ -18,6 +18,35 @@ class TimerViewModel: ObservableObject {
     init(){
         
     }
+    
+    /*
+    func recordStudyTime(subject: String, ) {
+    }
+    */
+    
+    func calculateCoinsReward(timeStudied: Float, baseCoinRate: Float, rateBoosters: [String] ) -> Float {
+        let coinsReward = timeStudied * baseCoinRate
+        return coinsReward
+    }
+    
+    func calculateBooksReward(timeStudied: Float, baseBookRate: Float, rateBoosters: [String] ) -> Float {
+        
+        //let boosterValue = 1 +
+        
+        /*
+        1. Look through array of current boosts
+          boostName : boostValue, timesActive (0 means inactive)
+          adBoost : 1.0, 1 -> For the next session, adBoost increases rewards by 100%
+        2. Add up all active boost values
+        3. Subtract 1 from all boosters that have timesActive bigger than 0
+        4. Multiply base
+        */
+        
+        //let boostedBookRate = baseBookRate * boosterValue
+        
+        let booksReward = timeStudied * baseBookRate
+        return booksReward
+    }
 }
 
 /*
