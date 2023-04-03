@@ -20,6 +20,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 0
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -33,6 +34,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 1
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -46,6 +48,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 2
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -59,6 +62,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 3
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "person")
@@ -72,6 +76,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 4
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "envelope")
@@ -85,6 +90,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 5
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -100,6 +106,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 6
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "gear")
@@ -118,6 +125,7 @@ struct MenuView: View {
             Button(action: {
                 contentViewModel.showMenu = false;
                 contentViewModel.showPage = 7
+                print("Now changing to page: \(contentViewModel.showPage)")
             }){
                 HStack {
                     Image(systemName: "gear")

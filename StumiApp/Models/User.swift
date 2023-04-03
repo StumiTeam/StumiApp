@@ -10,9 +10,10 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 //User
-struct User: Codable {
+struct User: Identifiable, Codable {
+    
     //ALL DOC FIELDS FROM FIRESTORE SHOULD TO BE HERE
-    @DocumentID var userID: String? //@DocumentID to fetch the identifier from Firestore
+    @DocumentID var id: String? //@DocumentID to fetch the identifier from Firestore
     
     //var variableName: type = initial value
     var username: String = "Username"
@@ -24,11 +25,6 @@ struct User: Codable {
     var totalTime: Int = 0
     var usernamesForSearch: [String] { [self.username.generateStringSequence()].flatMap { $0 }
     }
-    //var animals: Animals?
-    //var friendslist: Friends?
-    //func Subjects() -> [String] {
-    //    return subjects
-    //}
     func getSubjects() -> [String] {
         return subjects
     }

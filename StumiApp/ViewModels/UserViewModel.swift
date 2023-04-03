@@ -17,9 +17,11 @@ class UserViewModel: ObservableObject {
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
     
-    var userID: String? { auth.currentUser?.uid }
+    var id: String? { auth.currentUser?.uid }
     var userLoggedIn: Bool { auth.currentUser != nil } //ensures user is logged in
     var userLoggedInAndSynced: Bool { user != nil && userLoggedIn }
+    
+    @Published var subjects : [String] = []
     
     //For banners
     @Published var showBanner: Bool = false
@@ -121,7 +123,7 @@ class UserViewModel: ObservableObject {
                     
                     //create new user document in "Users" Collection
                     DispatchQueue.main.async {
-                        self?.createUser(User(userID: (self?.userID)!, username: username, email: email))
+                        self?.createUser(User(id: (self?.id), username: username, email: email))
                         self?.syncUser()
                     }
                     
@@ -152,7 +154,7 @@ class UserViewModel: ObservableObject {
     //sync user data
     func syncUser() {
         guard userLoggedIn else { return }
-        let userDocRef = db.collection("Users").document(self.userID!)
+        let userDocRef = db.collection("Users").document(self.id!)
         
         userDocRef.getDocument { [self] (document, error) in
             guard document != nil, error == nil else { return }
@@ -198,7 +200,7 @@ class UserViewModel: ObservableObject {
     func updateUserData(propertyName: String, newPropertyValue: String) {
         guard userLoggedInAndSynced else { return }
      
-        let userDocRef = db.collection("Users").document(self.userID!)
+        let userDocRef = db.collection("Users").document(self.id!)
         
         do {
             try userDocRef.setData(from: user)
@@ -212,7 +214,7 @@ class UserViewModel: ObservableObject {
     //Increment a user's numerical data
     func incrementUserData(propertyName: String, incrementValue: Int) {
         guard userLoggedInAndSynced else { return }
-        let userDocRef = db.collection("Users").document(self.userID!)
+        let userDocRef = db.collection("Users").document(self.id!)
         //print(incrementValue)
         
         userDocRef.updateData([propertyName: FieldValue.increment(Int64(incrementValue))]) { error in
@@ -233,7 +235,7 @@ class UserViewModel: ObservableObject {
         print(date)
         let timeStart = components[1]
         
-        let userDocRef = db.collection("Users").document(self.userID!)
+        let userDocRef = db.collection("Users").document(self.id!)
         
         //Get into today's study doc
         let userStudyHistoryRef = userDocRef.collection("Study History").document(date)
@@ -251,7 +253,7 @@ class UserViewModel: ObservableObject {
     private func createUser(_ user: User) {
         guard userLoggedIn else { return }
         
-        let userDocRef = db.collection("Users").document(self.userID!)
+        let userDocRef = db.collection("Users").document(self.id!)
         //let userAnimalDocRef = userDocRef.collection("Animals").document()
         
         //create new user doc and set data

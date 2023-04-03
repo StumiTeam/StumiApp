@@ -11,7 +11,7 @@ import SwiftUI
 class ContentViewModel: ObservableObject {
     @Published var showButton = true
     @Published var showMenu: Bool = false
-    @Published var showPage : Int = 0
+    @Published var showPage : Int = 1
     /*
      0 for TimerView
      1 for AchievementView

@@ -32,7 +32,7 @@ struct ContentView: View {
     @AppStorage("Music") var Music = true
     @AppStorage("Sound Effects") var soundEffects = true
     
-    //body
+    //body - The environment is passed down here
     var body: some View {
         if userViewModel.userLoggedIn {
             //AndSynced {
@@ -136,7 +136,7 @@ struct ContentView: View {
         }
         .onAppear{
             userViewModel.syncUser()
-            print("user: \(userViewModel.userID!)")
+            print("user: \(userViewModel.id!)")
             print("date: \(date)")
             
             if Music {

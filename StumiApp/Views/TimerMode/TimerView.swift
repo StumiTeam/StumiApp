@@ -15,7 +15,7 @@ struct TimerView: View {
     @EnvironmentObject var contentViewModel: ContentViewModel
     
     //New instance of TimerViewModel
-        @StateObject var timerViewModel = TimerViewModel()
+    @StateObject var timerViewModel = TimerViewModel()
     
     //Move to TimerView - ViewModel
      
@@ -70,6 +70,9 @@ struct TimerView: View {
         dateFormatter.dateFormat = "MM-dd-yyyy, hh:mm:ss a"
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
+        //subjects = userViewModel.mainPlayer.subjects
+        //selectedSubject = subjects[0]
+        //print(userViewModel.mainPlayer)
     }
     
     var body: some View {
@@ -77,32 +80,13 @@ struct TimerView: View {
         //Button
         if showTimer == false{
             
-//            Color.black
-//                .ignoresSafeArea()
-
             VStack(alignment: .center){
                 
                 Spacer()
-
-                Text("Selected Subject:")
-                Menu(selectedSubject) {
-                    //Loop through subject list
-                    ForEach(0..<subjects.count, id: \.self ) { number in
-                        
-                        Button{selectedSubject = "\(userViewModel.mainPlayer.subjects[number])"
-                        } label: {
-                            Text("\(userViewModel.mainPlayer.subjects[number])")
-                        }
-                    }
-                }
-                .font(.headline)
-                .padding(10)
-                .foregroundColor(.white)
-                .background(.red)
-                .onAppear{
-                    subjects = userViewModel.mainPlayer.subjects
-                    selectedSubject = userViewModel.mainPlayer.subjects[0]
-                }
+                
+                subjectSelectionView(subjects: $userViewModel.mainPlayer.subjects, selectedSubject: userViewModel.mainPlayer.subjects[0])
+                
+                //this needs to set before the Menu appears
                 
                 Spacer()
                 
@@ -255,7 +239,7 @@ struct TimerView: View {
                 })
                     .font(.title)
                     .frame(width: 100.0, height: 100.0)
-                    .foregroundColor(Color(red: 0, green: 128, blue: 0))
+                    .foregroundColor(Color(red: 0/255, green: 128/255, blue: 0/255))
                     .background(.green)
                     .overlay(Circle().stroke(Color.black, lineWidth: 1))
                     .clipShape(Circle())
@@ -267,7 +251,6 @@ struct TimerView: View {
                 //keep track of what subject the user is studying
                 
             }
-            
         }
         if showTimer {
             
@@ -299,9 +282,8 @@ struct TimerView: View {
             }
             
             .onReceive(timer) {
-                
+
                 time in
-                
 
                 //countdown
                 if secondsRemaining == 0 {
@@ -348,12 +330,10 @@ struct TimerView: View {
                             minutesRemaining = 59
                             secondsRemaining = 59
                         }
-                        
                     } else { //if there are minutes left
                         minutesRemaining -= 1
                         secondsRemaining = 59
                     }
-                    
                 } else { //if there are seconds left
                     secondsRemaining -= 1
                     secondsOngoing += 1
@@ -373,7 +353,8 @@ struct TimerView: View {
                 minutesRemaining = 59
                 secondsRemaining = 59
             }
-             */
+            */
+            
             //after all the while loops are over
         } //end showTimer
     }
@@ -405,7 +386,33 @@ struct TimerNumber: ViewModifier {
     }
 }
 
-
+struct subjectSelectionView: View {
+    //@EnvironmentObject var userViewModel: UserViewModel
+    @Binding var subjects: [String]
+    @State var selectedSubject: String
+    //@Binding var selectedSubject: String
+    
+    var body: some View {
+        Text("Selected Subject:")
+        
+        Menu(selectedSubject) {
+            //Loop through subject list
+            ForEach(0..<subjects.count, id: \.self ) { number in
+                
+                Button{
+                    selectedSubject = "\(subjects[number])"
+                    print(subjects)
+                } label: {
+                    Text("\(subjects[number])")
+                }
+            }
+        }
+        .font(.headline)
+        .padding(10)
+        .foregroundColor(.white)
+        .background(.red)
+    }
+}
 
 struct countdown {
     
