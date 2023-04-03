@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    //View Models
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
         Text("Search Page!")
     }

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct LibraryView: View {
+    
+    //View Models
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
         Text("Library Mode!")
     }

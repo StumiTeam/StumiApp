@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct AchievementsView: View {
+    
+    //View Models
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     @AppStorage("Total Study Time") var totalStudyTime = 0
     @AppStorage("Total Sessions") var totalSessions = 0
     //var user: User

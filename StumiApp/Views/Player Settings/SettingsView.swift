@@ -10,6 +10,7 @@ import Firebase
 
 struct SettingsView: View {
     
+    //View Models
     @EnvironmentObject var userViewModel: UserViewModel
     
     @AppStorage("Music") private var Music : Bool = true

@@ -63,9 +63,6 @@ class UserViewModel: ObservableObject {
                 
                 //switch Firestore user document (something here is causing Stumi to pull increasingly more times of the same data). New instances of class?
                 
-                //sync
-                //self?.syncUser()
-                
             }
             self?.showBanner = true
         }
@@ -122,29 +119,11 @@ class UserViewModel: ObservableObject {
                     
                     print("User Registered!")
                     
-                    //create new firebase document in "Users" Collection
-                    //guard let userID = Auth.auth().currentUser?.uid else { return }
-                    
-                    //create user
+                    //create new user document in "Users" Collection
                     DispatchQueue.main.async {
                         self?.createUser(User(userID: (self?.userID)!, username: username, email: email))
                         self?.syncUser()
                     }
-                    /*
-                    //update username
-                    updateUserData(
-                        userID: userID,
-                        propertyName: "username",
-                        newPropertyValue: username
-                    )
-                    
-                    //update email
-                    updateUserData(
-                        userID: userID,
-                        propertyName: "email",
-                        newPropertyValue: email
-                    )
-                    */
                     
                     //show success banner
                     self?.bannerData.title = "Success!"
@@ -234,6 +213,7 @@ class UserViewModel: ObservableObject {
     func incrementUserData(propertyName: String, incrementValue: Int) {
         guard userLoggedInAndSynced else { return }
         let userDocRef = db.collection("Users").document(self.userID!)
+        //print(incrementValue)
         
         userDocRef.updateData([propertyName: FieldValue.increment(Int64(incrementValue))]) { error in
             if let error = error {
@@ -258,7 +238,7 @@ class UserViewModel: ObservableObject {
         //Get into today's study doc
         let userStudyHistoryRef = userDocRef.collection("Study History").document(date)
         
-        userStudyHistoryRef.setData([ timeStart : [ subject, timeStudied ] ], merge: true) { error in
+        userStudyHistoryRef.setData([ timeStart : [ subject, timeStudied ] as [Any] ], merge: true) { error in
             if let error = error {
                 print("Error recording Studying Session: \(error)")
             } else {

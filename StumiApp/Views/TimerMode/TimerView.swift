@@ -12,9 +12,10 @@ struct TimerView: View {
     
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var contentViewModel: ContentViewModel
     
     //New instance of TimerViewModel
-    @StateObject var timerViewModel = TimerViewModel()
+        @StateObject var timerViewModel = TimerViewModel()
     
     //Move to TimerView - ViewModel
      
@@ -79,7 +80,6 @@ struct TimerView: View {
 //            Color.black
 //                .ignoresSafeArea()
 
-            
             VStack(alignment: .center){
                 
                 Spacer()
@@ -94,8 +94,6 @@ struct TimerView: View {
                             Text("\(userViewModel.mainPlayer.subjects[number])")
                         }
                     }
-                    
-                    
                 }
                 .font(.headline)
                 .padding(10)
@@ -105,7 +103,6 @@ struct TimerView: View {
                     subjects = userViewModel.mainPlayer.subjects
                     selectedSubject = userViewModel.mainPlayer.subjects[0]
                 }
-                
                 
                 Spacer()
                 
@@ -120,21 +117,13 @@ struct TimerView: View {
                                 ForEach(0..<12) { i in
                                     if(i<7){
                                         Text("\(i)")
-                                            .font(.callout)
-                                            .frame(alignment: .leading)
                                             .id(i)
-                                            //every 40.0 new hour
-                                            .padding(.bottom, 13)
-                                            .padding(.horizontal, 5)
+                                            .modifier(TimerNumber())
                                     }
                                     else {
                                         Text("\(i)")
-                                            .font(.callout)
-                                            .frame(alignment: .leading)
                                             .id(i)
-                                            //every 40.0 new hour
-                                            .padding(.bottom, 13)
-                                            .padding(.horizontal, 5)
+                                            .modifier(TimerNumber())
                                             .opacity(0)
                                     }
                                 }
@@ -145,18 +134,14 @@ struct TimerView: View {
                                 .onPreferenceChange(ViewOffsetKey.self) {
                                     detector.send($0)
                                     HoursOffset = $0
-                                    Hours = Int(ScrollViewNumber(Offset: HoursOffset))
-                                    if(Hours>6){ Hours = 6}
-                                    //print("Hours Offset >> \(HoursOffset)")
-                                    //print("Hours \(Hours)")
+                                    Hours = Int(timerViewModel.getScrollViewNumber(Offset: HoursOffset))
+                                    if( Hours > 6 ){ Hours = 6 }
                                 }
                                 .onReceive(publisher, perform: { _ in
                                     withAnimation{
                                         proxy.scrollTo(Hours, anchor: .top)
                                     }
-                                    //print("publish")
                                 })
-                            
                             }
                         }
                             .coordinateSpace(name: "scroll")
@@ -174,21 +159,13 @@ struct TimerView: View {
                                 ForEach(0..<65) { i in
                                     if(i<60){
                                         Text("\(i)")
-                                            .font(.callout)
-                                            .frame(alignment: .leading)
                                             .id(i)
-                                            //every 40.0 new minute
-                                            .padding(.bottom, 13)
-                                            .padding(.horizontal, 5)
+                                            .modifier(TimerNumber())
                                     }
                                     else {
                                         Text("\(i)")
-                                            .font(.callout)
-                                            .frame(alignment: .leading)
                                             .id(i)
-                                            //every 40.0 new minute
-                                            .padding(.bottom, 13)
-                                            .padding(.horizontal, 5)
+                                            .modifier(TimerNumber())
                                             .opacity(0)
                                     }
                                 }
@@ -199,23 +176,21 @@ struct TimerView: View {
                                 .onPreferenceChange(ViewOffsetKey.self) {
                                     detector.send($0)
                                     MinutesOffset = $0
-                                    Minutes = Int(ScrollViewNumber(Offset: MinutesOffset))
+                                    Minutes = Int(timerViewModel.getScrollViewNumber(Offset: MinutesOffset))
                                     if(Minutes>59){ Minutes = 59}
-                                    //print("Hours Offset >> \(HoursOffset)")
-                                    //print("Hours \(Hours)")
                                 }
                                 .onReceive(publisher, perform: { _ in
                                     withAnimation{
                                         proxy.scrollTo(Minutes, anchor: .top)
                                     }
-                                    //print("publish")
                                 })
                             }
                         }
                             .coordinateSpace(name: "scroll")
                             .frame(minHeight: 100, maxHeight: 200)
                             
-                        Text("Minutes").font(.callout)
+                        Text("Minutes")
+                            .font(.callout)
                     }
                     //.foregroundColor(.white)
                     Spacer()
@@ -227,21 +202,13 @@ struct TimerView: View {
                                     ForEach(0..<65) { i in
                                         if(i<60){
                                             Text("\(i)")
-                                                .font(.callout)
-                                                .frame(alignment: .leading)
                                                 .id(i)
-                                                //every 40.0 new second
-                                                .padding(.bottom, 13)
-                                                .padding(.horizontal, 5)
+                                                .modifier(TimerNumber())
                                         }
                                         else {
                                             Text("\(i)")
-                                                .font(.callout)
-                                                .frame(alignment: .leading)
                                                 .id(i)
-                                                //every 40.0 new second
-                                                .padding(.bottom, 13)
-                                                .padding(.horizontal, 5)
+                                                .modifier(TimerNumber())
                                                 .opacity(0)
                                         }
                                 }.background(GeometryReader {
@@ -251,16 +218,13 @@ struct TimerView: View {
                                 .onPreferenceChange(ViewOffsetKey.self) {
                                     detector.send($0)
                                     SecondsOffset = $0
-                                    Seconds = Int(ScrollViewNumber(Offset: SecondsOffset))
+                                    Seconds = Int(timerViewModel.getScrollViewNumber(Offset: SecondsOffset))
                                     if(Seconds>59){ Seconds = 59}
-                                    //print("Seconds Offset >> \(SecondsOffset)")
-                                    //print("Seconds: \(Seconds)")
                                 }
                                 .onReceive(publisher, perform: { _ in
                                     withAnimation{
                                         proxy.scrollTo(Seconds, anchor: .top)
                                     }
-                                    //print("publish")
                                 })
                             }
                         }
@@ -274,22 +238,19 @@ struct TimerView: View {
                 }
                 .frame(minWidth: 0, maxWidth: 360, minHeight: 0, maxHeight: 360, alignment: .top)
                 .position(x:200, y:250)
-                //.border(.green)
                 
                 Spacer()
                 
                 Button("Start", action: {
-                    //selectedSubject = selectedSubject
+                    //initialize timer
                     timeNow = Date()
                     dateTime = dateFormatter.string(from: timeNow)
                     print(dateTime)
                     
-                    //startTime = dateFormatter.string(from: timeNow)
-                    
-                    
                     hoursRemaining = Hours
                     minutesRemaining = Minutes
                     secondsRemaining = Seconds
+                    contentViewModel.showButtonToggle()
                     showTimer = true
                 })
                     .font(.title)
@@ -308,24 +269,23 @@ struct TimerView: View {
             }
             
         }
-        
-        //if showTimer == true
         if showTimer {
             
             VStack {
                 Text("Seconds Ongoing: \(secondsOngoing)")
                 
-                //simplify using case
-                
                 HStack{
+                    
                     Text("Time Left: 0\(hoursRemaining) : ")
                     
-                    if(minutesRemaining < 10) { Text("0\(minutesRemaining) : ")
+                    if(minutesRemaining < 10) {
+                        Text("0\(minutesRemaining) : ")
                     } else {
-                        Text("\(minutesRemaining)")
+                        Text("\(minutesRemaining) : ")
                     }
                     
-                    if(secondsRemaining < 10) { Text("0\(secondsRemaining)")
+                    if(secondsRemaining < 10) {
+                        Text("0\(secondsRemaining)")
                     } else {
                         Text("\(secondsRemaining)")
                     }
@@ -337,42 +297,32 @@ struct TimerView: View {
                 .background(.black.opacity(0.75))
                 .clipShape(Capsule())
             }
+            
             .onReceive(timer) {
                 
                 time in
                 
-                //hidden stopwatch
-                if(hoursRemaining != 0 || minutesRemaining != 0 || secondsRemaining != 0){
-                    secondsOngoing += 1
-                }
 
-                //countdown (CONSIDER WHILE LOOP)
+                //countdown
                 if secondsRemaining == 0 {
                     if minutesRemaining == 0 {
                         if hoursRemaining == 0 { //if there is no time left
                             
                             print("DONE! Time: \(secondsOngoing) seconds in \(selectedSubject)")
                             
-                            //calculate the rewards
-                            baseGainedCoins = secondsOngoing/60
-                            baseGainedBooks = secondsOngoing/60
-                            
-                            //stop displaying timer
-                            showTimer = false
-                            
-                            //record total time alongside start time and date
+                            //record studyDate: start time with subject and study duration
                             userViewModel.updateStudyHistory(dateTime: dateTime, subject: selectedSubject, timeStudied: secondsOngoing)
                             
-                            //increment total time in Firestore
+                            //increment total time through userViewModel
                             userViewModel.incrementUserData(
-                                //userID: firestoreManager.uid!,
                                 propertyName: "totalTime",
                                 incrementValue: secondsOngoing
                             )
                             
-                            secondsOngoing = 0 //reset stopwatch for next run
-                            baseGainedCoins = 0 //reset gainedCoins
-                            baseGainedBooks = 0 //reset gainedBooks
+                            //calculate base rewards
+                            baseGainedCoins = secondsOngoing/60
+                            baseGainedBooks = secondsOngoing/60
+                            
                             
                             //give rewards (coins) on popup screen
                             userViewModel.incrementUserData(
@@ -383,6 +333,15 @@ struct TimerView: View {
                             //sync after updating all items in Firestore
                             userViewModel.syncUser()
                             //userViewModel.createAnimal(animalName: "pp")
+                            
+                            //reset variables
+                            secondsOngoing = 0 //reset stopwatch for next run
+                            baseGainedCoins = 0 //reset gainedCoins
+                            baseGainedBooks = 0 //reset gainedBooks
+                            
+                            //stop displaying timer
+                            showTimer = false
+                            contentViewModel.showButton = true
                             
                         } else { //if there are hours left
                             hoursRemaining -= 1
@@ -395,10 +354,27 @@ struct TimerView: View {
                         secondsRemaining = 59
                     }
                     
-                } else{ //if there are seconds left
+                } else { //if there are seconds left
                     secondsRemaining -= 1
+                    secondsOngoing += 1
                 }
             }
+            
+            /*
+            while hoursRemaining > 0 {
+                while minutesRemaining > 0 {
+                    while secondsRemaining > 0 {
+                        secondsRemaining -= 1
+                    }
+                    minutesRemaining -= 1
+                    secondsRemaining = 59
+                }
+                hoursRemaining -= 1
+                minutesRemaining = 59
+                secondsRemaining = 59
+            }
+             */
+            //after all the while loops are over
         } //end showTimer
     }
 }
@@ -418,8 +394,26 @@ func ScrollViewNumber(Offset: CGFloat) -> CGFloat {
     return count
 }
 
+struct TimerNumber: ViewModifier {
+    func body(content: Content) ->  some View {
+        content
+            .font(.callout)
+            .frame(alignment: .leading)
+            //every 40.0 new number
+            .padding(.bottom, 13)
+            .padding(.horizontal, 5)
+    }
+}
+
+
+
+struct countdown {
+    
+}
+
 struct TimerView_Previews: PreviewProvider {
   static var previews: some View {
     TimerView()
+          .environmentObject(UserViewModel())
   }
 }

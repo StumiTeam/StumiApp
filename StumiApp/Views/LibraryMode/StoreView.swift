@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct StoreView: View {
+    
+    //View Models
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
         Text("Store Page!")
     }

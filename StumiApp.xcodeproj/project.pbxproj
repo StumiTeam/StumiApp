@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4213C56B29D4C32400B5296E /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */; };
+		4213C56D29D74CE500B5296E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213C56C29D74CE500B5296E /* ContentViewModel.swift */; };
 		42375BC528AD1D92005DA686 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC428AD1D92005DA686 /* TimerView.swift */; };
 		42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC628AD1D9A005DA686 /* AchievementsView.swift */; };
 		42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC828AD1DA2005DA686 /* FriendsView.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
+		4213C56C29D74CE500B5296E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		42375BC428AD1D92005DA686 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		42375BC628AD1D9A005DA686 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		42375BC828AD1DA2005DA686 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				4261459729C35D250067CC5D /* UserViewModel.swift */,
+				4213C56C29D74CE500B5296E /* ContentViewModel.swift */,
 				4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */,
 				4261459429C340FB0067CC5D /* TimerViewModel.swift */,
 			);
@@ -448,6 +451,7 @@
 				42CCE0B728BC01B400A9A7CA /* MenuView.swift in Sources */,
 				42B7A37F298F5DE4002A81A6 /* LoginView.swift in Sources */,
 				42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */,
+				4213C56D29D74CE500B5296E /* ContentViewModel.swift in Sources */,
 				4261455829C0F4A80067CC5D /* Animal.swift in Sources */,
 				42B7A38729904FA1002A81A6 /* BannerModifier.swift in Sources */,
 				425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */,

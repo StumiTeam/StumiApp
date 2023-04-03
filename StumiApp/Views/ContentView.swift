@@ -14,10 +14,9 @@ struct ContentView: View {
     
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
+    @StateObject var contentViewModel = ContentViewModel()
     
-    //Menu
-    @State var showMenu : Bool = false
-    @State var showPage : Int = 0
+    //var views = [TimerView(), AchievementsView(), FriendsView(), LibraryView(), SearchView(), StoreView(), ProfileView(), SettingsView()] as [Any]
     /*
      0 for TimerView
      1 for AchievementView
@@ -32,10 +31,6 @@ struct ContentView: View {
     //Music Settings
     @AppStorage("Music") var Music = true
     @AppStorage("Sound Effects") var soundEffects = true
-    
-    //Banner Settings
-    //@State public var showBanner: Bool = false
-    //@State public var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "", detail: "", type: .Warning)
     
     //body
     var body: some View {
@@ -56,97 +51,82 @@ struct ContentView: View {
             .onEnded {
                 if $0.translation.width < -100 {
                     withAnimation {
-                        self.showMenu = false
+                        contentViewModel.showMenu = false
                     }
                 }
             }
         
         return NavigationView {
             GeometryReader { geometry in
-                ZStack {
-                    
-                    //Music
-                    if Music {
-                        ZStack{}
-                        .onAppear{
-                            MusicPlayer.shared.startBackgroundMusic()
-                        }
-                    }
                     
                     //Views
-
-                    //TimerView
-                    if showPage == 0 {
-                        TimerView().environmentObject(userViewModel)
+                    switch contentViewModel.showPage {
+                        
+                    case 0: //TimerView
+                        TimerView()
+                            .environmentObject(userViewModel)
+                            .environmentObject(contentViewModel)
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                    }
-                    
-                    //AchievementsView
-                    if showPage == 1 {
+                        
+                    case 1: //AchievementsView
                         AchievementsView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                    }
-                    
-                    //FriendsView
-                    if showPage == 2 {
+                        
+                    case 2: //FriendsView
                         FriendsView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                    }
-                    
-                    //LibraryView
-                    if showPage == 3 {
+                        
+                    case 3: //LibraryView
                         LibraryView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                    }
-                    
-                    //SearchView
-                    if showPage == 4 {
+                        
+                    case 4: //SearchView
                         SearchView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                    }
-                    
-                    //StoreView
-                    if showPage == 5 {
+                        
+                    case 5: //StoreView
                         StoreView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                    }
-                    
-                    //ProfileView
-                    if showPage == 6 {
+                        
+                    case 6: //ProfileView
                         ProfileView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
-                    }
-                    
-                    //SettingsView
-                    if showPage == 7 {
+                        
+                    case 7: //SettingsView
                         SettingsView()
                             .frame(width: geometry.size.width, height: geometry.size.height)
+                        
+                    default:
+                        TimerView()
+                            .environmentObject(userViewModel)
+                            .environmentObject(contentViewModel)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+
                     }
-                    
                     //Hamburger Menu
                     HStack{
-                        if showMenu {
-                            
-                            MenuView(
-                                showHamburgerMenu: $showMenu,
-                                currentPage: $showPage
+                        if contentViewModel.showMenu {
+                            MenuView()
+                            .environmentObject(contentViewModel)
+                            .frame(
+                                width: geometry.size.width/2,
+                                alignment: .leading
                             )
-                                .frame(width: geometry.size.width/2, alignment: .leading)
-                                .transition(.move(edge: .leading))
-                                .gesture(drag)
-                                .opacity(0.9)
+                            .transition(.move(edge: .leading))
+                            .gesture(drag)
+                            .opacity(0.9)
+                            
                             Spacer()
                         }
                     }
-
-                } //end ZStack
                 
             } //end GeometryReader
-                .navigationBarItems(
+            .navigationBarItems(
                     leading:
+                        
                         Button(action: {
                             withAnimation {
-                                self.showMenu.toggle()
+                                contentViewModel.showMenu.toggle()
                             }
                         }) {
                             Image(systemName: "line.horizontal.3")
@@ -158,6 +138,10 @@ struct ContentView: View {
             userViewModel.syncUser()
             print("user: \(userViewModel.userID!)")
             print("date: \(date)")
+            
+            if Music {
+                MusicPlayer.shared.startBackgroundMusic()
+            }
         }
         .banner(data: $userViewModel.bannerData, show: $userViewModel.showBanner)
     }

@@ -12,8 +12,8 @@ import FirebaseFirestoreSwift
 
 class TimerViewModel: ObservableObject {
     //@EnvironmentObject var user: UserViewModel
-    @Published var availableSubjects: [String] = []
-    @Published var selectedSubject : String = ""
+    //@Published var availableSubjects: [String] = []
+    //@Published var selectedSubject : String = ""
     
     init(){
         
@@ -23,6 +23,13 @@ class TimerViewModel: ObservableObject {
     func recordStudyTime(subject: String, ) {
     }
     */
+    
+    func getScrollViewNumber(Offset: CGFloat) -> CGFloat {
+        var count : CGFloat
+        count = round(Offset/40)
+        
+        return count
+    }
     
     func calculateCoinsReward(timeStudied: Float, baseCoinRate: Float, rateBoosters: [String] ) -> Float {
         let coinsReward = timeStudied * baseCoinRate

@@ -21,10 +21,10 @@ struct StumiApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(userViewModel)
-            /*
-            TimerView()
-                .environmentObject(userViewModel)
-            */
+            
+            //TimerView()
+                //.environmentObject(userViewModel)
+            
         }
     }
 }
