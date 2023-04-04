@@ -11,12 +11,11 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class TimerViewModel: ObservableObject {
-    //@EnvironmentObject var user: UserViewModel
-    //@Published var subjects: [String] = []
-    //@Published var selectedSubject : String = "TimerViewModel"
+    
+    @Published var selectedSubject: String
     
     init(){
-        
+        selectedSubject = ""
     }
     
     /*

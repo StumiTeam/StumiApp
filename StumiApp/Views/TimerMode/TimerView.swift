@@ -67,15 +67,14 @@ struct TimerView: View {
             .dropFirst()
             .eraseToAnyPublisher()
         self.detector = detector
-        dateFormatter.dateFormat = "MM-dd-yyyy, hh:mm:ss a"
+        dateFormatter.dateFormat = "MM-dd-yyyy, a hh:mm:ss"
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
-        //subjects = userViewModel.mainPlayer.subjects
-        //selectedSubject = subjects[0]
-        //print(userViewModel.mainPlayer)
     }
     
     var body: some View {
+        
+        
         
         //Button
         if showTimer == false{
@@ -85,8 +84,7 @@ struct TimerView: View {
                 Spacer()
                 
                 subjectSelectionView(subjects: $userViewModel.mainPlayer.subjects, selectedSubject: userViewModel.mainPlayer.subjects[0])
-                
-                //this needs to set before the Menu appears
+                    .environmentObject(timerViewModel)
                 
                 Spacer()
                 
@@ -231,6 +229,7 @@ struct TimerView: View {
                     dateTime = dateFormatter.string(from: timeNow)
                     print(dateTime)
                     
+                    selectedSubject = timerViewModel.selectedSubject
                     hoursRemaining = Hours
                     minutesRemaining = Minutes
                     secondsRemaining = Seconds
@@ -290,7 +289,7 @@ struct TimerView: View {
                     if minutesRemaining == 0 {
                         if hoursRemaining == 0 { //if there is no time left
                             
-                            print("DONE! Time: \(secondsOngoing) seconds in \(selectedSubject)")
+                            print("New Study Session Recorded: \(secondsOngoing) seconds in \(selectedSubject)")
                             
                             //record studyDate: start time with subject and study duration
                             userViewModel.updateStudyHistory(dateTime: dateTime, subject: selectedSubject, timeStudied: secondsOngoing)
@@ -387,10 +386,9 @@ struct TimerNumber: ViewModifier {
 }
 
 struct subjectSelectionView: View {
-    //@EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var timerViewModel: TimerViewModel
     @Binding var subjects: [String]
     @State var selectedSubject: String
-    //@Binding var selectedSubject: String
     
     var body: some View {
         Text("Selected Subject:")
@@ -401,6 +399,7 @@ struct subjectSelectionView: View {
                 
                 Button{
                     selectedSubject = "\(subjects[number])"
+                    timerViewModel.selectedSubject = selectedSubject
                     print(subjects)
                 } label: {
                     Text("\(subjects[number])")
@@ -411,6 +410,7 @@ struct subjectSelectionView: View {
         .padding(10)
         .foregroundColor(.white)
         .background(.red)
+        .onAppear{timerViewModel.selectedSubject = selectedSubject}
     }
 }
 
