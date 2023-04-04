@@ -194,7 +194,7 @@ class UserViewModel: ObservableObject {
             print("User FETCHED LESGO")
         }
         */
-    }
+    } //end syncUser
     
     //Update user data (Create document if it doesn't exist)
     func updateUserData(propertyName: String, newPropertyValue: String) {
@@ -209,7 +209,7 @@ class UserViewModel: ObservableObject {
         } catch {
             print("Error updating \(propertyName): \(error)")
         }
-    }
+    } //end updateUserData
     
     //Increment a user's numerical data
     func incrementUserData(propertyName: String, incrementValue: Int) {
@@ -224,7 +224,7 @@ class UserViewModel: ObservableObject {
                 print("\(propertyName) successfully incremented by \(incrementValue)!")
             }
         }
-    }
+    } //end incrementUserData
     
     //Record user history
     func updateStudyHistory(dateTime: String, subject: String, timeStudied: Int) {

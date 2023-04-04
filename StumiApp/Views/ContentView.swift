@@ -122,17 +122,24 @@ struct ContentView: View {
                 
             } //end GeometryReader
             .navigationBarItems(
-                    leading:
-                        
-                        Button(action: {
-                            withAnimation {
-                                contentViewModel.showMenu.toggle()
-                            }
-                        }) {
-                            Image(systemName: "line.horizontal.3")
-                                .imageScale(.large)
+                leading:
+                    
+                    Button(action: {
+                        withAnimation {
+                            contentViewModel.showMenu.toggle()
                         }
-                )
+                    }) {
+                        Image(systemName: "line.horizontal.3")
+                            .imageScale(.large)
+                    },
+                
+                trailing:
+                    Button(action: {
+                        //redirect to store page
+                    }) {
+                        Text("Coins: \(userViewModel.mainPlayer.numCoins)")
+                    }
+            )
         }
         .onAppear{
             userViewModel.syncUser()

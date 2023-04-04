@@ -227,7 +227,7 @@ struct TimerView: View {
                     //initialize timer
                     timeNow = Date()
                     dateTime = dateFormatter.string(from: timeNow)
-                    print(dateTime)
+                    //print(dateTime)
                     
                     selectedSubject = timerViewModel.selectedSubject
                     hoursRemaining = Hours
@@ -398,9 +398,9 @@ struct subjectSelectionView: View {
             ForEach(0..<subjects.count, id: \.self ) { number in
                 
                 Button{
-                    selectedSubject = "\(subjects[number])"
+                    selectedSubject = subjects[number]
                     timerViewModel.selectedSubject = selectedSubject
-                    print(subjects)
+                    print("Subjects:\(subjects)")
                 } label: {
                     Text("\(subjects[number])")
                 }
