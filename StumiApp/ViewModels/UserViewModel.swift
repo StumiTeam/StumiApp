@@ -123,7 +123,8 @@ class UserViewModel: ObservableObject {
                     
                     //create new user document in "Users" Collection
                     DispatchQueue.main.async {
-                        self?.createUser(User(id: (self?.id), username: username, email: email))
+                        self?.createUser(
+                            User(id: (self?.id), username: username, email: email))
                         self?.syncUser()
                     }
                     
@@ -142,7 +143,6 @@ class UserViewModel: ObservableObject {
         do {
             try auth.signOut()
             self.user = nil
-            //mainUserLoggedIn = false;
             print("User Logged Out!")
         } catch let signOutError as NSError {
           print("Error signing out: %@", signOutError)

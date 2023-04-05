@@ -121,26 +121,30 @@ struct ContentView: View {
                     }
                 
             } //end GeometryReader
-            .navigationBarItems(
-                leading:
-                    
-                    Button(action: {
-                        withAnimation {
-                            contentViewModel.showMenu.toggle()
-                        }
-                    }) {
-                        Image(systemName: "line.horizontal.3")
-                            .imageScale(.large)
-                    },
-                
-                trailing:
-                    Button(action: {
-                        //redirect to store page
-                    }) {
-                        Text("Coins: \(userViewModel.mainPlayer.numCoins)")
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading){
+                    if contentViewModel.showButton {
+                        Button(action: {
+                            withAnimation {
+                                contentViewModel.showMenu.toggle()
+                            }
+                        }, label: {
+                            Image(systemName: "line.horizontal.3")
+                                .imageScale(.large)
+                        })
                     }
-            )
-        }
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    if contentViewModel.showButton {
+                        Button(action: {
+                            //redirect to store page
+                        }, label: {
+                            Text("Coins: \(userViewModel.mainPlayer.numCoins)")
+                        })
+                    }
+                }
+            }//end toolbar
+        }//end NavigationView
         .onAppear{
             userViewModel.syncUser()
             print("user: \(userViewModel.id!)")
@@ -155,7 +159,6 @@ struct ContentView: View {
 }
 
 //pull function
-
 extension View {
     func placeholder<Content: View>(
         when shouldShow: Bool,
