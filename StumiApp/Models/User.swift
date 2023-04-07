@@ -23,6 +23,7 @@ struct User: Identifiable, Codable {
     var numCoins: Int = 0
     var prestige: Int = 0
     var totalTime: Int = 0
+    var gameVersion: String = "v0"
     var usernamesForSearch: [String] { [self.username.generateStringSequence()].flatMap { $0 }
     }
     func getSubjects() -> [String] {

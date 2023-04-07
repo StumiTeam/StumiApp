@@ -16,18 +16,6 @@ struct ContentView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @StateObject var contentViewModel = ContentViewModel()
     
-    //var views = [TimerView(), AchievementsView(), FriendsView(), LibraryView(), SearchView(), StoreView(), ProfileView(), SettingsView()] as [Any]
-    /*
-     0 for TimerView
-     1 for AchievementView
-     2 for FriendsView
-     3 for LibraryView
-     4 for SearchView
-     5 for StoreView
-     6 for ProfileView
-     7 for SettingsView
-    */
-    
     //Music Settings
     @AppStorage("Music") var Music = true
     @AppStorage("Sound Effects") var soundEffects = true
@@ -35,9 +23,12 @@ struct ContentView: View {
     //body - The environment is passed down here
     var body: some View {
         if userViewModel.userLoggedIn {
-            //AndSynced {
-            /* Don't need the sync part bc then it requires us to login every time*/
-            content
+            if userViewModel.userLoggedInAndSynced {
+                content
+            } else {
+                TitleView()
+                    //.environmentObject(contentViewModel)
+            }
         } else {
             LoginView()
         }
@@ -94,7 +85,18 @@ struct ContentView: View {
                         
                     case 7: //SettingsView
                         SettingsView()
+                            .environmentObject(userViewModel)
+                            .environmentObject(contentViewModel)
                             .frame(width: geometry.size.width, height: geometry.size.height)
+                        
+                        
+                    /*
+                    case 8: //TitleView
+                        TitleView()
+                            .environmentObject(userViewModel)
+                            .environmentObject(contentViewModel)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    */
                         
                     default:
                         TimerView()
@@ -134,19 +136,35 @@ struct ContentView: View {
                         })
                     }
                 }
+                
                 ToolbarItem(placement: .navigationBarTrailing){
                     if contentViewModel.showButton {
                         Button(action: {
                             //redirect to store page
                         }, label: {
-                            Text("Coins: \(userViewModel.mainPlayer.numCoins)")
+                            ZStack{
+                                Text("\(userViewModel.mainPlayer.numCoins)")
+                                    .frame(width: 80, height: 30, alignment: .trailing)
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, 10)
+                                    .background(.black)
+                                    .clipShape(Capsule())
+                                
+                                Image("StumiCoin")
+                                    .resizable()
+                                    .frame(width: 40, height:40)
+                                    .aspectRatio(CGSize(width:1, height:1), contentMode: .fit)
+                                    .padding(.trailing, 70)
+                            }//end ZStack
                         })
+                        .frame(width: 80, height: 40)
+                        .padding(.horizontal, 10)
                     }
                 }
             }//end toolbar
         }//end NavigationView
         .onAppear{
-            userViewModel.syncUser()
+            //userViewModel.syncUser()
             print("user: \(userViewModel.id!)")
             print("date: \(date)")
             
@@ -156,6 +174,7 @@ struct ContentView: View {
         }
         .banner(data: $userViewModel.bannerData, show: $userViewModel.showBanner)
     }
+    
 }
 
 //pull function

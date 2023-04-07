@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
-    @Published var showButton = true
+    @Published var showButton: Bool = true
     @Published var showMenu: Bool = false
-    @Published var showPage : Int = 1
+    @Published var showPage : Int = 0
     /*
      0 for TimerView
      1 for AchievementView

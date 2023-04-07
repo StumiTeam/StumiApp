@@ -12,6 +12,7 @@ struct SettingsView: View {
     
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var contentViewModel: ContentViewModel
     
     @AppStorage("Music") private var Music : Bool = true
     @AppStorage("Library Music") private var libraryMusic : Bool = true
@@ -68,7 +69,7 @@ struct SettingsView: View {
                 //Logout Button
                 Button(action: {
                     userViewModel.logout()
-                    
+                    contentViewModel.showPage = 0
                 }){
                     Text("Logout")
                 }

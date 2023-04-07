@@ -11,7 +11,7 @@ import SwiftUI
 
 class mainPlayer: Codable {
     //ALL DOC FIELDS FROM FIRESTORE SHOULD TO BE HERE
-    @DocumentID var userID: String? //@DocumentID to fetch the identifier from Firestore
+    @DocumentID var id: String? //@DocumentID to fetch the identifier from Firestore
     
     //var variableName: type = initial value
     var username: String
@@ -21,6 +21,7 @@ class mainPlayer: Codable {
     var numCoins: Int
     var prestige: Int
     var totalTime: Int
+    var gameVersion: String
     var usernamesForSearch: [String] { [self.username.generateStringSequence()].flatMap { $0 }
     }
 }

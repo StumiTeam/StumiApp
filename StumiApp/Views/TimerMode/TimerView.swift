@@ -233,7 +233,7 @@ struct TimerView: View {
                     hoursRemaining = Hours
                     minutesRemaining = Minutes
                     secondsRemaining = Seconds
-                    contentViewModel.showButtonToggle()
+                    contentViewModel.showButton = false
                     showTimer = true
                 })
                     .font(.title)

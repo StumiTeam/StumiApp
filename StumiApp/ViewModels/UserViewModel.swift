@@ -55,9 +55,9 @@ class UserViewModel: ObservableObject {
                 print("Logged In!")
                 
                 //fetch user
-                DispatchQueue.main.async {
-                    self?.syncUser()
-                }
+                //DispatchQueue.main.async {
+                //    self?.syncUser()
+                //}
                 
                 self?.bannerData.title = "Success!"
                 self?.bannerData.detail = "Welcome back!"
@@ -121,7 +121,7 @@ class UserViewModel: ObservableObject {
                     
                     print("User Registered!")
                     
-                    //create new user document in "Users" Collection
+                    //create new user in firestore
                     DispatchQueue.main.async {
                         self?.createUser(
                             User(id: (self?.id), username: username, email: email))
@@ -266,4 +266,34 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    /*
+    func fetchGameData(){
+        //everytime the document changes we pull from Firestore again
+        //userDocRef.addSnapshotListener { (documentSnapshot, error) in
+            let gameCollectionRef = db.collection("Game Data")
+            
+            guard let document = documentSnapshot else {
+                print("Error fetching User Document: \(error!)")
+                return
+            }
+            
+            //non-optionals like DocumentSnapshot never equal nil
+            //print(document==nil) //document is not nil
+            //guard document != nil, error == nil else { return }
+            do {
+                print("trying to sync user")
+                try print(document.data(as:User.self))
+                try self.user = document.data(as: User.self) //no need to use document! bc DocumentSnapshot is non-optional (i.e. it can't return nil)
+                print("userSynced!")
+                var mainPlayer = self.user!
+                print(mainPlayer.email)
+            } catch { //in case call throws
+                print("Sync error: \(error)")
+            }
+            //print("user: \(self.user)")
+            //print("data: \(dataa)")
+            print("New Game Data Fetched")
+        
+    }
+     */
 }
