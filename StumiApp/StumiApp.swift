@@ -22,9 +22,6 @@ struct StumiApp: App {
             ContentView()
                 .environmentObject(userViewModel)
             
-            //TimerView()
-                //.environmentObject(userViewModel)
-            
         }
     }
 }

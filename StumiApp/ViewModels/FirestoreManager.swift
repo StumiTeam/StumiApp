@@ -20,8 +20,6 @@ class FirestoreManager: ObservableObject {
     @Published var auth: User?
     @Published var user = Auth.auth().currentUser
     @Published var uid = Auth.auth().currentUser?.uid
-    //@Published var animals : [String]
-    //@Published var username : String = ""
     
     @Published var users = [User]()
     @Published var queryResultUsers: [User] = []
