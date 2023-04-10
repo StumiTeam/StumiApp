@@ -26,9 +26,8 @@ struct TitleView: View {
             .onTapGesture {
                 print("TAPPED")
                 userViewModel.syncUser()
+                //userViewModel.checkSyncAppVersion()
                 print("User Synced")
-                //contentViewModel.showButton = true
-                //contentViewModel.showPage = 0
             }
         }
     }

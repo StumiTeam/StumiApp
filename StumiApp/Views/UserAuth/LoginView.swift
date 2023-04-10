@@ -97,7 +97,6 @@ struct LoginView: View {
             }
             .ignoresSafeArea()
         }
-        .navigationViewStyle(.stack)
         .banner(
             data: $userViewModel.bannerData,
             show: $userViewModel.showBanner

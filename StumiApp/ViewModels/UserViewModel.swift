@@ -63,8 +63,6 @@ class UserViewModel: ObservableObject {
                 self?.bannerData.detail = "Welcome back!"
                 self?.bannerData.type = .Success
                 
-                //switch Firestore user document (something here is causing Stumi to pull increasingly more times of the same data). New instances of class?
-                
             }
             self?.showBanner = true
         }
@@ -74,6 +72,8 @@ class UserViewModel: ObservableObject {
     func register(username: String, email: String, password: String, confirmPassword: String) {
         
         //if username is already taken -> ask user to use another username
+        
+        //if no username is provided -> Ask user for username
         if username == "" {
             self.bannerData.title = "No Username"
             self.bannerData.detail = "Please enter your username"
@@ -160,7 +160,6 @@ class UserViewModel: ObservableObject {
             guard document != nil, error == nil else { return }
             do {
                 try self.user = document!.data(as: User.self)
-                //print(self.user!)
                 try mainPlayer = document!.data(as: User.self)
                 print(mainPlayer)
                 
@@ -265,6 +264,37 @@ class UserViewModel: ObservableObject {
             print("Error creating document: \(error)")
         }
     }
+    
+    /*
+    func checkSyncAppVersion() {
+        guard userLoggedIn else { return }
+        let userDocRef = db.collection("Users").document(self.id!)
+        // search firestore for the most updated version
+        let updatedGameDocRef = db.collection("Game Data").order(by: FirebaseFirestore.FieldPath.documentID(), descending: true).limit(to: 1)
+        
+        updatedGameDocRef.getDocuments() { (querySnapshot, error) in
+            guard error == nil else { return }
+            do {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID)")
+                }
+            }
+        }
+        
+        print(updatedGameDocRef)
+        
+        //check to see if they match
+        
+        /*
+        check current game version
+        check most updated game version in firestore
+        if they don't match then offer the user an update
+        update
+         1.
+         */
+        
+    }
+     */
     
     /*
     func fetchGameData(){

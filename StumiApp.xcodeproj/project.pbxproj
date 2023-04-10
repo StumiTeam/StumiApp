@@ -15,6 +15,7 @@
 		42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCA28AD1DA9005DA686 /* ProfileView.swift */; };
 		42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BCE28AD1DC2005DA686 /* SettingsView.swift */; };
 		4245234F29E09C3300211439 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245234E29E09C3300211439 /* TitleView.swift */; };
+		4245235129E1BDFE00211439 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245235029E1BDFE00211439 /* GameViewModel.swift */; };
 		425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EC289B4FC400F7F35A /* StumiApp.swift */; };
 		425262EF289B4FC400F7F35A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425262EE289B4FC400F7F35A /* ContentView.swift */; };
 		425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425262F0289B4FC500F7F35A /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		42375BCA28AD1DA9005DA686 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		42375BCE28AD1DC2005DA686 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4245234E29E09C3300211439 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		4245235029E1BDFE00211439 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		425262E9289B4FC400F7F35A /* StumiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StumiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425262EC289B4FC400F7F35A /* StumiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StumiApp.swift; sourceTree = "<group>"; };
 		425262EE289B4FC400F7F35A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				4261459729C35D250067CC5D /* UserViewModel.swift */,
+				4245235029E1BDFE00211439 /* GameViewModel.swift */,
 				4213C56C29D74CE500B5296E /* ContentViewModel.swift */,
 				4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */,
 				4261459429C340FB0067CC5D /* TimerViewModel.swift */,
@@ -451,6 +454,7 @@
 				42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */,
 				42B7A38C2996571F002A81A6 /* User.swift in Sources */,
 				4261455C29C10EF40067CC5D /* MainPlayer.swift in Sources */,
+				4245235129E1BDFE00211439 /* GameViewModel.swift in Sources */,
 				42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */,
 				42375BC528AD1D92005DA686 /* TimerView.swift in Sources */,
 				42CCE0B928BC06D900A9A7CA /* LibraryView.swift in Sources */,
