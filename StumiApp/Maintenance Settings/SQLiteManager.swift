@@ -49,7 +49,7 @@ class SQLiteManager: ObservableObject {
         }
     }
     
-    func createTable(tableName: String, columns: [(name: String, type: String, unique: Bool)]) {
+    func createTable(tableName: String, columns: [(name: String, type: String)]) {
         
         var createStatement: OpaquePointer?
         
@@ -58,10 +58,11 @@ class SQLiteManager: ObservableObject {
         CREATE TABLE IF NOT EXISTS
         \(tableName)
         (\(columns.map {
-            "\($0.name) \($0.type) \($0.unique ? "UNIQUE" : "") )"
+            "\($0.name) \($0.type)"
         }.joined(separator: ", ")));
         """
         
+        print("Create Query: \(createQuery)")
         guard sqlite3_prepare_v2(db, createQuery, -1, &createStatement, nil) == SQLITE_OK else {
             print("Failed to prepare table creation statement.")
             return
@@ -80,43 +81,67 @@ class SQLiteManager: ObservableObject {
     
     func addEntity(tableName: String, list: [Any]){
         
+        //print("list:\(list)")
+        
+        var colList: String
+        
+        switch tableName {
+            case "animals":
+                colList = "entityName, description, sex, defMaxExp, maxExpInc, s1imgURL, s2imgURL, s3imgURL, s4imgURL"
+            
+            case "achievements":
+                colList = "entityName, description, t1Req, t2Req, t3Req, t1imgURL, t2imgURL, t3imgURL"
+            
+            case "furnitures":
+                colList = "entityName, description, price, libraryLevelReq, userLevelReq, imgURL"
+            
+            case "misc":
+                colList = "entityName, description, imgURL"
+            
+            default:
+                colList = ""
+        }
+        
         let placeholders = list.map { _ in "?"}.joined(separator: ", ")
+
+        
         let addCommand =
             """
-            INSERT INTO \(tableName) VALUES (\(placeholders));
+            INSERT INTO \(tableName) (\(colList)) VALUES (\(placeholders));
             """
         
-        var statement: OpaquePointer?
+        print("Add command: \(addCommand)")
+        var addStatement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, addCommand, -1, &statement, nil) == SQLITE_OK {
+        if sqlite3_prepare_v2(db, addCommand, -1, &addStatement, nil) == SQLITE_OK {
             for (index, value) in list.enumerated() {
                 let colIndex = Int32(index + 1)
                 
                 if let stringValue = value as? String {
-                    sqlite3_bind_text(statement, colIndex, stringValue, -1, nil)
+                    sqlite3_bind_text(addStatement, colIndex, stringValue, -1, nil)
                 } else if let intValue = value as? Int {
-                    sqlite3_bind_int(statement, colIndex, Int32(intValue))
+                    sqlite3_bind_int(addStatement, colIndex, Int32(intValue))
                 } else if let boolValue = value as? Bool {
-                    sqlite3_bind_int(statement, colIndex, boolValue ? 1 : 0 ) //1 for true, 0 for false
+                    sqlite3_bind_int(addStatement, colIndex, boolValue ? 1 : 0 ) //1 for true, 0 for false
                 } else if let dataValue = value as? Data {
-                    sqlite3_bind_blob(statement, colIndex, (dataValue as NSData).bytes, Int32(dataValue.count), nil)
+                    sqlite3_bind_blob(addStatement, colIndex, (dataValue as NSData).bytes, Int32(dataValue.count), nil)
                 }
             }
             
             //Execute the SQL statement
-            if sqlite3_step(statement) != SQLITE_DONE {
+            if sqlite3_step(addStatement) != SQLITE_DONE {
                 let error = String(cString: sqlite3_errmsg(db)!)
                 print("Failed to add \(list[0]) to \(tableName): \(error)")
             } else {
-                print("\(list[0]) added \(tableName)!")
+                print("\(list[0]) added to \(tableName) Table!")
             }
             
             //Finalize statement
-            sqlite3_finalize(statement)
+            sqlite3_finalize(addStatement)
             
         } else {
             
-            let error = String(cString: sqlite3_errmsg(db)!)
+            let error = String(cString: sqlite3_errmsg(addStatement)!)
             print("Failed to add statement: \(error)")
             
         }
@@ -146,38 +171,6 @@ class SQLiteManager: ObservableObject {
         //Finalize statement
         sqlite3_finalize(dropStatement)
         
-    }
-    
-    func updateTable(tableName: String, data: [[Any]]){
-        
-        var placeholders = data[0].map { _ in "?"}.joined(separator: ", ")
-        
-        /*
-        //Find table name and change insert command accordingly
-        switch tableName{
-            case "animals":
-                placeholders = "entityName, description, sex, defaultMaxExp, maxExpInc, s1imgURL, s2imgURL, s3imgURL, s4imgURL"
-            
-            case "achievements":
-                placeholders = "?, ?, ?, ?, ?, ?, ?, ?, ?"
-            //"entityName, description, sex, defMaxExp, maxExpInc, s1imgURL, s2imgURL, s3imgURL, s4imgURL"
-            
-            case "furnitures":
-                placeholders =
-            
-            case "misc":
-                placeholders =
-            
-            default:
-                placeholders =
-        }
-         */
-        
-        //Prepare the SQL statement for inserting the new data
-        let addCommand =
-            """
-            INSERT INTO \(tableName) VALUES (\(placeholders));
-            """
     }
     
     func parseCSVFile(fileName: String) -> [[Any]]? {
@@ -268,16 +261,16 @@ class SQLiteManager: ObservableObject {
 }
 
 let animalsTableColumns = [
-    (name: "id", type: "INTEGER PRIMARY KEY AUTOINCREMENT", unique: true),
-    (name: "entityName", type: "TEXT", unique: true),
-    (name: "description", type: "TEXT", unique: false),
-    (name: "sex", type: "TEXT", unique: false),
-    (name: "defMaxExp", type: "INT", unique: false),
-    (name: "maxExpInc", type: "INT", unique: false),
-    (name: "s1imgURL", type: "TEXT", unique: false),
-    (name: "s2imgURL", type: "TEXT", unique: false),
-    (name: "s3imgURL", type: "TEXT", unique: false),
-    (name: "s4imgURL", type: "TEXT", unique: false),
+    (name: "id", type: "INTEGER PRIMARY KEY AUTOINCREMENT"),
+    (name: "entityName", type: "TEXT"),
+    (name: "description", type: "TEXT"),
+    (name: "sex", type: "TEXT"),
+    (name: "defMaxExp", type: "INT"),
+    (name: "maxExpInc", type: "INT"),
+    (name: "s1imgURL", type: "TEXT"),
+    (name: "s2imgURL", type: "TEXT"),
+    (name: "s3imgURL", type: "TEXT"),
+    (name: "s4imgURL", type: "TEXT"),
 ]
 
 let achievementsTableColumns = [
@@ -290,7 +283,7 @@ let achievementsTableColumns = [
     (name: "t1imgURL", type: "TEXT"),
     (name: "t2imgURL", type: "TEXT"),
     (name: "t3imgURL", type: "TEXT"),
-] as [Any]
+]
 
 let furnituresTableColumns = [
     (name: "id", type: "INTEGER PRIMARY KEY AUTOINCREMENT"),
@@ -300,7 +293,7 @@ let furnituresTableColumns = [
     (name: "libraryLevelReq", type: "INT"),
     (name: "userLevelReq", type: "INT"),
     (name: "imgURL", type: "TEXT")
-] as [Any]
+]
     
 let miscTableColumns = [
     (name: "id", type: "INTEGER PRIMARY KEY AUTOINCREMENT"),

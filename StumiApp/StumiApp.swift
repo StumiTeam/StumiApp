@@ -16,13 +16,19 @@ struct AppSetupForDevelopers {
         //open Database
         sqliteManager.openDatabase()
         
+        //Drop Tables
+        sqliteManager.dropTable(tableName: "animals")
+        sqliteManager.dropTable(tableName: "achievements")
+        sqliteManager.dropTable(tableName: "furnitures")
+        sqliteManager.dropTable(tableName: "misc")
+        
         //Create Tables if needed
         sqliteManager.createTable(tableName: "animals", columns: animalsTableColumns)
         sqliteManager.createTable(tableName: "achievements", columns: achievementsTableColumns)
         sqliteManager.createTable(tableName: "furnitures", columns: furnituresTableColumns)
         sqliteManager.createTable(tableName: "misc", columns: miscTableColumns)
         
-        //See if there are new entities to add
+        //Populate Tables
         sqliteManager.parseCSVFile(fileName: "Stumi SQLite3 Database - misc")
     }
 }
