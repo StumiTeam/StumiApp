@@ -12,128 +12,57 @@ struct MenuView: View {
     //ViewModels
     @EnvironmentObject var contentViewModel: ContentViewModel
      
+    //Variables
+    let pageNames = [
+        ["Timer", "systemName: 'gear'"],                      //0
+        ["Achievements", "systemName: 'gear'"], //1
+        ["Friends", "systemName: 'gear'"],      //2
+        ["Library", "systemName: 'gear'"],      //3
+        ["Search", "systemName: 'gear'"],       //4
+        ["Store", "systemName: 'gear'"],        //5
+        ["Profile", "systemName: 'gear'"],      //6
+        ["Settings", "systemName: 'gear'"]      //7
+    ]
+    
     //body
     var body: some View {
         VStack(alignment: .leading) {
             
-            //Timer Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 0
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "gear")
-                    Text("Timer")
+            //Top Page Icons
+            ForEach((0...5), id: \.self){ index in
+                Button(action: {
+                    contentViewModel.showMenu = false;
+                    contentViewModel.showPage = index;
+                    print("Now changing to page: \(contentViewModel.showPage)")
+                    print(index)
+                }){
+                    HStack {
+                        Image(pageNames[index][1])
+                        Text(pageNames[index][0])
+                    }
+                    .modifier(pageChoiceModifier())
+                    .padding(.top, (index == 0) ? 120 : 30)
                 }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.top, 120)
-            
-            //Achievements Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 1
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "gear")
-                    Text("Achievements")
-                }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.top, 30)
-            
-            //Friends Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 2
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "gear")
-                    Text("Friends")
-                }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.top, 30)
-            
-            //Library Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 3
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "person")
-                    Text("Library")
-                }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.top, 30)
-            
-            //Search Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 4
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "envelope")
-                    Text("Search")
-                }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.top, 30)
-            
-            //Store Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 5
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "gear")
-                    Text("Store")
-                }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.top, 30)
+            }// End Top Page Icons
             
             Spacer()
             
-            //Profile Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 6
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "gear")
-                        .foregroundColor(.gray)
-                        .imageScale(.large)
-                    Text("Profile")
-                        .foregroundColor(.gray)
-                        .font(.headline)
+            //Bottom Page Icons
+            ForEach((6...7), id: \.self){ index in
+                Button(action: {
+                    contentViewModel.showMenu = false;
+                    contentViewModel.showPage = index;
+                    print("Now changing to page: \(contentViewModel.showPage)")
+                    print(index)
+                }){
+                    HStack {
+                        Image(pageNames[index][1])
+                        Text(pageNames[index][0])
+                    }
+                    .modifier(pageChoiceModifier())
+                    .padding(.bottom, 30)
                 }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.bottom, 30)
-            
-            
-            //Settings Button
-            Button(action: {
-                contentViewModel.showMenu = false;
-                contentViewModel.showPage = 7
-                print("Now changing to page: \(contentViewModel.showPage)")
-            }){
-                HStack {
-                    Image(systemName: "gear")
-                    Text("Settings")
-                }
-            }
-            .modifier(pageChoiceModifier())
-            .padding(.bottom, 30)
+            }// End Bottom Page Icons
             
         }
             .padding()
@@ -153,8 +82,8 @@ struct pageChoiceModifier: ViewModifier {
 }
 
 
-//struct MenuView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MenuView()
-//    }
-//}
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        MenuView()
+    }
+}

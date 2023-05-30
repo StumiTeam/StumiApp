@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    //let sqliteManager = SQLiteManager.shared
     var date = Date()
     
     //View Models
@@ -27,6 +28,7 @@ struct ContentView: View {
                 content
             } else {
                 TitleView()
+                    //.environmentObject(sqliteManager)
                     //.environmentObject(contentViewModel)
             }
         } else {
@@ -177,7 +179,7 @@ struct ContentView: View {
     
 }
 
-//pull function
+//pull function for Hamburger Menu
 extension View {
     func placeholder<Content: View>(
         when shouldShow: Bool,

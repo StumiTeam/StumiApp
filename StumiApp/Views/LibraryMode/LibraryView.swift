@@ -11,6 +11,7 @@ struct LibraryView: View {
     
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var sqliteManager: SQLiteManager
     
     var body: some View {
         Text("Library Mode!")

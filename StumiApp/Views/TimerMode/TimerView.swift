@@ -13,6 +13,7 @@ struct TimerView: View {
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var contentViewModel: ContentViewModel
+    @EnvironmentObject var sqliteManager: SQLiteManager
     
     //New instance of TimerViewModel
     @StateObject var timerViewModel = TimerViewModel()
@@ -396,11 +397,10 @@ struct subjectSelectionView: View {
         Menu(selectedSubject) {
             //Loop through subject list
             ForEach(0..<subjects.count, id: \.self ) { number in
-                
                 Button{
                     selectedSubject = subjects[number]
                     timerViewModel.selectedSubject = selectedSubject
-                    print("Subjects:\(subjects)")
+                    print("Subject: \(selectedSubject)")
                 } label: {
                     Text("\(subjects[number])")
                 }

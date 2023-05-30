@@ -11,6 +11,8 @@ struct ProfileView: View {
     
     //View Models
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var sqliteManager: SQLiteManager
+    
     //var user: User
     
     var body: some View {

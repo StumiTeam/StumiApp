@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4213C56B29D4C32400B5296E /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */; };
 		4213C56D29D74CE500B5296E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213C56C29D74CE500B5296E /* ContentViewModel.swift */; };
+		422521ED2A06D3DC00B11DF7 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422521EC2A06D3DC00B11DF7 /* SQLiteManager.swift */; };
+		422521EF2A06FD1C00B11DF7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 422521EE2A06FCD900B11DF7 /* libsqlite3.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		42375BC528AD1D92005DA686 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC428AD1D92005DA686 /* TimerView.swift */; };
 		42375BC728AD1D9A005DA686 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC628AD1D9A005DA686 /* AchievementsView.swift */; };
 		42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42375BC828AD1DA2005DA686 /* FriendsView.swift */; };
@@ -43,6 +45,11 @@
 		42CCE0B928BC06D900A9A7CA /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0B828BC06D900A9A7CA /* LibraryView.swift */; };
 		42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0BA28BC06E600A9A7CA /* SearchView.swift */; };
 		42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCE0BC28BC06F300A9A7CA /* StoreView.swift */; };
+		42E1512B2A0D721400D97DE3 /* Furniture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E1512A2A0D721400D97DE3 /* Furniture.swift */; };
+		42E1512D2A1266B200D97DE3 /* db.db in Resources */ = {isa = PBXBuildFile; fileRef = 42E1512C2A1266B200D97DE3 /* db.db */; };
+		42E1512F2A1E42EA00D97DE3 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E1512E2A1E42EA00D97DE3 /* Achievement.swift */; };
+		42E151372A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42E151362A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv */; };
+		42E1513A2A1E9C7400D97DE3 /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E151392A1E9C7400D97DE3 /* Parse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +72,8 @@
 /* Begin PBXFileReference section */
 		4213C56A29D4C32400B5296E /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		4213C56C29D74CE500B5296E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		422521EC2A06D3DC00B11DF7 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		422521EE2A06FCD900B11DF7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		42375BC428AD1D92005DA686 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		42375BC628AD1D9A005DA686 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		42375BC828AD1DA2005DA686 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
@@ -99,6 +108,11 @@
 		42CCE0B828BC06D900A9A7CA /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		42CCE0BA28BC06E600A9A7CA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		42CCE0BC28BC06F300A9A7CA /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		42E1512A2A0D721400D97DE3 /* Furniture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Furniture.swift; sourceTree = "<group>"; };
+		42E1512C2A1266B200D97DE3 /* db.db */ = {isa = PBXFileReference; lastKnownFileType = text; path = db.db; sourceTree = "<group>"; };
+		42E1512E2A1E42EA00D97DE3 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		42E151362A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Stumi SQLite3 Database - misc.csv"; sourceTree = "<group>"; };
+		42E151392A1E9C7400D97DE3 /* Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422521EF2A06FD1C00B11DF7 /* libsqlite3.tbd in Frameworks */,
 				42B7A37B298F5C1A002A81A6 /* FirebaseAuth in Frameworks */,
 				425BE40329DF145200576511 /* FirebaseStorage in Frameworks */,
 				42B7A37D298F5C1A002A81A6 /* FirebaseFirestore in Frameworks */,
@@ -168,15 +183,18 @@
 		425262EB289B4FC400F7F35A /* StumiApp */ = {
 			isa = PBXGroup;
 			children = (
+				42E1512C2A1266B200D97DE3 /* db.db */,
 				42B7A38529900A53002A81A6 /* Info.plist */,
 				425262EC289B4FC400F7F35A /* StumiApp.swift */,
 				42E071C629B66E82007F2D66 /* Views */,
 				424BCB3A299FC979003CECC5 /* ViewModels */,
 				42B7A38D29965724002A81A6 /* Models */,
 				42B7A388299082C1002A81A6 /* Maintenance Settings */,
+				42E151302A1E961700D97DE3 /* CSV Data Files */,
 				425D3B1828BB1EEE00F394C5 /* Music */,
 				4276660929B8E30B00F069D4 /* Assets */,
 				425262F2289B4FC500F7F35A /* Preview Content */,
+				42E151382A1E9C4400D97DE3 /* Database Editor */,
 			);
 			path = StumiApp;
 			sourceTree = "<group>";
@@ -245,6 +263,7 @@
 			children = (
 				425D3B1528BB1E0900F394C5 /* MusicPlayer.swift */,
 				42B7A38629904FA1002A81A6 /* BannerModifier.swift */,
+				422521EC2A06D3DC00B11DF7 /* SQLiteManager.swift */,
 			);
 			path = "Maintenance Settings";
 			sourceTree = "<group>";
@@ -255,6 +274,8 @@
 				42B7A38B2996571F002A81A6 /* User.swift */,
 				4261455B29C10EF40067CC5D /* MainPlayer.swift */,
 				4261455729C0F4A80067CC5D /* Animal.swift */,
+				42E1512E2A1E42EA00D97DE3 /* Achievement.swift */,
+				42E1512A2A0D721400D97DE3 /* Furniture.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +283,7 @@
 		42B7A38E29966B7D002A81A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				422521EE2A06FCD900B11DF7 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,6 +320,22 @@
 				425D3B1728BB1E1F00F394C5 /* Player Settings */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		42E151302A1E961700D97DE3 /* CSV Data Files */ = {
+			isa = PBXGroup;
+			children = (
+				42E151362A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv */,
+			);
+			path = "CSV Data Files";
+			sourceTree = "<group>";
+		};
+		42E151382A1E9C4400D97DE3 /* Database Editor */ = {
+			isa = PBXGroup;
+			children = (
+				42E151392A1E9C7400D97DE3 /* Parse.swift */,
+			);
+			path = "Database Editor";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,9 +451,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E151372A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv in Resources */,
 				425262F4289B4FC500F7F35A /* Preview Assets.xcassets in Resources */,
 				425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */,
 				42B7A381298F642C002A81A6 /* GoogleService-Info.plist in Resources */,
+				42E1512D2A1266B200D97DE3 /* db.db in Resources */,
 				42B1937B2968528100890CA8 /* README.md in Resources */,
 				425D3B1A28BB1EF900F394C5 /* bad.mp3 in Resources */,
 			);
@@ -442,13 +482,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E1512B2A0D721400D97DE3 /* Furniture.swift in Sources */,
 				42375BC928AD1DA2005DA686 /* FriendsView.swift in Sources */,
 				4261459529C340FB0067CC5D /* TimerViewModel.swift in Sources */,
 				4261459829C35D250067CC5D /* UserViewModel.swift in Sources */,
 				42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */,
+				42E1513A2A1E9C7400D97DE3 /* Parse.swift in Sources */,
 				425D3B1628BB1E0900F394C5 /* MusicPlayer.swift in Sources */,
 				42B7A383298FF82F002A81A6 /* RegisterView.swift in Sources */,
 				425262EF289B4FC400F7F35A /* ContentView.swift in Sources */,
+				42E1512F2A1E42EA00D97DE3 /* Achievement.swift in Sources */,
 				42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */,
 				4213C56B29D4C32400B5296E /* UserSearchViewModel.swift in Sources */,
 				42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */,
@@ -464,6 +507,7 @@
 				42375BCB28AD1DA9005DA686 /* ProfileView.swift in Sources */,
 				4213C56D29D74CE500B5296E /* ContentViewModel.swift in Sources */,
 				4261455829C0F4A80067CC5D /* Animal.swift in Sources */,
+				422521ED2A06D3DC00B11DF7 /* SQLiteManager.swift in Sources */,
 				42B7A38729904FA1002A81A6 /* BannerModifier.swift in Sources */,
 				425262ED289B4FC400F7F35A /* StumiApp.swift in Sources */,
 			);

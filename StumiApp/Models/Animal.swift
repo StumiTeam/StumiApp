@@ -7,6 +7,13 @@
 
 import Foundation
 
-struct Animal : Codable {
+struct Animal: Codable {
+    var id: Int
+    var speciesName: String
+    var sex: Bool
+    var biome: String
+    var desc: String
+    //var intellect
     
+    //var image: Image;
 }
