@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //let sqliteManager = SQLiteManager.shared
     var date = Date()
     
     //View Models
@@ -166,6 +165,7 @@ struct ContentView: View {
             }//end toolbar
         }//end NavigationView
         .onAppear{
+            sqliteManager.printTable(tableName: "misc")
             //userViewModel.syncUser()
             print("user: \(userViewModel.id!)")
             print("date: \(date)")
