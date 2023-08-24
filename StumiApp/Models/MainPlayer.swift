@@ -21,6 +21,16 @@ class mainPlayer: Codable {
     var numCoins: Int
     var prestige: Int
     var totalTime: Int
+    
+    //Object Storage
+    var unlockedBiomes: [Biome]
+    var collectedAnimals: [Animal]
+    var availableAnimals: [String]
+    var achievements: [Achievement]
+    var availableAchievements: [String]
+    var furniture: [Furniture]
+    var availableFurniture: [String]
+    
     var gameVersion: String
     var usernamesForSearch: [String] { [self.username.generateStringSequence()].flatMap { $0 }
     }

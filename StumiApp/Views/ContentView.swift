@@ -141,7 +141,8 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing){
                     if contentViewModel.showButton {
                         Button(action: {
-                            //redirect to store page
+                            contentViewModel.showPage = 5;
+                            contentViewModel.showMenu = false;
                         }, label: {
                             ZStack{
                                 Text("\(userViewModel.mainPlayer.numCoins)")
@@ -165,7 +166,7 @@ struct ContentView: View {
             }//end toolbar
         }//end NavigationView
         .onAppear{
-            sqliteManager.printTable(tableName: "misc")
+            //sqliteManager.printTable(tableName: "misc")
             //userViewModel.syncUser()
             print("user: \(userViewModel.id!)")
             print("date: \(date)")

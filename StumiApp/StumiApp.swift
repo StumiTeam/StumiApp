@@ -17,34 +17,54 @@ struct AppSetupForDevelopers {
         
         //open Database
         if sqliteManager.openDatabase() {
-            sqliteManager.beginTransaction()
             
-            sqliteManager.dropTable(tableName: "misc")
-            sqliteManager.createTable(tableName: "misc", columns: miscTableColumns)
+            //If need to update tables (UNCOMMENT FOR DEVS ONLY IF UPDATE, RECOMMENT BEFORE RELEASING APP)
             
-            sqliteManager.parseCSVFile(fileName: "Stumi SQLite3 Database - misc")
-            sqliteManager.commit()
+              sqliteManager.beginTransaction() //Not needed to print table
             
-            sqliteManager.printTable(tableName: "misc")
-            //sqliteManager.closeDatabase()
+              //Drop Tables
+              sqliteManager.dropTable(tableName: "animals")
+              sqliteManager.dropTable(tableName: "achievements")
+              sqliteManager.dropTable(tableName: "furnitures")
+              sqliteManager.dropTable(tableName: "misc")
+            
+              //Create Tables if Needed
+              sqliteManager.createTable(tableName: "animals", columns: animalsTableColumns)
+              sqliteManager.createTable(tableName: "achievements", columns: achievementsTableColumns)
+              sqliteManager.createTable(tableName: "furnitures", columns: furnituresTableColumns)
+              sqliteManager.createTable(tableName: "misc", columns: miscTableColumns)
+            
+              //Populate Tables
+              sqliteManager.parseCSVFile(fileName: "Stumi SQLite3 Database - animals")
+              sqliteManager.parseCSVFile(fileName: "Stumi SQLite3 Database - achievements")
+              sqliteManager.parseCSVFile(fileName: "Stumi SQLite3 Database - furnitures")
+              sqliteManager.parseCSVFile(fileName: "Stumi SQLite3 Database - misc")
+              
+              //Commit
+              sqliteManager.commit()
+            
+              //Print out Table Contents
+              sqliteManager.printTable(tableName: "animals")
+              sqliteManager.printTable(tableName: "achievements")
+              sqliteManager.printTable(tableName: "misc")
+             
+              //Close database
+              sqliteManager.closeDatabase()
+             
         }
-        
-        /*
-        //Drop Tables
-        sqliteManager.dropTable(tableName: "animals")
-        sqliteManager.dropTable(tableName: "achievements")
-        sqliteManager.dropTable(tableName: "furnitures")
-        sqliteManager.dropTable(tableName: "misc")
-        
-        //Create Tables if needed
-        sqliteManager.createTable(tableName: "animals", columns: animalsTableColumns)
-        sqliteManager.createTable(tableName: "achievements", columns: achievementsTableColumns)
-        sqliteManager.createTable(tableName: "furnitures", columns: furnituresTableColumns)
-        sqliteManager.createTable(tableName: "misc", columns: miscTableColumns)
-        
-        //Populate Tables
-        sqliteManager.parseCSVFile(fileName: "Stumi SQLite3 Database - misc")
-        */
+    }
+    static func readDB() {
+        if sqliteManager.openDatabase() {
+            print("Reading tables...")
+            
+            /*
+                Print tables
+                print("Printing tables... ")
+                sqliteManager.printTable(tableName: "animals")
+                sqliteManager.printTable(tableName: "achievements")
+                sqliteManager.printTable(tableName: "misc")
+            */
+        }
     }
 }
 
@@ -60,28 +80,29 @@ struct StumiApp: App {
             ContentView()
                 .environmentObject(userViewModel)
             
-            /*
                 .environmentObject(sqliteManager)
                 .onAppear{
-                    AppSetupForDevelopers.initialize()
+                    //UNCOMMENT FOR WHEN YOU NEED TO UPDATE THE APP BUNDLE'S DATABASE ONLY. MAKE SURE THE CVS FILES ARE UPDATED AND ALIGN WITH THE CODE WITH SQLiteManager.swift. After taking the new db.db file out of your simulation folder, replace the db.db folder in here with that one.
+                    //AppSetupForDevelopers.initialize()
+                    AppSetupForDevelopers.readDB()
                 }
-             */
+             
         }
     }
     
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        sqliteManager.openDatabase()
-        //sqliteManager.printTable(tableName: "misc")
+        //sqliteManager.openDatabase()
         print("Finished launching")
         return true
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        // Close the database connection
+        // Close the database connection when app is closed
         sqliteManager.closeDatabase()
     }
 }

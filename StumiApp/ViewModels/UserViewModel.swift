@@ -68,7 +68,6 @@ class UserViewModel: ObservableObject {
         }
     } //end login
     
-    
     func register(username: String, email: String, password: String, confirmPassword: String) {
         
         //if username is already taken -> ask user to use another username
@@ -161,7 +160,7 @@ class UserViewModel: ObservableObject {
             do {
                 try self.user = document!.data(as: User.self)
                 try mainPlayer = document!.data(as: User.self)
-                print(mainPlayer)
+                print("Main Player: \(mainPlayer)")
                 
             } catch {
                 print("Sync error: \(error)")

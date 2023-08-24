@@ -48,12 +48,25 @@
 		42E1512B2A0D721400D97DE3 /* Furniture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E1512A2A0D721400D97DE3 /* Furniture.swift */; };
 		42E1512F2A1E42EA00D97DE3 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E1512E2A1E42EA00D97DE3 /* Achievement.swift */; };
 		42E151372A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42E151362A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv */; };
-		42E151402A27025E00D97DE3 /* db.db in Resources */ = {isa = PBXBuildFile; fileRef = 42E1513F2A27025E00D97DE3 /* db.db */; };
-		42E151412A27025E00D97DE3 /* db.db in Resources */ = {isa = PBXBuildFile; fileRef = 42E1513F2A27025E00D97DE3 /* db.db */; };
-		42E151422A27025E00D97DE3 /* db.db in Resources */ = {isa = PBXBuildFile; fileRef = 42E1513F2A27025E00D97DE3 /* db.db */; };
 		42E151442A279DC800D97DE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E151432A279DC800D97DE3 /* AppDelegate.swift */; };
 		42E151452A279DC800D97DE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E151432A279DC800D97DE3 /* AppDelegate.swift */; };
 		42E151462A279DC800D97DE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E151432A279DC800D97DE3 /* AppDelegate.swift */; };
+		42F20AB72A8301980027A907 /* Stumi SQLite3 Database - achievements.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AB62A8301980027A907 /* Stumi SQLite3 Database - achievements.csv */; };
+		42F20ABD2A84116A0027A907 /* Biome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20ABC2A84116A0027A907 /* Biome.swift */; };
+		42F20ABE2A84116A0027A907 /* Biome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20ABC2A84116A0027A907 /* Biome.swift */; };
+		42F20ABF2A84116A0027A907 /* Biome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20ABC2A84116A0027A907 /* Biome.swift */; };
+		42F20AC12A8425150027A907 /* AnimalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AC02A8425150027A907 /* AnimalManager.swift */; };
+		42F20AC22A8425150027A907 /* AnimalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AC02A8425150027A907 /* AnimalManager.swift */; };
+		42F20AC32A8425150027A907 /* AnimalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AC02A8425150027A907 /* AnimalManager.swift */; };
+		42F20ACD2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */; };
+		42F20ACE2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */; };
+		42F20ACF2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */; };
+		42F20AD12A85A12E0027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD02A85A12D0027A907 /* GameEntities.db */; };
+		42F20AD22A85A12E0027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD02A85A12D0027A907 /* GameEntities.db */; };
+		42F20AD32A85A12E0027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD02A85A12D0027A907 /* GameEntities.db */; };
+		42F20AD62A85F8E10027A907 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AD52A85F8E10027A907 /* GameData.swift */; };
+		42F20AD72A85F8E10027A907 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AD52A85F8E10027A907 /* GameData.swift */; };
+		42F20AD82A85F8E10027A907 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AD52A85F8E10027A907 /* GameData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,8 +128,13 @@
 		42E1512A2A0D721400D97DE3 /* Furniture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Furniture.swift; sourceTree = "<group>"; };
 		42E1512E2A1E42EA00D97DE3 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		42E151362A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Stumi SQLite3 Database - misc.csv"; sourceTree = "<group>"; };
-		42E1513F2A27025E00D97DE3 /* db.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.db; sourceTree = "<group>"; };
 		42E151432A279DC800D97DE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42F20AB62A8301980027A907 /* Stumi SQLite3 Database - achievements.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Stumi SQLite3 Database - achievements.csv"; sourceTree = "<group>"; };
+		42F20ABC2A84116A0027A907 /* Biome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biome.swift; sourceTree = "<group>"; };
+		42F20AC02A8425150027A907 /* AnimalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalManager.swift; sourceTree = "<group>"; };
+		42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Stumi SQLite3 Database - animals.csv"; sourceTree = "<group>"; };
+		42F20AD02A85A12D0027A907 /* GameEntities.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameEntities.db; sourceTree = "<group>"; };
+		42F20AD52A85F8E10027A907 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +215,7 @@
 				425D3B1828BB1EEE00F394C5 /* Music */,
 				4276660929B8E30B00F069D4 /* Assets */,
 				425262F2289B4FC500F7F35A /* Preview Content */,
-				42E151382A1E9C4400D97DE3 /* Developer Tools */,
+				42E151382A1E9C4400D97DE3 /* Game Managers */,
 				42E151302A1E961700D97DE3 /* CSV Data Files */,
 			);
 			path = StumiApp;
@@ -276,6 +294,7 @@
 			children = (
 				42B7A38B2996571F002A81A6 /* User.swift */,
 				4261455B29C10EF40067CC5D /* MainPlayer.swift */,
+				42F20ABC2A84116A0027A907 /* Biome.swift */,
 				4261455729C0F4A80067CC5D /* Animal.swift */,
 				42E1512E2A1E42EA00D97DE3 /* Achievement.swift */,
 				42E1512A2A0D721400D97DE3 /* Furniture.swift */,
@@ -328,18 +347,30 @@
 		42E151302A1E961700D97DE3 /* CSV Data Files */ = {
 			isa = PBXGroup;
 			children = (
+				42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */,
 				42E151362A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv */,
+				42F20AB62A8301980027A907 /* Stumi SQLite3 Database - achievements.csv */,
 			);
 			path = "CSV Data Files";
 			sourceTree = "<group>";
 		};
-		42E151382A1E9C4400D97DE3 /* Developer Tools */ = {
+		42E151382A1E9C4400D97DE3 /* Game Managers */ = {
 			isa = PBXGroup;
 			children = (
-				42E1513F2A27025E00D97DE3 /* db.db */,
+				42F20AC02A8425150027A907 /* AnimalManager.swift */,
+				42F20AD42A85F8CA0027A907 /* Game Data */,
 				422521EC2A06D3DC00B11DF7 /* SQLiteManager.swift */,
 			);
-			path = "Developer Tools";
+			path = "Game Managers";
+			sourceTree = "<group>";
+		};
+		42F20AD42A85F8CA0027A907 /* Game Data */ = {
+			isa = PBXGroup;
+			children = (
+				42F20AD02A85A12D0027A907 /* GameEntities.db */,
+				42F20AD52A85F8E10027A907 /* GameData.swift */,
+			);
+			path = "Game Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,11 +487,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E151372A1E99AE00D97DE3 /* Stumi SQLite3 Database - misc.csv in Resources */,
+				42F20ACD2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */,
 				425262F4289B4FC500F7F35A /* Preview Assets.xcassets in Resources */,
 				425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */,
 				42B7A381298F642C002A81A6 /* GoogleService-Info.plist in Resources */,
+				42F20AB72A8301980027A907 /* Stumi SQLite3 Database - achievements.csv in Resources */,
+				42F20AD12A85A12E0027A907 /* GameEntities.db in Resources */,
 				42B1937B2968528100890CA8 /* README.md in Resources */,
-				42E151402A27025E00D97DE3 /* db.db in Resources */,
 				425D3B1A28BB1EF900F394C5 /* bad.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,7 +502,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E151412A27025E00D97DE3 /* db.db in Resources */,
+				42F20ACE2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */,
+				42F20AD22A85A12E0027A907 /* GameEntities.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +511,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E151422A27025E00D97DE3 /* db.db in Resources */,
+				42F20ACF2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */,
+				42F20AD32A85A12E0027A907 /* GameEntities.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,11 +528,14 @@
 				4261459529C340FB0067CC5D /* TimerViewModel.swift in Sources */,
 				4261459829C35D250067CC5D /* UserViewModel.swift in Sources */,
 				42E151442A279DC800D97DE3 /* AppDelegate.swift in Sources */,
+				42F20AD62A85F8E10027A907 /* GameData.swift in Sources */,
 				42375BCF28AD1DC2005DA686 /* SettingsView.swift in Sources */,
+				42F20ABD2A84116A0027A907 /* Biome.swift in Sources */,
 				425D3B1628BB1E0900F394C5 /* MusicPlayer.swift in Sources */,
 				42B7A383298FF82F002A81A6 /* RegisterView.swift in Sources */,
 				425262EF289B4FC400F7F35A /* ContentView.swift in Sources */,
 				42E1512F2A1E42EA00D97DE3 /* Achievement.swift in Sources */,
+				42F20AC12A8425150027A907 /* AnimalManager.swift in Sources */,
 				42CCE0BB28BC06E600A9A7CA /* SearchView.swift in Sources */,
 				4213C56B29D4C32400B5296E /* UserSearchViewModel.swift in Sources */,
 				42CCE0BD28BC06F300A9A7CA /* StoreView.swift in Sources */,
@@ -523,8 +561,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F20ABE2A84116A0027A907 /* Biome.swift in Sources */,
+				42F20AD72A85F8E10027A907 /* GameData.swift in Sources */,
 				42E151452A279DC800D97DE3 /* AppDelegate.swift in Sources */,
 				425262FE289B4FC500F7F35A /* StumiAppTests.swift in Sources */,
+				42F20AC22A8425150027A907 /* AnimalManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,7 +574,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E151462A279DC800D97DE3 /* AppDelegate.swift in Sources */,
+				42F20AD82A85F8E10027A907 /* GameData.swift in Sources */,
+				42F20AC32A8425150027A907 /* AnimalManager.swift in Sources */,
 				4252630A289B4FC500F7F35A /* StumiAppUITestsLaunchTests.swift in Sources */,
+				42F20ABF2A84116A0027A907 /* Biome.swift in Sources */,
 				42526308289B4FC500F7F35A /* StumiAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

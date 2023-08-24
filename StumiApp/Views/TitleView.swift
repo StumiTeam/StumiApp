@@ -25,14 +25,6 @@ struct TitleView: View {
                 
                 Text("Title Page")
             }
-            /*
-            .onAppear{
-                sqliteManager.createTable(tableName: "animals", columns: animalsTableColumns)
-                sqliteManager.createTable(tableName: "achievements", columns: achievementsTableColumns)
-                sqliteManager.createTable(tableName: "furnitures", columns: furnituresTableColumns)
-                sqliteManager.addEntity(tableName: "animals", list: ["froggy", "swamp animal"])
-            }
-             */
             .onTapGesture {
                 print("TAPPED")
                 userViewModel.syncUser()

@@ -1,0 +1,3 @@
+id,entityName,class,description,t1Req,t2Req,t3Req,t4Req,t1imgURL,t2imgURL,t3imgURL,t4imgURL
+0,New Student,Veterancy,Study for hours,1,20,100,250,newStudentToken_bronze,newStudentToken_silver,newStudentToken_gold,newStudentToken_pris
+1,Wandering Recruitment,Diversity,Take in new species of animals,1,5,20,50,wanderingRecruitmentToken_bronze,wanderingRecruitmentToken_silver,wanderingRecruitmentToken_gold,wanderingRecruitmentToken_pris

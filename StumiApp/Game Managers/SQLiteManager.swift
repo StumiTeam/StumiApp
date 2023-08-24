@@ -21,7 +21,7 @@ class SQLiteManager: ObservableObject {
     func openDatabase() -> Bool {
         
         // Get the URL for the database file in the app bundle
-        guard let bundleDatabaseURL = Bundle.main.url(forResource: "db", withExtension: "db") else {
+        guard let bundleDatabaseURL = Bundle.main.url(forResource: "GameEntities", withExtension: "db") else {
             print("Database file not found in the app bundle.")
             return false
         }
@@ -96,10 +96,10 @@ class SQLiteManager: ObservableObject {
         
         switch tableName {
             case "animals":
-                colList = "entityName, description, sex, defMaxExp, maxExpInc, s1imgURL, s2imgURL, s3imgURL, s4imgURL"
+                colList = "entityName, gender, biome, description, defBookRate, defMaxExp, maxExpInc, s1imgURL, s2imgURL, s3imgURL, s4imgURL"
             
             case "achievements":
-                colList = "entityName, description, t1Req, t2Req, t3Req, t1imgURL, t2imgURL, t3imgURL"
+                colList = "entityName, class, description, t1Req, t2Req, t3Req, t4Req, t1imgURL, t2imgURL, t3imgURL, t4imgURL"
             
             case "furnitures":
                 colList = "entityName, description, price, libraryLevelReq, userLevelReq, imgURL"
@@ -208,6 +208,8 @@ class SQLiteManager: ObservableObject {
         switch fileName {
             case "Stumi SQLite3 Database - animals":
                 tableName = "animals"
+            case "Stumi SQLite3 Database - achievements":
+                tableName = "achievements"
             case "Stumi SQLite3 Database - furnitures":
                 tableName = "furnitures"
             case "Stumi SQLite3 Database - misc":
@@ -227,7 +229,6 @@ class SQLiteManager: ObservableObject {
                 if rows.last?.isEmpty == true {
                     rows.removeLast()
                 }
-                //print("rows: \(rows)")
                 
                 var parsedData: [[Any]] = []
                 
@@ -288,6 +289,7 @@ class SQLiteManager: ObservableObject {
     
     func printTable(tableName: String) {
 
+        print("Table: \(tableName)")
         var printStatement: OpaquePointer?
         
         let printQuery =
@@ -351,26 +353,40 @@ class SQLiteManager: ObservableObject {
 let animalsTableColumns = [
     (name: "id", type: "INTEGER PRIMARY KEY AUTOINCREMENT"),
     (name: "entityName", type: "TEXT"),
+    (name: "gender", type: "TEXT"),
+    (name: "biome", type: "TEXT"),
     (name: "description", type: "TEXT"),
-    (name: "sex", type: "TEXT"),
+    (name: "defBookRate", type: "INT"),
     (name: "defMaxExp", type: "INT"),
     (name: "maxExpInc", type: "INT"),
     (name: "s1imgURL", type: "TEXT"),
     (name: "s2imgURL", type: "TEXT"),
     (name: "s3imgURL", type: "TEXT"),
-    (name: "s4imgURL", type: "TEXT"),
+    (name: "s4imgURL", type: "TEXT")
+    
+//    (name: "ms1imgURL", type: "TEXT"),
+//    (name: "ms2imgURL", type: "TEXT"),
+//    (name: "ms3imgURL", type: "TEXT"),
+//    (name: "ms4imgURL", type: "TEXT"),
+//    (name: "fs1imgURL", type: "TEXT"),
+//    (name: "fs2imgURL", type: "TEXT"),
+//    (name: "fs3imgURL", type: "TEXT"),
+//    (name: "fs4imgURL", type: "TEXT"),
 ]
 
 let achievementsTableColumns = [
     (name: "id", type: "INTEGER PRIMARY KEY AUTOINCREMENT"),
     (name: "entityName", type: "TEXT"),
+    (name: "class", type: "TEXT"),
     (name: "description", type: "TEXT"),
     (name: "t1Req", type: "INT"),
     (name: "t2Req", type: "INT"),
     (name: "t3Req", type: "INT"),
+    (name: "t4Req", type: "INT"),
     (name: "t1imgURL", type: "TEXT"),
     (name: "t2imgURL", type: "TEXT"),
     (name: "t3imgURL", type: "TEXT"),
+    (name: "t4imgURL", type: "TEXT")
 ]
 
 let furnituresTableColumns = [
@@ -388,5 +404,4 @@ let miscTableColumns = [
     (name: "entityName", type: "TEXT"),
     (name: "description", type: "TEXT"),
     (name: "imgURL", type: "TEXT")
-    //, (name: "howToObtain", type: "TEXT")
 ]
