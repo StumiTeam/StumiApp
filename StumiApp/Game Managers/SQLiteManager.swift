@@ -96,7 +96,7 @@ class SQLiteManager: ObservableObject {
         
         switch tableName {
             case "animals":
-                colList = "entityName, gender, biome, description, defBookRate, defMaxExp, maxExpInc, s1imgURL, s2imgURL, s3imgURL, s4imgURL"
+                colList = "entityName, biome, description, defBookRate, defMaxExp, maxExpInc, s1imgURL, s2imgURL, s3imgURL, s4imgURL"
             
             case "achievements":
                 colList = "entityName, class, description, t1Req, t2Req, t3Req, t4Req, t1imgURL, t2imgURL, t3imgURL, t4imgURL"
@@ -353,7 +353,6 @@ class SQLiteManager: ObservableObject {
 let animalsTableColumns = [
     (name: "id", type: "INTEGER PRIMARY KEY AUTOINCREMENT"),
     (name: "entityName", type: "TEXT"),
-    (name: "gender", type: "TEXT"),
     (name: "biome", type: "TEXT"),
     (name: "description", type: "TEXT"),
     (name: "defBookRate", type: "INT"),

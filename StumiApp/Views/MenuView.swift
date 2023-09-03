@@ -14,14 +14,14 @@ struct MenuView: View {
      
     //Variables
     let pageNames = [
-        ["Timer", "systemName: 'gear'"],                      //0
-        ["Achievements", "systemName: 'gear'"], //1
-        ["Friends", "systemName: 'gear'"],      //2
-        ["Library", "systemName: 'gear'"],      //3
-        ["Search", "systemName: 'gear'"],       //4
-        ["Store", "systemName: 'gear'"],        //5
-        ["Profile", "systemName: 'gear'"],      //6
-        ["Settings", "systemName: 'gear'"]      //7
+        ["Timer", "Timer"],                      //0
+        ["Achievements", "Achievements"], //1
+        ["Friends", "Friends"],      //2
+        ["Library", "Library"],      //3
+        ["Search", "Search"],       //4
+        ["Store", "Store"],        //5
+        ["Profile", "Profile"],      //6
+        ["Settings", "Settings"]      //7
     ]
     
     //body
@@ -76,7 +76,7 @@ struct pageChoiceModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(.gray)
-            .imageScale(.large)
+            .imageScale(.small)
             .font(.headline)
     }
 }

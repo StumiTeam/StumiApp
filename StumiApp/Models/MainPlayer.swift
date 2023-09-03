@@ -24,7 +24,7 @@ class mainPlayer: Codable {
     
     //Object Storage
     var unlockedBiomes: [Biome]
-    var collectedAnimals: [Animal]
+    //var collectedAnimals: [Animal]
     var availableAnimals: [String]
     var achievements: [Achievement]
     var availableAchievements: [String]

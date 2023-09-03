@@ -10,7 +10,7 @@ import Foundation
 class GameData {
     static let shared = GameData()
     
-    var animals: [Animal] = []
+    //var animals: [Animal] = []
     var achievements: [Achievement] = []
     var furniture: [Furniture] = []
     

@@ -61,12 +61,12 @@
 		42F20ACD2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */; };
 		42F20ACE2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */; };
 		42F20ACF2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */ = {isa = PBXBuildFile; fileRef = 42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */; };
-		42F20AD12A85A12E0027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD02A85A12D0027A907 /* GameEntities.db */; };
-		42F20AD22A85A12E0027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD02A85A12D0027A907 /* GameEntities.db */; };
-		42F20AD32A85A12E0027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD02A85A12D0027A907 /* GameEntities.db */; };
 		42F20AD62A85F8E10027A907 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AD52A85F8E10027A907 /* GameData.swift */; };
 		42F20AD72A85F8E10027A907 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AD52A85F8E10027A907 /* GameData.swift */; };
 		42F20AD82A85F8E10027A907 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20AD52A85F8E10027A907 /* GameData.swift */; };
+		42F20ADA2A9BBD210027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD92A9BBD210027A907 /* GameEntities.db */; };
+		42F20ADB2A9BBD210027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD92A9BBD210027A907 /* GameEntities.db */; };
+		42F20ADC2A9BBD210027A907 /* GameEntities.db in Resources */ = {isa = PBXBuildFile; fileRef = 42F20AD92A9BBD210027A907 /* GameEntities.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,8 +133,8 @@
 		42F20ABC2A84116A0027A907 /* Biome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biome.swift; sourceTree = "<group>"; };
 		42F20AC02A8425150027A907 /* AnimalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalManager.swift; sourceTree = "<group>"; };
 		42F20ACC2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Stumi SQLite3 Database - animals.csv"; sourceTree = "<group>"; };
-		42F20AD02A85A12D0027A907 /* GameEntities.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameEntities.db; sourceTree = "<group>"; };
 		42F20AD52A85F8E10027A907 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		42F20AD92A9BBD210027A907 /* GameEntities.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameEntities.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,7 +367,7 @@
 		42F20AD42A85F8CA0027A907 /* Game Data */ = {
 			isa = PBXGroup;
 			children = (
-				42F20AD02A85A12D0027A907 /* GameEntities.db */,
+				42F20AD92A9BBD210027A907 /* GameEntities.db */,
 				42F20AD52A85F8E10027A907 /* GameData.swift */,
 			);
 			path = "Game Data";
@@ -492,7 +492,7 @@
 				425262F1289B4FC500F7F35A /* Assets.xcassets in Resources */,
 				42B7A381298F642C002A81A6 /* GoogleService-Info.plist in Resources */,
 				42F20AB72A8301980027A907 /* Stumi SQLite3 Database - achievements.csv in Resources */,
-				42F20AD12A85A12E0027A907 /* GameEntities.db in Resources */,
+				42F20ADA2A9BBD210027A907 /* GameEntities.db in Resources */,
 				42B1937B2968528100890CA8 /* README.md in Resources */,
 				425D3B1A28BB1EF900F394C5 /* bad.mp3 in Resources */,
 			);
@@ -503,7 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42F20ACE2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */,
-				42F20AD22A85A12E0027A907 /* GameEntities.db in Resources */,
+				42F20ADB2A9BBD210027A907 /* GameEntities.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42F20ACF2A859AFB0027A907 /* Stumi SQLite3 Database - animals.csv in Resources */,
-				42F20AD32A85A12E0027A907 /* GameEntities.db in Resources */,
+				42F20ADC2A9BBD210027A907 /* GameEntities.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
